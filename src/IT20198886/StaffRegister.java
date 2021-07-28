@@ -1,23 +1,13 @@
 package IT20198886;
 
 import java.awt.BorderLayout;
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Image;
 
-import javax.swing.ImageIcon;
-
-
-
-
-
-public class StaffHome extends JFrame {
+public class StaffRegister extends JFrame {
 
 	private JPanel contentPane;
 
@@ -28,7 +18,7 @@ public class StaffHome extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					StaffHome frame = new StaffHome();
+					StaffRegister frame = new StaffRegister();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +30,7 @@ public class StaffHome extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public StaffHome() {
+	public StaffRegister() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -48,7 +38,5 @@ public class StaffHome extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 	}
-	
-
 
 }
