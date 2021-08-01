@@ -12,6 +12,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
+import javax.swing.JTable;
+import java.awt.Color;
 
 
 
@@ -20,6 +22,7 @@ import javax.swing.ImageIcon;
 public class StaffHome extends JFrame {
 
 	private JPanel contentPane;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -42,13 +45,15 @@ public class StaffHome extends JFrame {
 	 */
 	public StaffHome() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 653, 406);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		table = new JTable();
+		table.setBackground(Color.LIGHT_GRAY);
+		table.setBounds(32, 107, 583, 235);
+		contentPane.add(table);
 	}
-	
-
-
 }
