@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PayVaccine extends JFrame {
 
@@ -58,12 +60,24 @@ public class PayVaccine extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("X");
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(20);
+			}
+		});
 		lblNewLabel.setBounds(535, 11, 18, 14);
 		panel.add(lblNewLabel);
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 15));
 		
 		JLabel lblNewLabel_1 = new JLabel("-");
+		lblNewLabel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setState(JFrame.ICONIFIED);
+			}
+		});
 		lblNewLabel_1.setBounds(509, 10, 24, 14);
 		panel.add(lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 16));

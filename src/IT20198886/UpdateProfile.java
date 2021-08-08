@@ -16,6 +16,8 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class UpdateProfile extends JFrame {
 
@@ -74,6 +76,12 @@ public class UpdateProfile extends JFrame {
 		lblNewLabel.setBounds(520, 0, 10, 20);
 		
 		JLabel lblNewLabel_1 = new JLabel("-");
+		lblNewLabel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setState(JFrame.ICONIFIED);
+			}
+		});
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		panel.add(lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Trebuchet MS", Font.BOLD, 17));
@@ -97,40 +105,34 @@ public class UpdateProfile extends JFrame {
 		lblNewLabel_4.setBounds(141, 145, 46, 30);
 		contentPane.add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel("Branch");
-		lblNewLabel_5.setFont(new Font("Dialog", Font.BOLD, 17));
-		lblNewLabel_5.setForeground(new Color(95, 158, 160));
-		lblNewLabel_5.setBounds(141, 190, 65, 14);
-		contentPane.add(lblNewLabel_5);
-		
 		JLabel lblNewLabel_6 = new JLabel("Tel.No");
 		lblNewLabel_6.setForeground(new Color(95, 158, 160));
 		lblNewLabel_6.setFont(new Font("Dialog", Font.BOLD, 17));
-		lblNewLabel_6.setBounds(141, 238, 65, 14);
+		lblNewLabel_6.setBounds(141, 186, 65, 14);
 		contentPane.add(lblNewLabel_6);
 		
 		JLabel lblNewLabel_7 = new JLabel("Gender");
 		lblNewLabel_7.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblNewLabel_7.setForeground(new Color(95, 158, 160));
-		lblNewLabel_7.setBounds(141, 278, 65, 14);
+		lblNewLabel_7.setBounds(141, 227, 65, 14);
 		contentPane.add(lblNewLabel_7);
 		
 		JLabel lblNewLabel_8 = new JLabel("Age");
 		lblNewLabel_8.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblNewLabel_8.setForeground(new Color(95, 158, 160));
-		lblNewLabel_8.setBounds(141, 303, 46, 26);
+		lblNewLabel_8.setBounds(141, 258, 46, 26);
 		contentPane.add(lblNewLabel_8);
 		
 		JLabel lblNewLabel_9 = new JLabel("Email");
 		lblNewLabel_9.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblNewLabel_9.setForeground(new Color(95, 158, 160));
-		lblNewLabel_9.setBounds(141, 340, 65, 26);
+		lblNewLabel_9.setBounds(141, 295, 65, 26);
 		contentPane.add(lblNewLabel_9);
 		
 		JLabel lblNewLabel_10 = new JLabel("Password");
 		lblNewLabel_10.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblNewLabel_10.setForeground(new Color(95, 158, 160));
-		lblNewLabel_10.setBounds(141, 383, 92, 14);
+		lblNewLabel_10.setBounds(141, 342, 92, 14);
 		contentPane.add(lblNewLabel_10);
 		
 		textField = new JTextField();
@@ -143,43 +145,43 @@ public class UpdateProfile extends JFrame {
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(258, 185, 192, 20);
-		contentPane.add(comboBox);
-		
 		textField_2 = new JTextField();
-		textField_2.setBounds(258, 238, 192, 20);
+		textField_2.setBounds(258, 186, 192, 20);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(258, 278, 192, 20);
+		comboBox_1.setBounds(258, 227, 192, 20);
 		contentPane.add(comboBox_1);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(258, 309, 192, 20);
+		textField_3.setBounds(258, 264, 192, 20);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
 		textField_4 = new JTextField();
-		textField_4.setBounds(258, 346, 192, 20);
+		textField_4.setBounds(258, 301, 192, 20);
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
 		
 		textField_5 = new JTextField();
-		textField_5.setBounds(258, 383, 192, 20);
+		textField_5.setBounds(258, 342, 192, 20);
 		contentPane.add(textField_5);
 		textField_5.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Confirm");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnNewButton.setBackground(new Color(95, 158, 160));
 		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBounds(233, 455, 111, 30);
+		btnNewButton.setBounds(216, 400, 111, 30);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setBounds(0, 27, 540, 494);
+		lblNewLabel_2.setBounds(0, 27, 540, 471);
 		contentPane.add(lblNewLabel_2);
 		
 		lblNewLabel_2.setIcon(new ImageIcon(UpdateProfile.class.getResource("/IT20198886/Assets/login.jpeg")));

@@ -20,7 +20,6 @@ public class profile extends JFrame {
 	private JPanel contentPane;
 	private final JPanel panel = new JPanel();
 	private JTextField textField_2;
-	private JTextField textField;
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
@@ -70,6 +69,12 @@ public class profile extends JFrame {
 		lblX.setFont(new Font("Trebuchet MS", Font.BOLD, 17));
 		
 		JLabel lblNewLabel = new JLabel("-");
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setState(JFrame.ICONIFIED);
+			}
+		});
 		lblNewLabel.setBounds(666, 14, 17, 14);
 		panel.add(lblNewLabel);
 		lblNewLabel.setForeground(new Color(255, 255, 255));
@@ -93,12 +98,6 @@ public class profile extends JFrame {
 		lblNewLabel_4.setFont(new Font("Dialog", Font.BOLD, 17));
 		contentPane.add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel("Branch");
-		lblNewLabel_5.setBounds(199, 283, 57, 14);
-		lblNewLabel_5.setFont(new Font("Dialog", Font.BOLD, 17));
-		lblNewLabel_5.setForeground(new Color(95, 158, 160));
-		contentPane.add(lblNewLabel_5);
-		
 		JLabel lblNewLabel_3_1 = new JLabel("N/A");
 		lblNewLabel_3_1.setForeground(new Color(95, 158, 160));
 		lblNewLabel_3_1.setFont(new Font("Dialog", Font.BOLD, 17));
@@ -106,25 +105,25 @@ public class profile extends JFrame {
 		contentPane.add(lblNewLabel_3_1);
 		
 		JLabel lblNewLabel_6 = new JLabel("Tel.No");
-		lblNewLabel_6.setBounds(199, 328, 74, 14);
+		lblNewLabel_6.setBounds(199, 296, 74, 14);
 		lblNewLabel_6.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblNewLabel_6.setForeground(new Color(95, 158, 160));
 		contentPane.add(lblNewLabel_6);
 		
 		JLabel lblAge = new JLabel("Age");
-		lblAge.setBounds(199, 414, 66, 31);
+		lblAge.setBounds(199, 396, 66, 31);
 		lblAge.setForeground(new Color(95, 158, 160));
 		lblAge.setFont(new Font("Dialog", Font.BOLD, 17));
 		contentPane.add(lblAge);
 		
 		JLabel lblNewLabel_8 = new JLabel("Email");
-		lblNewLabel_8.setBounds(205, 469, 57, 14);
+		lblNewLabel_8.setBounds(199, 458, 57, 14);
 		lblNewLabel_8.setForeground(new Color(95, 158, 160));
 		lblNewLabel_8.setFont(new Font("Dialog", Font.BOLD, 17));
 		contentPane.add(lblNewLabel_8);
 		
 		JLabel lblNewLabel_7 = new JLabel("Gender");
-		lblNewLabel_7.setBounds(199, 375, 76, 14);
+		lblNewLabel_7.setBounds(199, 353, 76, 14);
 		lblNewLabel_7.setForeground(new Color(95, 158, 160));
 		lblNewLabel_7.setFont(new Font("Dialog", Font.BOLD, 17));
 		contentPane.add(lblNewLabel_7);
@@ -141,28 +140,23 @@ public class profile extends JFrame {
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
-		textField = new JTextField();
-		textField.setBounds(343, 283, 245, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
 		textField_3 = new JTextField();
-		textField_3.setBounds(343, 328, 245, 20);
+		textField_3.setBounds(343, 296, 245, 20);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
 		textField_4 = new JTextField();
-		textField_4.setBounds(343, 375, 245, 20);
+		textField_4.setBounds(343, 353, 245, 20);
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
 		
 		textField_5 = new JTextField();
-		textField_5.setBounds(345, 422, 243, 20);
+		textField_5.setBounds(345, 404, 243, 20);
 		contentPane.add(textField_5);
 		textField_5.setColumns(10);
 		
 		textField_6 = new JTextField();
-		textField_6.setBounds(347, 469, 241, 20);
+		textField_6.setBounds(346, 458, 241, 20);
 		contentPane.add(textField_6);
 		textField_6.setColumns(10);
 		

@@ -75,6 +75,12 @@ public class StaffRegister extends JFrame {
 		panel.add(lblX);
 		
 		JLabel lblNewLabel = new JLabel("-");
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setState(JFrame.ICONIFIED);
+			}
+		});
 		lblNewLabel.setFont(new Font("Trebuchet MS", Font.BOLD, 17));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setBounds(491, 11, 16, 14);
@@ -108,68 +114,58 @@ public class StaffRegister extends JFrame {
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JLabel lblNewLabel_5 = new JLabel("Branch");
-		lblNewLabel_5.setBounds(143, 201, 72, 14);
-		lblNewLabel_5.setForeground(new Color(95, 158, 160));
-		lblNewLabel_5.setFont(new Font("Dialog", Font.BOLD, 17));
-		contentPane.add(lblNewLabel_5);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(263, 198, 166, 26);
-		contentPane.add(comboBox);
-		
 		JLabel lblNewLabel_6 = new JLabel("Tel.No");
-		lblNewLabel_6.setBounds(144, 238, 57, 14);
+		lblNewLabel_6.setBounds(144, 198, 57, 35);
 		lblNewLabel_6.setForeground(new Color(95, 158, 160));
 		lblNewLabel_6.setFont(new Font("Dialog", Font.BOLD, 17));
 		contentPane.add(lblNewLabel_6);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(263, 235, 166, 26);
+		textField_2.setBounds(263, 198, 166, 26);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
 		JLabel lblNewLabel_7 = new JLabel("Gender");
-		lblNewLabel_7.setBounds(144, 283, 60, 14);
+		lblNewLabel_7.setBounds(144, 244, 60, 14);
 		lblNewLabel_7.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblNewLabel_7.setForeground(new Color(95, 158, 160));
 		contentPane.add(lblNewLabel_7);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(263, 272, 166, 26);
+		comboBox_1.setBounds(263, 235, 166, 26);
 		contentPane.add(comboBox_1);
 		
 		JLabel lblNewLabel_8 = new JLabel("Age");
-		lblNewLabel_8.setBounds(144, 307, 71, 26);
+		lblNewLabel_8.setBounds(144, 272, 71, 26);
 		lblNewLabel_8.setForeground(new Color(95, 158, 160));
 		lblNewLabel_8.setBackground(new Color(95, 158, 160));
 		lblNewLabel_8.setFont(new Font("Trebuchet MS", Font.BOLD, 17));
 		contentPane.add(lblNewLabel_8);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(263, 309, 166, 26);
+		textField_3.setBounds(263, 272, 166, 26);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
 		JLabel lblNewLabel_9 = new JLabel("Email");
 		lblNewLabel_9.setForeground(new Color(95, 158, 160));
 		lblNewLabel_9.setFont(new Font("Dialog", Font.BOLD, 17));
-		lblNewLabel_9.setBounds(140, 344, 64, 14);
+		lblNewLabel_9.setBounds(144, 312, 64, 14);
 		contentPane.add(lblNewLabel_9);
 		
 		textField_4 = new JTextField();
-		textField_4.setBounds(263, 344, 166, 26);
+		textField_4.setBounds(263, 309, 166, 26);
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
 		
 		JLabel lblNewLabel_10 = new JLabel("Password");
 		lblNewLabel_10.setForeground(new Color(95, 158, 160));
 		lblNewLabel_10.setFont(new Font("Dialog", Font.BOLD, 17));
-		lblNewLabel_10.setBounds(140, 388, 93, 14);
+		lblNewLabel_10.setBounds(144, 349, 93, 14);
 		contentPane.add(lblNewLabel_10);
 		
 		textField_5 = new JTextField();
-		textField_5.setBounds(262, 388, 166, 26);
+		textField_5.setBounds(263, 346, 166, 26);
 		contentPane.add(textField_5);
 		textField_5.setColumns(10);
 		
@@ -186,11 +182,11 @@ public class StaffRegister extends JFrame {
 		btnConfirm.setBackground(new Color(95, 158, 160));
 		btnConfirm.setForeground(new Color(255, 255, 255));
 		btnConfirm.setFont(new Font("Dialog", Font.BOLD, 18));
-		btnConfirm.setBounds(220, 463, 148, 32);
+		btnConfirm.setBounds(220, 419, 148, 32);
 		contentPane.add(btnConfirm);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setBounds(0, 33, 550, 521);
+		lblNewLabel_1.setBounds(0, 33, 550, 510);
 		contentPane.add(lblNewLabel_1);
 		 
 		lblNewLabel_1.setIcon(new ImageIcon(StaffRegister.class.getResource("/IT20198886/Assets/login.jpeg")));

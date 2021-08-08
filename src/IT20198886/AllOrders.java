@@ -11,6 +11,8 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTable;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AllOrders extends JFrame {
 
@@ -52,12 +54,24 @@ public class AllOrders extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("X");
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(20);
+			}
+		});
 		lblNewLabel.setBounds(649, 0, 21, 31);
 		panel.add(lblNewLabel);
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 		
 		JLabel lblNewLabel_1 = new JLabel("-");
+		lblNewLabel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setState(JFrame.ICONIFIED);
+			}
+		});
 		lblNewLabel_1.setBounds(618, 8, 21, 14);
 		panel.add(lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 17));
