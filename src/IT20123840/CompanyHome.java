@@ -91,15 +91,15 @@ public class CompanyHome extends JFrame {
 		contentPane.add(lbl_CompanyName);
 		
 		
-		JButton btn_EditStock = new JButton("Update Stock");
-		/*btn_EditStock.addMouseListener(new MouseAdapter() {
+		JButton btn_EditStock = new JButton("Edit Stock");
+		btn_EditStock.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				Stock s = new Stock();
-				s.setVisible(true);
+			public void mouseClicked(MouseEvent e) {
+				EditStock es = new EditStock();
+				es.setVisible(true);
 				setVisible(false);
 			}
-		});*/
+		});
 		
 		btn_EditStock.setBackground(new Color(95, 158, 160));
 		btn_EditStock.setForeground(new Color(255, 255, 255));
@@ -107,7 +107,15 @@ public class CompanyHome extends JFrame {
 		btn_EditStock.setBounds(93, 191, 167, 42);
 		contentPane.add(btn_EditStock);
 		
-		JButton btnEditOrders = new JButton("Update Orders");
+		JButton btnEditOrders = new JButton("Edit Orders");
+		btnEditOrders.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				EditOrders eo = new EditOrders();
+				eo.setVisible(true);
+				setVisible(false);
+			}
+		});
 		btnEditOrders.setBackground(new Color(95, 158, 160));
 		btnEditOrders.setForeground(new Color(255, 255, 255));
 		btnEditOrders.setFont(new Font("Calibri", Font.PLAIN, 20));
