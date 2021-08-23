@@ -91,7 +91,7 @@ public class EditStock extends JFrame {
 		btnAddNewVaccine.setBackground(new Color(95, 158, 160));
 		btnAddNewVaccine.setForeground(new Color(255, 255, 255));
 		btnAddNewVaccine.setFont(new Font("Calibri", Font.PLAIN, 20));
-		btnAddNewVaccine.setBounds(210, 344, 196, 33);
+		btnAddNewVaccine.setBounds(216, 344, 196, 33);
 		contentPane.add(btnAddNewVaccine);
 		
 		JLabel label = new JLabel("");

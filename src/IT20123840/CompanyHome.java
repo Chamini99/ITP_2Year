@@ -104,7 +104,7 @@ public class CompanyHome extends JFrame {
 		btn_EditStock.setBackground(new Color(95, 158, 160));
 		btn_EditStock.setForeground(new Color(255, 255, 255));
 		btn_EditStock.setFont(new Font("Calibri", Font.PLAIN, 20));
-		btn_EditStock.setBounds(93, 191, 167, 42);
+		btn_EditStock.setBounds(10, 191, 167, 42);
 		contentPane.add(btn_EditStock);
 		
 		JButton btnEditOrders = new JButton("Edit Orders");
@@ -119,29 +119,29 @@ public class CompanyHome extends JFrame {
 		btnEditOrders.setBackground(new Color(95, 158, 160));
 		btnEditOrders.setForeground(new Color(255, 255, 255));
 		btnEditOrders.setFont(new Font("Calibri", Font.PLAIN, 20));
-		btnEditOrders.setBounds(331, 191, 167, 42);
+		btnEditOrders.setBounds(207, 191, 167, 42);
 		contentPane.add(btnEditOrders);
 		
-		JButton btnMyProfile = new JButton("My Profile");
-		btnMyProfile.addMouseListener(new MouseAdapter() {
+		JButton btnDelivery = new JButton("Delivery");
+		btnDelivery.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				MyProfile mp = new MyProfile();
-				mp.setVisible(true);
+				DeliveryRequest dr = new DeliveryRequest();
+				dr.setVisible(true);
 				setVisible(false);
 			}
 		});
-		btnMyProfile.setBackground(new Color(95, 158, 160));
-		btnMyProfile.setForeground(new Color(255, 255, 255));
-		btnMyProfile.setFont(new Font("Calibri", Font.PLAIN, 20));
-		btnMyProfile.setBounds(93, 282, 167, 42);
-		contentPane.add(btnMyProfile);
+		btnDelivery.setBackground(new Color(95, 158, 160));
+		btnDelivery.setForeground(new Color(255, 255, 255));
+		btnDelivery.setFont(new Font("Calibri", Font.PLAIN, 20));
+		btnDelivery.setBounds(403, 191, 167, 42);
+		contentPane.add(btnDelivery);
 		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.setForeground(new Color(255, 255, 255));
 		btnLogout.setBackground(new Color(95, 158, 160));
 		btnLogout.setFont(new Font("Calibri", Font.PLAIN, 20));
-		btnLogout.setBounds(331, 282, 167, 42);
+		btnLogout.setBounds(317, 264, 167, 42);
 		contentPane.add(btnLogout);
 		
 		JLabel label_2 = new JLabel("");
@@ -150,9 +150,26 @@ public class CompanyHome extends JFrame {
 		label_2.setIcon(new ImageIcon(CompanyHome.class.getResource("/IT20123840/Assets/search.PNG")));
 		
 		textField = new JTextField();
+		textField.setBackground(new Color(255, 255, 255));
+		textField.setForeground(new Color(95, 158, 160));
 		textField.setBounds(353, 96, 181, 26);
 		contentPane.add(textField);
 		textField.setColumns(10);
+		
+		JButton btnMyProfile_1 = new JButton("My Profile");
+		btnMyProfile_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				MyProfile mp = new MyProfile();
+				mp.setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnMyProfile_1.setForeground(Color.WHITE);
+		btnMyProfile_1.setFont(new Font("Calibri", Font.PLAIN, 20));
+		btnMyProfile_1.setBackground(new Color(95, 158, 160));
+		btnMyProfile_1.setBounds(120, 264, 167, 42);
+		contentPane.add(btnMyProfile_1);
 		
 		JLabel label_1 = new JLabel("");
 		label_1.setBounds(0, 33, 580, 346);
