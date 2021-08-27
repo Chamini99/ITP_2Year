@@ -51,7 +51,7 @@ public class Login extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		setUndecorated(true);
+		
 		  
 		  JLabel lblUserName = new JLabel("User Name");
 		  lblUserName.setForeground(new Color(95, 158, 160));
