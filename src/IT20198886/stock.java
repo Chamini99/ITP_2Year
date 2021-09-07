@@ -11,6 +11,8 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTable;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class stock extends JFrame {
 
@@ -53,12 +55,24 @@ public class stock extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("X");
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(20);
+			}
+		});
 		lblNewLabel.setBounds(597, 11, 25, 14);
 		panel.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		
 		JLabel lblNewLabel_1 = new JLabel("-");
+		lblNewLabel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setState(JFrame.ICONIFIED);
+			}
+		});
 		lblNewLabel_1.setBounds(573, 11, 24, 14);
 		panel.add(lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -71,7 +85,7 @@ public class stock extends JFrame {
 		contentPane.add(lblNewLabel_3);
 		
 		table = new JTable();
-		table.setBounds(32, 94, 563, 285);
+		table.setBounds(23, 102, 540, 212);
 		contentPane.add(table);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
@@ -81,5 +95,4 @@ public class stock extends JFrame {
 		lblNewLabel_2.setIcon(new ImageIcon(UserDetails.class.getResource("/IT20198886/Assets/login.jpeg")));
 		 contentPane.add(lblNewLabel_2);
 	}
-
 }

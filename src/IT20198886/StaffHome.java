@@ -89,6 +89,14 @@ public class StaffHome extends JFrame {
 		lblX.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
 		JButton btnNewButton = new JButton("View Users");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				dispose();
+				UserDetails home=new UserDetails();
+				home.setVisible(true);
+			}
+		});
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(95, 158, 160));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -100,6 +108,14 @@ public class StaffHome extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("View Stock");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				stock Stock=new stock();
+				Stock.setVisible(true);
+			}
+		});
 		btnNewButton_1.setForeground(new Color(255, 255, 255));
 		btnNewButton_1.setBackground(new Color(95, 158, 160));
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -107,6 +123,14 @@ public class StaffHome extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Request Order");
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				OrderVaccine request=new OrderVaccine();
+				request.setVisible(true);
+			}
+		});
 		btnNewButton_2.setBackground(new Color(95, 158, 160));
 		btnNewButton_2.setForeground(new Color(255, 255, 255));
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -114,6 +138,14 @@ public class StaffHome extends JFrame {
 		contentPane.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("View Orders");
+		btnNewButton_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				AllOrders order=new AllOrders();
+				order.setVisible(true);
+			}
+		});
 		btnNewButton_3.setForeground(new Color(255, 255, 255));
 		btnNewButton_3.setBackground(new Color(95, 158, 160));
 		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -124,6 +156,9 @@ public class StaffHome extends JFrame {
 		lblNewLabel_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				dispose();
+				profile Profile=new profile();
+				Profile.setVisible(true);
 				
 			}
 		});

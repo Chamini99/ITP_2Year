@@ -91,6 +91,14 @@ public class UserDetails extends JFrame {
 		contentPane.add(table);
 		
 		JButton btnNewButton = new JButton("Assign Vaccine Date");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				assign_dates dates=new assign_dates();
+				dates.setVisible(true);
+			}
+		});
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnNewButton.setBackground(new Color(95, 158, 160));
 		btnNewButton.setForeground(new Color(255, 255, 255));

@@ -51,6 +51,7 @@ public class Login extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setUndecorated(true);
 		
 		  
 		  JLabel lblUserName = new JLabel("User Name");
@@ -89,7 +90,7 @@ public class Login extends JFrame {
 		  
 		  JPanel panel = new JPanel();
 		  panel.setBackground(new Color(95, 158, 160));
-		  panel.setBounds(0, 0, 580, 33);
+		  panel.setBounds(0, 0, 580, 31);
 		  contentPane.add(panel);
 		  panel.setLayout(null);
 		  
@@ -109,7 +110,7 @@ public class Login extends JFrame {
 		  lblNewLabel_2_1.addMouseListener(new MouseAdapter() {
 		  	@Override
 		  	public void mouseClicked(MouseEvent arg0) {
-		  		setState(ICONIFIED);	
+		  		setState(JFrame.ICONIFIED);	
 		  	}
 		  });
 		  lblNewLabel_2_1.setForeground(Color.WHITE);

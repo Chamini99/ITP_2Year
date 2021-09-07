@@ -137,6 +137,14 @@ public class assign_dates extends JFrame {
 		contentPane.add(comboBox_1);
 		
 		JButton btnNewButton = new JButton("Assign");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				assign_details  dates=new assign_details();
+				dates.setVisible(true);
+			}
+		});
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 17));
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(95, 158, 160));

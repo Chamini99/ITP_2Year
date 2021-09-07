@@ -170,6 +170,14 @@ public class UpdateProfile extends JFrame {
 		textField_5.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Confirm");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				profile Profile=new profile();
+				Profile.setVisible(true);
+			}
+		});
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}

@@ -129,6 +129,14 @@ public class profile extends JFrame {
 		contentPane.add(lblNewLabel_7);
 		
 		JButton btnNewButton = new JButton("Update");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				UpdateProfile update=new UpdateProfile();
+				update.setVisible(true);
+			}
+		});
 		btnNewButton.setBounds(308, 514, 110, 31);
 		btnNewButton.setBackground(new Color(95, 158, 160));
 		btnNewButton.setForeground(new Color(255, 255, 255));

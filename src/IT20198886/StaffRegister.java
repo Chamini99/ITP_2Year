@@ -177,6 +177,9 @@ public class StaffRegister extends JFrame {
 		btnConfirm.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				dispose();
+				StaffHome register=new StaffHome();
+				register.setVisible(true);
 			}
 		});
 		btnConfirm.setBackground(new Color(95, 158, 160));
