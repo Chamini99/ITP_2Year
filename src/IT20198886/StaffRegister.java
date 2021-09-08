@@ -14,6 +14,10 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class StaffRegister extends JFrame {
 
@@ -59,12 +63,25 @@ public class StaffRegister extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblX = new JLabel("X");
+		lblX.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				System.exit(20);
+				
+			}
+		});
 		lblX.setForeground(new Color(255, 255, 255));
 		lblX.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblX.setBounds(528, 11, 24, 14);
 		panel.add(lblX);
 		
 		JLabel lblNewLabel = new JLabel("-");
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setState(JFrame.ICONIFIED);
+			}
+		});
 		lblNewLabel.setBounds(511, 11, 17, 14);
 		panel.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -153,6 +170,20 @@ public class StaffRegister extends JFrame {
 		textField_3.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Confirm");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				Login login=new Login();
+				login.setVisible(true);
+			}
+		});
+		
 		btnNewButton.setBackground(new Color(95, 158, 160));
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 17));
 		btnNewButton.setForeground(new Color(255, 255, 255));
@@ -168,6 +199,10 @@ public class StaffRegister extends JFrame {
 		
 		lblNewLabel_1.setIcon(new ImageIcon(profile.class.getResource("/IT20198886/Assets/login.jpeg")));
 		 contentPane.add(lblNewLabel_1);
+		 
+		 JButton btnNewButton_1 = new JButton("New button");
+		 btnNewButton_1.setBounds(254, 147, 89, 23);
+		 contentPane.add(btnNewButton_1);
 		 
 		
 	}
