@@ -22,12 +22,12 @@ import java.awt.event.ActionEvent;
 public class StaffRegister extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_3;
+	private JTextField t1;
+	private JTextField t2;
+	private JTextField t3;
+	private JTextField t4;
+	private JTextField t6;
+	private JTextField t7;
 
 	/**
 	 * Launch the application.
@@ -105,74 +105,73 @@ public class StaffRegister extends JFrame {
 		lblNewLabel_4.setBounds(119, 148, 46, 14);
 		contentPane.add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel("Tel.No");
+		JLabel lblNewLabel_5 = new JLabel("Gender");
 		lblNewLabel_5.setForeground(new Color(95, 158, 160));
 		lblNewLabel_5.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblNewLabel_5.setBounds(119, 181, 72, 14);
 		contentPane.add(lblNewLabel_5);
 		
-		JLabel lblNewLabel_6 = new JLabel("Gender");
-		lblNewLabel_6.setFont(new Font("Dialog", Font.BOLD, 17));
-		lblNewLabel_6.setForeground(new Color(95, 158, 160));
-		lblNewLabel_6.setBounds(119, 221, 72, 14);
-		contentPane.add(lblNewLabel_6);
-		
 		JLabel lblNewLabel_7 = new JLabel("Age");
 		lblNewLabel_7.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblNewLabel_7.setForeground(new Color(95, 158, 160));
-		lblNewLabel_7.setBounds(119, 252, 46, 19);
+		lblNewLabel_7.setBounds(119, 226, 46, 19);
 		contentPane.add(lblNewLabel_7);
 		
 		JLabel lblNewLabel_8 = new JLabel("Email");
 		lblNewLabel_8.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblNewLabel_8.setForeground(new Color(95, 158, 160));
-		lblNewLabel_8.setBounds(119, 294, 72, 19);
+		lblNewLabel_8.setBounds(119, 271, 72, 19);
 		contentPane.add(lblNewLabel_8);
 		
 		JLabel lblNewLabel_9 = new JLabel("Password");
 		lblNewLabel_9.setForeground(new Color(95, 158, 160));
 		lblNewLabel_9.setFont(new Font("Dialog", Font.BOLD, 17));
-		lblNewLabel_9.setBounds(119, 340, 98, 14);
+		lblNewLabel_9.setBounds(119, 321, 98, 14);
 		contentPane.add(lblNewLabel_9);
 		
-		textField = new JTextField();
-		textField.setBounds(244, 113, 214, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		t1 = new JTextField();
+		t1.setBounds(244, 113, 214, 20);
+		contentPane.add(t1);
+		t1.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(244, 148, 214, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		t2 = new JTextField(10);
+		t2.setBounds(244, 148, 214, 20);
+		contentPane.add(t2);
+		t2.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(244, 181, 214, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		t3 = new JTextField();
+		t3.setBounds(244, 181, 214, 20);
+		contentPane.add(t3);
+		t3.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(244, 254, 214, 20);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
+		t4 = new JTextField();
+		t4.setBounds(244, 228, 214, 20);
+		contentPane.add(t4);
+		t4.setColumns(10);
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(244, 296, 214, 20);
-		contentPane.add(textField_5);
-		textField_5.setColumns(10);
+		t6 = new JTextField();
+		t6.setBounds(244, 270, 214, 20);
+		contentPane.add(t6);
+		t6.setColumns(10);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(244, 221, 214, 20);
-		contentPane.add(comboBox);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(244, 340, 214, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		t7 = new JTextField();
+		t7.setBounds(244, 321, 214, 20);
+		contentPane.add(t7);
+		t7.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Confirm");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				String Full_name=t1.getText();
+			    String NIC=t2.getText();
+				String Gender=t3.getText();
+				String Age=t4.getText();
+			    String Email=t6.getText();
+				String Password=t7.getText();
+				// creating one object 
+				my_update obj=new my_update();
+				obj.my_db_update(Full_name,NIC,Gender,Age,Email,Password );
 			}
 		});
 		btnNewButton.addMouseListener(new MouseAdapter() {
@@ -187,7 +186,7 @@ public class StaffRegister extends JFrame {
 		btnNewButton.setBackground(new Color(95, 158, 160));
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 17));
 		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBounds(230, 439, 116, 23);
+		btnNewButton.setBounds(216, 421, 116, 23);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
@@ -199,10 +198,6 @@ public class StaffRegister extends JFrame {
 		
 		lblNewLabel_1.setIcon(new ImageIcon(profile.class.getResource("/IT20198886/Assets/login.jpeg")));
 		 contentPane.add(lblNewLabel_1);
-		 
-		 JButton btnNewButton_1 = new JButton("New button");
-		 btnNewButton_1.setBounds(254, 147, 89, 23);
-		 contentPane.add(btnNewButton_1);
 		 
 		
 	}

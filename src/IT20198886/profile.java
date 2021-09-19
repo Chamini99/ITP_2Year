@@ -46,12 +46,12 @@ public class profile extends JFrame {
 	 */
 	public profile() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 713, 556);
+		setBounds(100, 100, 638, 530);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		panel.setBounds(0, 0, 713, 31);
+		panel.setBounds(0, 0, 638, 31);
 		panel.setBackground(new Color(95, 158, 160));
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -80,20 +80,51 @@ public class profile extends JFrame {
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Trebuchet MS", Font.BOLD, 17));
 		
+		JLabel lblNewLabel_6 = new JLabel("X");
+		lblNewLabel_6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(20);
+			}
+		});
+		lblNewLabel_6.setForeground(new Color(255, 255, 255));
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel_6.setBounds(610, 13, 18, 14);
+		panel.add(lblNewLabel_6);
+		
+		JLabel lblNewLabel_9 = new JLabel("-");
+		lblNewLabel_9.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setState(JFrame.ICONIFIED);	
+
+			}
+		});
+		lblNewLabel_9.setForeground(new Color(255, 255, 255));
+		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel_9.setBounds(587, 13, 25, 14);
+		panel.add(lblNewLabel_9);
+		
 		JLabel lblNewLabel_2 = new JLabel("My Profile");
-		lblNewLabel_2.setBounds(309, 38, 146, 24);
+		lblNewLabel_2.setBounds(270, 42, 146, 24);
 		lblNewLabel_2.setFont(new Font("Dialog", Font.BOLD, 20));
 		lblNewLabel_2.setForeground(new Color(95, 158, 160));
 		contentPane.add(lblNewLabel_2);
 		
+		JLabel lblNewLabel_5 = new JLabel("Staff ID");
+		lblNewLabel_5.setForeground(new Color(95, 158, 160));
+		lblNewLabel_5.setFont(new Font("Dialog", Font.BOLD, 17));
+		lblNewLabel_5.setBounds(142, 133, 97, 23);
+		contentPane.add(lblNewLabel_5);
+		
 		JLabel lblNewLabel_3 = new JLabel("Full Name");
-		lblNewLabel_3.setBounds(199, 188, 87, 14);
+		lblNewLabel_3.setBounds(142, 167, 87, 14);
 		lblNewLabel_3.setForeground(new Color(95, 158, 160));
 		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 17));
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("NIC");
-		lblNewLabel_4.setBounds(199, 237, 63, 14);
+		lblNewLabel_4.setBounds(142, 207, 63, 14);
 		lblNewLabel_4.setForeground(new Color(95, 158, 160));
 		lblNewLabel_4.setFont(new Font("Dialog", Font.BOLD, 17));
 		contentPane.add(lblNewLabel_4);
@@ -101,29 +132,23 @@ public class profile extends JFrame {
 		JLabel lblNewLabel_3_1 = new JLabel("N/A");
 		lblNewLabel_3_1.setForeground(new Color(95, 158, 160));
 		lblNewLabel_3_1.setFont(new Font("Dialog", Font.BOLD, 17));
-		lblNewLabel_3_1.setBounds(346, 188, 87, 14);
+		lblNewLabel_3_1.setBounds(309, 133, 87, 14);
 		contentPane.add(lblNewLabel_3_1);
 		
-		JLabel lblNewLabel_6 = new JLabel("Tel.No");
-		lblNewLabel_6.setBounds(199, 296, 74, 14);
-		lblNewLabel_6.setFont(new Font("Dialog", Font.BOLD, 17));
-		lblNewLabel_6.setForeground(new Color(95, 158, 160));
-		contentPane.add(lblNewLabel_6);
-		
 		JLabel lblAge = new JLabel("Age");
-		lblAge.setBounds(199, 396, 66, 31);
+		lblAge.setBounds(142, 285, 66, 31);
 		lblAge.setForeground(new Color(95, 158, 160));
 		lblAge.setFont(new Font("Dialog", Font.BOLD, 17));
 		contentPane.add(lblAge);
 		
 		JLabel lblNewLabel_8 = new JLabel("Email");
-		lblNewLabel_8.setBounds(199, 458, 57, 14);
+		lblNewLabel_8.setBounds(142, 340, 57, 14);
 		lblNewLabel_8.setForeground(new Color(95, 158, 160));
 		lblNewLabel_8.setFont(new Font("Dialog", Font.BOLD, 17));
 		contentPane.add(lblNewLabel_8);
 		
 		JLabel lblNewLabel_7 = new JLabel("Gender");
-		lblNewLabel_7.setBounds(199, 353, 76, 14);
+		lblNewLabel_7.setBounds(142, 249, 76, 14);
 		lblNewLabel_7.setForeground(new Color(95, 158, 160));
 		lblNewLabel_7.setFont(new Font("Dialog", Font.BOLD, 17));
 		contentPane.add(lblNewLabel_7);
@@ -137,39 +162,39 @@ public class profile extends JFrame {
 				update.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(308, 514, 110, 31);
+		btnNewButton.setBounds(248, 424, 110, 31);
 		btnNewButton.setBackground(new Color(95, 158, 160));
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setFont(new Font("Trebuchet MS", Font.BOLD, 16));
 		contentPane.add(btnNewButton);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(343, 237, 245, 20);
+		textField_2.setBounds(295, 167, 245, 20);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(343, 296, 245, 20);
+		textField_3.setBounds(295, 207, 245, 20);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
 		textField_4 = new JTextField();
-		textField_4.setBounds(343, 353, 245, 20);
+		textField_4.setBounds(295, 249, 245, 20);
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
 		
 		textField_5 = new JTextField();
-		textField_5.setBounds(345, 404, 243, 20);
+		textField_5.setBounds(295, 293, 243, 20);
 		contentPane.add(textField_5);
 		textField_5.setColumns(10);
 		
 		textField_6 = new JTextField();
-		textField_6.setBounds(346, 458, 241, 20);
+		textField_6.setBounds(295, 340, 245, 20);
 		contentPane.add(textField_6);
 		textField_6.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setBounds(0, 31, 713, 525);
+		lblNewLabel_1.setBounds(0, 28, 638, 525);
 		contentPane.add(lblNewLabel_1);
 		setUndecorated(true);
 		
