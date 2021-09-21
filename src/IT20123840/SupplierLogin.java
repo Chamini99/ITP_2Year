@@ -3,11 +3,14 @@ package IT20123840;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Frame;
+import java.awt.Window;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
@@ -16,6 +19,12 @@ import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class SupplierLogin extends JFrame {
 
@@ -83,14 +92,42 @@ public class SupplierLogin extends JFrame {
 		txt_Username.setColumns(10);
 		
 		JButton btn_SignIn = new JButton("Sign In");
-		btn_SignIn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				CompanyHome ch = new CompanyHome();
-				ch.setVisible(true);
-				setVisible(false);
+		btn_SignIn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//Execute sql query to validate username & password
+				try {
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/suwasetha_vaccine", "root", "");
+					Statement stmt = c.createStatement();
+					String sql = "Select * from tbl_supplycompany where username = '"+txt_Username.getText()+"' and password = '"+passwordField.getText()+"'";
+					ResultSet rs = stmt.executeQuery(sql);
+					
+					if (rs.next()) {
+						setVisible(false);
+						
+						/*Statement stmt1 = c.createStatement();
+						String sql1 = "select company_name from tbl_supplycompany where username = '"+txt_Username.getText()+"' and password = '"+passwordField.getText()+"'";
+						ResultSet rs1 = stmt1.executeQuery(sql1);
+						String s = rs1.getString("company_name");*/
+						
+						CompanyHome ch = new CompanyHome();
+						ch.setVisible(true);
+						
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "Invalid Username or Password", "ERROR", JOptionPane.ERROR_MESSAGE);
+						txt_Username.setText(null);
+						passwordField.setText(null);
+						txt_Username.requestFocusInWindow();
+					}
+				}
+				catch(Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
+		
 		btn_SignIn.setFont(new Font("Calibri", Font.PLAIN, 20));
 		btn_SignIn.setForeground(new Color(255, 255, 255));
 		btn_SignIn.setBackground(new Color(95, 158, 160));
@@ -149,6 +186,6 @@ public class SupplierLogin extends JFrame {
 		lblNewLabel.setBackground(new Color(95, 158, 160));
 		lblNewLabel.setBounds(0, 0, 580, 335);
 		contentPane.add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon(CreateAccount.class.getResource("/IT20123840/Assets/login.jpeg")));
+		lblNewLabel.setIcon(new ImageIcon(SupplierLogin.class.getResource("/IT20123840/Assets/login.jpeg")));
 	}
 }

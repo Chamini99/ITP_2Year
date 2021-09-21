@@ -83,7 +83,7 @@ public class Orders extends JFrame {
 		contentPane.add(lblOrders);
 		
 		table = new JTable();
-		table.setBounds(45, 95, 564, 282);
+		table.setBounds(51, 93, 564, 282);
 		contentPane.add(table);
 		
 		JLabel label = new JLabel("");

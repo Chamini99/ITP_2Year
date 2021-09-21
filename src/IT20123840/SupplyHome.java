@@ -15,7 +15,7 @@ import java.awt.event.MouseEvent;
 
 public class SupplyHome {
 
-	private JFrame frame;
+	JFrame frame;
 
 	/**
 	 * Launch the application.
