@@ -50,10 +50,12 @@ public class profile extends JFrame {
 		});
 	}
 	
+	
 	/**
 	 * Create the frame.
 	 */
 	public profile() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 638, 530);
 		contentPane = new JPanel();
@@ -218,7 +220,10 @@ public class profile extends JFrame {
 		 
 	}
 	
-	
+		
 	}
+	
+	
+	
 
 

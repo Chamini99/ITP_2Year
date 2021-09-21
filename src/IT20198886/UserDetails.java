@@ -7,6 +7,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -19,11 +21,18 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
 public class UserDetails extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
+	
 
 	/**
 	 * Launch the application.
@@ -40,11 +49,20 @@ public class UserDetails extends JFrame {
 			}
 		});
 	}
-
+	Connection connection=null;
+	
+	private JTable table_2;
 	/**
 	 * Create the frame.
 	 */
-	public UserDetails() {
+	public UserDetails()  {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowOpened(WindowEvent arg0) {
+				ShowData();
+			}
+		});
+		connection=MyConnection.dbconn;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 703, 410);
 		contentPane = new JPanel();
@@ -92,9 +110,12 @@ public class UserDetails extends JFrame {
 		lblNewLabel_3.setBounds(266, 48, 132, 25);
 		contentPane.add(lblNewLabel_3);
 		
-		table = new JTable();
-		table.setBounds(10, 106, 683, 259);
-		contentPane.add(table);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 106, 683, 259);
+		contentPane.add(scrollPane);
+		
+		table_2 = new JTable();
+		scrollPane.setViewportView(table_2);
 		
 		JButton btnNewButton = new JButton("Assign Vaccine Date");
 		btnNewButton.addMouseListener(new MouseAdapter() {
@@ -125,5 +146,59 @@ public class UserDetails extends JFrame {
 		 
 		 Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 			this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+	}
+	private void ShowData() {
+		Connection con=MyConnection.getConnection();
+		DefaultTableModel model=new DefaultTableModel();
+		model.addColumn("people_id");
+		model.addColumn("NIC");
+		model.addColumn("Name");
+		model.addColumn("Registered_date");
+		model.addColumn("Age");
+		model.addColumn("Gender");
+		model.addColumn("Email");
+		
+
+		try {
+			String query="select * from tbl_Peopledetails";
+			Statement st = con.createStatement();
+			ResultSet rs  =st . executeQuery(query);
+			while (rs.next())
+			{
+				model.addRow(new Object[] {
+						rs.getInt("people_id"),
+						rs.getString("NIC"),
+						rs.getString("Name"),
+						rs.getDate("Registered_date"),
+						rs.getInt("Age"),
+						rs.getString("Gender"),
+						rs.getString("Email"),
+						
+
+						
+				});
+				
+			}
+			rs.close();
+			st.close();
+		
+			
+			table_2.setModel(model);
+			table_2.setAutoResizeMode(0);
+			table_2.getColumnModel().getColumn(0).setPreferredWidth(60);
+			table_2.getColumnModel().getColumn(1).setPreferredWidth(120);
+			table_2.getColumnModel().getColumn(2).setPreferredWidth(140);
+			table_2.getColumnModel().getColumn(3).setPreferredWidth(100);
+			table_2.getColumnModel().getColumn(4).setPreferredWidth(60);
+			table_2.getColumnModel().getColumn(5).setPreferredWidth(80);
+			table_2.getColumnModel().getColumn(6).setPreferredWidth(120);
+			
+
+			
+			
+		} catch (Exception e) {
+			System.out.println("error " +e);
+		}
+
 	}
 }

@@ -74,6 +74,8 @@ public class Home extends JFrame {
 		lbl_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				setState(JFrame.ICONIFIED);
+
 				
 			}
 		});

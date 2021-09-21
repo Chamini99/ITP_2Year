@@ -232,7 +232,7 @@ public class OrderVaccine extends JFrame {
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 17));
 		
-		JButton btn_Continue = new JButton("Continue");
+		JButton btn_Continue = new JButton("Search Availability & Continue");
 		btn_Continue.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -327,9 +327,9 @@ public class OrderVaccine extends JFrame {
 			}
 		});
 		btn_Continue.setBackground(new Color(95, 158, 160));
-		btn_Continue.setFont(new Font("Dialog", Font.BOLD, 16));
+		btn_Continue.setFont(new Font("Dialog", Font.BOLD, 13));
 		btn_Continue.setForeground(new Color(255, 255, 255));
-		btn_Continue.setBounds(143, 388, 117, 27);
+		btn_Continue.setBounds(78, 388, 236, 27);
 		contentPane.add(btn_Continue);
 		setUndecorated(true);
 		 
@@ -367,7 +367,7 @@ public class OrderVaccine extends JFrame {
 		 contentPane.add(lblNewLabel_2);
 		 
 		 
-		 JButton btn_Submit = new JButton("Confirm");
+		 JButton btn_Submit = new JButton("Pay");
 		 btn_Submit.addActionListener(new ActionListener() {
 		 	public void actionPerformed(ActionEvent arg0) {
 		 	}
