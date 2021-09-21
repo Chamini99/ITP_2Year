@@ -3,10 +3,14 @@ package IT20119744;
 import java.awt.EventQueue;
 
 
+
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
+import java.sql.Connection;
 
 import javax.swing.JTextField;
 import java.awt.Font;
@@ -19,12 +23,19 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import javax.swing.JPasswordField;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class adminLogin {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txtusername;
+	private JPasswordField txtpassword;
 
 	/**
 	 * Launch the application.
@@ -58,12 +69,13 @@ public class adminLogin {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setUndecorated(true);
+		frame.setLocationRelativeTo(null);
 		
 		JLabel lblLogin = new JLabel("Admin Login");
 		lblLogin.setForeground(new Color(95, 158, 160));
 		lblLogin.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLogin.setBounds(211, 72, 129, 33);
+		lblLogin.setBounds(0, 72, 580, 33);
 		frame.getContentPane().add(lblLogin);
 		
 		JLabel lblNewLabel = new JLabel("Username");
@@ -78,30 +90,53 @@ public class adminLogin {
 		lblNewLabel_1.setBounds(110, 170, 86, 33);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setForeground(new Color(95, 158, 160));
-		textField.setBounds(304, 125, 193, 34);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setForeground(new Color(95, 158, 160));
-		textField_1.setBounds(304, 172, 193, 34);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		txtusername = new JTextField();
+		txtusername.setForeground(new Color(95, 158, 160));
+		txtusername.setBounds(250, 125, 250, 34);
+		frame.getContentPane().add(txtusername);
+		txtusername.setColumns(10);
 		
 		JButton btnLogin = new JButton("LOGIN");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/suwasetha_vaccine","root","");
+					Statement stmt=conn.createStatement();
+					String sql= "select * from tbl_admin where admin_email='"+txtusername.getText()+"' and admin_password='"+txtpassword.getText()+"'";
+					ResultSet rs= stmt.executeQuery(sql);
+					if(rs.next()) {
+						frame.dispose();
+						profile P= new profile();
+						P.setVisible(true);
+					}else {
+						JOptionPane.showMessageDialog(null,"Invalid Username or Password","ERROR",JOptionPane.ERROR_MESSAGE);
+						txtusername.setText(null);
+						txtpassword.setText(null);
+						txtusername.requestFocusInWindow();
+					}
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+		});
 		btnLogin.setBackground(new Color(95, 158, 160));
 		btnLogin.setForeground(new Color(255, 255, 255));
 		btnLogin.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		btnLogin.addActionListener(new ActionListener() {
+		/*btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				profile h= new profile();
 				h.setVisible(true);
 				frame.setVisible(false);
 			}
-		});
-		btnLogin.setBounds(206, 229, 134, 33);
+		});*/
+		
+		txtpassword = new JPasswordField();
+		txtpassword.setEchoChar((char)0);
+		txtpassword.setForeground(new Color(95, 158, 160));
+		txtpassword.setBounds(250, 172, 250, 34);
+		frame.getContentPane().add(txtpassword);
+		btnLogin.setBounds(228, 231, 134, 33);
 		frame.getContentPane().add(btnLogin);
 		
 		JPanel panel = new JPanel();
@@ -115,7 +150,18 @@ public class adminLogin {
 		lblNewLabel_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				frame.setVisible(false);
+				//frame.setVisible(false);
+				if(JOptionPane.showConfirmDialog(null,"Do you want to Exit?","Confirmation",JOptionPane.YES_NO_OPTION)==0) {
+					frame.dispose();
+				}
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_3.setForeground(Color.RED);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_3.setForeground(Color.WHITE);
 			}
 		});
 		lblNewLabel_3.setForeground(new Color(255, 255, 255));
@@ -129,6 +175,14 @@ public class adminLogin {
 			public void mouseClicked(MouseEvent e) {
 				frame.setState(frame.ICONIFIED);
 			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_2.setForeground(Color.RED);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_2.setForeground(Color.WHITE);
+			}
 		});
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setBounds(495, 2, 30, 20);
@@ -139,19 +193,30 @@ public class adminLogin {
 		lblSuwasethaMedicalCenter.setForeground(new Color(95, 158, 160));
 		lblSuwasethaMedicalCenter.setFont(new Font("Times New Roman", Font.BOLD, 26));
 		lblSuwasethaMedicalCenter.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSuwasethaMedicalCenter.setBounds(83, 39, 404, 34);
+		lblSuwasethaMedicalCenter.setBounds(0, 39, 580, 34);
 		frame.getContentPane().add(lblSuwasethaMedicalCenter);
 		
-		JLabel lblCreateAccount = new JLabel("Create Account");
-		lblCreateAccount.setFont(new Font("Times New Roman", Font.BOLD, 16));
+		/*JLabel lblCreateAccount = new JLabel("Create Account");
+		lblCreateAccount.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				createAccount cA = new createAccount();
+				cA.setVisible(true);
+				frame.setVisible(false);
+			}
+		});
+		lblCreateAccount.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblCreateAccount.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCreateAccount.setForeground(new Color(95, 158, 160));
-		lblCreateAccount.setBounds(211, 292, 121, 16);
-		frame.getContentPane().add(lblCreateAccount);
+		lblCreateAccount.setBounds(0, 280, 580, 19);
+		frame.getContentPane().add(lblCreateAccount);*/
 		
 		JLabel lblNewLabel_7 =new JLabel("");
 		lblNewLabel_7.setBounds(0, 0, 580, 335);
 		lblNewLabel_7.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
 		frame.getContentPane().add(lblNewLabel_7);
 	}
+
+	
+
 }

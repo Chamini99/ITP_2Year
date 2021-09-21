@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -51,6 +53,7 @@ public class createAccount extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 		
 		setUndecorated(true);
 		
@@ -67,6 +70,14 @@ public class createAccount extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				setState(ICONIFIED);
 			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel.setForeground(Color.RED);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel.setForeground(Color.WHITE);
+			}
 		});
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 40));
@@ -77,7 +88,18 @@ public class createAccount extends JFrame {
 		lblX.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				setVisible(false);
+				//setVisible(false);
+				if(JOptionPane.showConfirmDialog(null,"Do you want to Exit?","Confirmation",JOptionPane.YES_NO_OPTION)==0) {
+					createAccount.this.dispose();
+				}
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblX.setForeground(Color.RED);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblX.setForeground(Color.WHITE);
 			}
 		});
 		lblX.setFont(new Font("Segoe UI", Font.BOLD, 22));
@@ -89,7 +111,7 @@ public class createAccount extends JFrame {
 		lblCreateAccount.setForeground(new Color(95, 158, 160));
 		lblCreateAccount.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCreateAccount.setFont(new Font("Times New Roman", Font.BOLD, 28));
-		lblCreateAccount.setBounds(169, 56, 243, 39);
+		lblCreateAccount.setBounds(0, 56, 580, 39);
 		contentPane.add(lblCreateAccount);
 		
 		JLabel lblNewLabel_1 = new JLabel("Name");
@@ -168,7 +190,7 @@ public class createAccount extends JFrame {
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(95, 158, 160));
-		btnNewButton.setBounds(214, 418, 143, 39);
+		btnNewButton.setBounds(220, 418, 140, 39);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel_7 =new JLabel("");
