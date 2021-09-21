@@ -7,11 +7,18 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -40,7 +47,7 @@ public class profile extends JFrame {
 			}
 		});
 	}
-
+	
 	/**
 	 * Create the frame.
 	 */
@@ -84,8 +91,10 @@ public class profile extends JFrame {
 		lblNewLabel_6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.exit(20);
-			}
+							dispose();
+							StaffHome st=new StaffHome();
+							st.setVisible(true);
+}
 		});
 		lblNewLabel_6.setForeground(new Color(255, 255, 255));
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -114,7 +123,7 @@ public class profile extends JFrame {
 		JLabel lblNewLabel_5 = new JLabel("Staff ID");
 		lblNewLabel_5.setForeground(new Color(95, 158, 160));
 		lblNewLabel_5.setFont(new Font("Dialog", Font.BOLD, 17));
-		lblNewLabel_5.setBounds(142, 133, 97, 23);
+		lblNewLabel_5.setBounds(142, 118, 97, 23);
 		contentPane.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_3 = new JLabel("Full Name");
@@ -132,7 +141,7 @@ public class profile extends JFrame {
 		JLabel lblNewLabel_3_1 = new JLabel("N/A");
 		lblNewLabel_3_1.setForeground(new Color(95, 158, 160));
 		lblNewLabel_3_1.setFont(new Font("Dialog", Font.BOLD, 17));
-		lblNewLabel_3_1.setBounds(309, 133, 87, 14);
+		lblNewLabel_3_1.setBounds(295, 122, 87, 14);
 		contentPane.add(lblNewLabel_3_1);
 		
 		JLabel lblAge = new JLabel("Age");
@@ -162,7 +171,7 @@ public class profile extends JFrame {
 				update.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(248, 424, 110, 31);
+		btnNewButton.setBounds(282, 422, 110, 31);
 		btnNewButton.setBackground(new Color(95, 158, 160));
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setFont(new Font("Trebuchet MS", Font.BOLD, 16));
@@ -201,6 +210,15 @@ public class profile extends JFrame {
 		lblNewLabel_1.setIcon(new ImageIcon(profile.class.getResource("/IT20198886/Assets/login.jpeg")));
 		 contentPane.add(lblNewLabel_1);
 		 
+		 Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+			this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+		 
 		 
 	}
-}
+	
+	
+
+	
+	}
+
+

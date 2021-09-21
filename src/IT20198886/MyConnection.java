@@ -9,7 +9,9 @@ public class MyConnection {
     
     // create a function to connect with mysql database
     
-    public static Connection getConnection(){
+    public static Connection dbconn;
+
+	public static Connection getConnection(){
      
         Connection con = null;
         try {

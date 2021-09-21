@@ -22,6 +22,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Label;
+import java.awt.Toolkit;
 
 
 
@@ -52,15 +53,57 @@ public class StaffHome extends JFrame {
 	 */
 	public StaffHome() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 720, 453);
+		setBounds(100, 100, 720, 475);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblNewLabel_1 = new JLabel("View Orders");
+		lblNewLabel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				AllOrders all=new AllOrders();
+				all.setVisible(true);
+			}
+			
+		});
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
+		lblNewLabel_1.setFont(new Font("Segoe UI", Font.BOLD, 18));
+		lblNewLabel_1.setBounds(179, 390, 130, 25);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblRequestOrder = new JLabel("Request Order");
+		lblRequestOrder.setFont(new Font("Segoe UI", Font.BOLD, 18));
+		lblRequestOrder.setForeground(new Color(255, 255, 255));
+		lblRequestOrder.setBounds(179, 290, 130, 25);
+		contentPane.add(lblRequestOrder);
+		
+		JLabel lbl_order = new JLabel("New label");
+		lbl_order.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				OrderVaccine order=new OrderVaccine();
+				order.setVisible(true);
+			}
+		});
+		lbl_order.setBounds(36, 260, 303, 92);
+		contentPane.add(lbl_order);
+		
+		lbl_order.setIcon(new ImageIcon(StaffHome.class.getResource("/IT20198886/Assets/reuqestorder.png")));
+		contentPane.add(lbl_order);
+		
+		JLabel lblNewLabel = new JLabel("View Users");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 18));
+		lblNewLabel.setBounds(179, 187, 122, 25);
+		contentPane.add(lblNewLabel);
+		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(0, 0, 720, 33);
+		panel.setBounds(0, 0, 720, 40);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -80,7 +123,9 @@ public class StaffHome extends JFrame {
 		lblX.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				System.exit(20);
+				dispose();
+				Home home=new Home();
+				home.setVisible(true);
 			}
 		});
 		lblX.setBounds(698, 11, 22, 14);
@@ -88,97 +133,95 @@ public class StaffHome extends JFrame {
 		lblX.setForeground(new Color(255, 255, 255));
 		lblX.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
-		JButton btnNewButton = new JButton("View Users");
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				dispose();
-				UserDetails home=new UserDetails();
-				home.setVisible(true);
-			}
-		});
-		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBackground(new Color(95, 158, 160));
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnNewButton.setBounds(210, 167, 144, 65);
-		contentPane.add(btnNewButton);
+		JLabel lbl_suwasetha = new JLabel("STAFF MANAGEMENT");
+		lbl_suwasetha.setBounds(10, -5, 345, 55);
+		panel.add(lbl_suwasetha);
+		lbl_suwasetha.setForeground(new Color(255, 255, 255));
+		lbl_suwasetha.setFont(new Font("Nirmala UI", Font.BOLD, 23));
 		
-		JButton btnNewButton_1 = new JButton("View Stock");
-		btnNewButton_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dispose();
-				stock Stock=new stock();
-				Stock.setVisible(true);
-			}
-		});
-		btnNewButton_1.setForeground(new Color(255, 255, 255));
-		btnNewButton_1.setBackground(new Color(95, 158, 160));
-		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnNewButton_1.setBounds(407, 167, 144, 65);
-		contentPane.add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("Request Order");
-		btnNewButton_2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dispose();
-				OrderVaccine request=new OrderVaccine();
-				request.setVisible(true);
-			}
-		});
-		btnNewButton_2.setBackground(new Color(95, 158, 160));
-		btnNewButton_2.setForeground(new Color(255, 255, 255));
-		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnNewButton_2.setBounds(210, 269, 144, 65);
-		contentPane.add(btnNewButton_2);
-		
-		JButton btnNewButton_3 = new JButton("View Orders");
-		btnNewButton_3.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dispose();
-				AllOrders order=new AllOrders();
-				order.setVisible(true);
-			}
-		});
-		btnNewButton_3.setForeground(new Color(255, 255, 255));
-		btnNewButton_3.setBackground(new Color(95, 158, 160));
-		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnNewButton_3.setBounds(407, 269, 144, 65);
-		contentPane.add(btnNewButton_3);
-		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.addMouseListener(new MouseAdapter() {
+		JLabel lbl_userlogo = new JLabel("New label");
+		lbl_userlogo.setBounds(612, 0, 45, 45);
+		panel.add(lbl_userlogo);
+		lbl_userlogo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
 				profile Profile=new profile();
 				Profile.setVisible(true);
-				
+			}
+			
+		});
+		
+		lbl_userlogo.setIcon(new ImageIcon(StaffHome.class.getResource("/IT20198886/Assets/ulogos.png")));
+		
+		JLabel lbl_logo = new JLabel("New label");
+		lbl_logo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				dispose();
+				 stock cstock=new stock();
+				 cstock.setVisible(true);
 			}
 		});
-		lblNewLabel_1.setBounds(634, 45, 61, 73);
-		contentPane.add(lblNewLabel_1);
-		  
-		lblNewLabel_1.setIcon(new ImageIcon(StaffHome.class.getResource("/IT20198886/Assets/person.png")));
-		 contentPane.add(lblNewLabel_1);
-          
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel.setBounds(0, 32, 720, 421);
-		contentPane.add(lblNewLabel);
+		JLabel lblViewStocks = new JLabel("View Stocks");
+		lblViewStocks.setForeground(new Color(255, 255, 255));
+		lblViewStocks.setFont(new Font("Segoe UI", Font.BOLD, 18));
+		lblViewStocks.setBounds(179, 87, 130, 25);
+		contentPane.add(lblViewStocks);
+		lbl_logo.setBounds(36, 44, 316, 119);
+		contentPane.add(lbl_logo);
+		
+		
+		lbl_logo.setIcon(new ImageIcon(StaffHome.class.getResource("/IT20198886/Assets/222.png")));
+		contentPane.add(lbl_logo);
+		
+		JLabel lbl_people = new JLabel("New label");
+		lbl_people.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				UserDetails user=new UserDetails();
+				user.setVisible(true);
+			}
+		});
+		lbl_people.setBounds(36, 157, 305, 92);
+		contentPane.add(lbl_people);
+		
+		lbl_people.setIcon(new ImageIcon(StaffHome.class.getResource("/IT20198886/Assets/viewusers.png")));
+		contentPane.add(lbl_people);
+		
+		JLabel lbl_view = new JLabel("New label");
+		lbl_view.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				AllOrders all=new AllOrders();
+				all.setVisible(true);
+			}
+		});
+		lbl_view.setBounds(36, 363, 303, 86);
+		contentPane.add(lbl_view);
+		
+		lbl_view.setIcon(new ImageIcon(StaffHome.class.getResource("/IT20198886/Assets/viewoders.png")));
+		contentPane.add(lbl_view);
+		
+
+		
+		
+		JLabel lbl_new = new JLabel("New label");
+		lbl_new.setBackground(new Color(255, 255, 255));
+		lbl_new.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbl_new.setBounds(0, 36, 720, 439);
+		contentPane.add(lbl_new);
 		setUndecorated(true);
 		
-		lblNewLabel.setIcon(new ImageIcon(StaffHome.class.getResource("/IT20198886/Assets/login.jpeg")));
-		 contentPane.add(lblNewLabel);
-		 
-		 
-	
+
+		lbl_new.setIcon(new ImageIcon(StaffHome.class.getResource("/IT20198886/Assets/Outsourcing.jpg")));
+		contentPane.add(lbl_new);
+		
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+		
 	}
 }

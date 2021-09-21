@@ -8,7 +8,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Panel;
+import java.awt.Toolkit;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JComboBox;
@@ -20,6 +23,8 @@ import javax.swing.JOptionPane;
 import com.toedter.calendar.JDayChooser;
 import com.toedter.calendar.JDateChooser;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -41,6 +46,7 @@ public class OrderVaccine extends JFrame {
 	private JTextField txt_acnumber;
 	private JTextField txt_exdate;
 	private JTextField txt_supID;
+	protected JLabel lblNewLabel_acc;
 
 	/**
 	 * Launch the application.
@@ -129,6 +135,20 @@ public class OrderVaccine extends JFrame {
 		txt_acnumber.setBounds(197, 266, 132, 26);
 		panel_1.add(txt_acnumber);
 		
+		txt_acnumber.addKeyListener(new KeyAdapter() {
+	         public void keyPressed(KeyEvent ke) {
+	            String value = txt_acnumber.getText();
+	            int l = value.length();
+	            if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
+	            	txt_acnumber.setVisible(true);
+	            	lblNewLabel_acc.setText("");
+	            } else {
+	            	txt_acnumber.setVisible(true);
+	               JOptionPane.showMessageDialog(null, " Enter Numaric value only");
+	            }
+	         }
+	      });
+		
 		txt_exdate = new JTextField();
 		txt_exdate.setColumns(10);
 		txt_exdate.setBounds(197, 305, 132, 26);
@@ -140,11 +160,12 @@ public class OrderVaccine extends JFrame {
 		lblNewLabel_9.setBounds(16, 299, 125, 27);
 		panel_1.add(lblNewLabel_9);
 		
-		JLabel lblNewLabel_8 = new JLabel("Account Number");
-		lblNewLabel_8.setForeground(new Color(95, 158, 160));
-		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel_8.setBounds(16, 266, 149, 14);
-		panel_1.add(lblNewLabel_8);
+		JLabel lblNewLabel_acc = new JLabel("Account Number");
+		lblNewLabel_acc.setForeground(new Color(95, 158, 160));
+		lblNewLabel_acc.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblNewLabel_acc.setBounds(16, 266, 149, 14);
+		panel_1.add(lblNewLabel_acc);
+		
 		
 		JLabel lblNewLabel_7 = new JLabel("CVV");
 		lblNewLabel_7.setForeground(new Color(95, 158, 160));
@@ -189,7 +210,9 @@ public class OrderVaccine extends JFrame {
 		lblNewLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.exit(20);
+				dispose();
+				StaffHome home=new StaffHome();
+				home.setVisible(true);
 			}
 		});
 		lblNewLabel.setBounds(709, 11, 17, 14);
@@ -372,8 +395,8 @@ public class OrderVaccine extends JFrame {
 						Statement st=MyConnection.getConnection().createStatement();  
 						//int mark = Integer.parseInt(str3); // Mark is an integer
 						// Adding record 
-						String query1="INSERT INTO tbl_vaccineorder (vaccine_type,supply_company, amount, deliverd_date,price,cardholder_name,	card_number,supplier_status,delivery_status)"
-								+ "VALUES('" +vType+"','"+supComanpy+"',"+amountint+",'"+deliverDate+"','"+pricefloat+"','"+nameCard+"','"+acnumberc+"','"+supStatus+"','"+DelStatus+"')";
+						String query1="INSERT INTO tbl_vaccineorder (vaccine_type,supply_company, amount,price,cardholder_name,	card_number,supplier_status,delivery_status)"
+								+ "VALUES('" +vType+"','"+supComanpy+"',"+amountint+",'"+pricefloat+"','"+nameCard+"','"+acnumberc+"','"+supStatus+"','"+DelStatus+"')";
 						st.executeUpdate(query1); // record added. 
 						
 						JOptionPane.showMessageDialog(null, "Order Request Added Successfully");
@@ -400,6 +423,8 @@ public class OrderVaccine extends JFrame {
 			
 		 lblNewLabel_2.setIcon(new ImageIcon(OrderVaccine.class.getResource("/IT20198886/Assets/login.jpeg")));
 		 contentPane.add(lblNewLabel_2);
-	
+	  
+		 Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+			this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 	}
 }

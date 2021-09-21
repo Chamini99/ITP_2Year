@@ -100,7 +100,7 @@ public class Login extends JFrame {
 
 					if (rs.next()) {
 						dispose();
-						JOptionPane.showMessageDialog(null, "You have successfully logged in");
+						//JOptionPane.showMessageDialog(null, "You have successfully logged in");
 						StaffHome ah = new StaffHome();
 						ah.setTitle("Welcome");
 						ah.setVisible(true);
@@ -185,6 +185,7 @@ public class Login extends JFrame {
 
 			}
 		});
+		
 		lblNewLabel_3.setForeground(new Color(95, 158, 160));
 		lblNewLabel_3.setFont(new Font("Trebuchet MS", Font.BOLD, 16));
 		lblNewLabel_3.setBounds(276, 288, 139, 36);

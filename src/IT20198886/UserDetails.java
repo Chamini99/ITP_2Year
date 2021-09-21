@@ -8,8 +8,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JButton;
@@ -59,7 +63,9 @@ public class UserDetails extends JFrame {
 		lblNewLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				System.exit(20);
+				dispose();
+				StaffHome home=new StaffHome();
+				home.setVisible(true);
 			}
 		});
 		lblNewLabel.setBounds(682, 11, 11, 21);
@@ -116,5 +122,8 @@ public class UserDetails extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		lblNewLabel_2.setIcon(new ImageIcon(UserDetails.class.getResource("/IT20198886/Assets/login.jpeg")));
 		 contentPane.add(lblNewLabel_2);
+		 
+		 Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+			this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 	}
 }

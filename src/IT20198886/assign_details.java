@@ -8,8 +8,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JEditorPane;
 import javax.swing.JTable;
 import java.awt.event.MouseAdapter;
@@ -94,5 +98,8 @@ public class assign_details extends JFrame {
 		
 		lblNewLabel_2.setIcon(new ImageIcon(assign_details.class.getResource("/IT20198886/Assets/login.jpeg")));
 		contentPane.add(lblNewLabel_2);
+		
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 	}
 }

@@ -49,8 +49,8 @@ public class SplashWindow extends JFrame {
 				
 		
 		if(i==100) {
-			Login log=new Login();
-			log.setVisible(true);
+			Home home=new Home();
+			home.setVisible(true);
 			splash.dispose();
 		}
 		}

@@ -8,26 +8,39 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.JScrollBar;
 
 public class StaffRegister extends JFrame {
 
+	protected static final InputEvent e = null;
+	private static final String NIC = null;
 	private JPanel contentPane;
 	private JTextField t1;
 	private JTextField t2;
 	private JTextField t3;
 	private JTextField t4;
 	private JTextField t6;
-	private JTextField t7;
+	private JPasswordField passwordField_1;
 
 	/**
 	 * Launch the application.
@@ -143,22 +156,28 @@ public class StaffRegister extends JFrame {
 		t3.setBounds(244, 181, 214, 20);
 		contentPane.add(t3);
 		t3.setColumns(10);
-		
+		 
 		t4 = new JTextField();
+		
 		t4.setBounds(244, 228, 214, 20);
 		contentPane.add(t4);
 		t4.setColumns(10);
+		t4.addKeyListener(new KeyAdapter() {
+	         public void keyPressed(KeyEvent ke) {
+	            String value = t4.getText();
+	            int l = value.length();
+	            if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
+	            	
+	            } else {
+	            JOptionPane.showMessageDialog(null, "Enter Numaric value only");
+	            }
+	         }
+	      });
 		
 		t6 = new JTextField();
 		t6.setBounds(244, 270, 214, 20);
 		contentPane.add(t6);
 		t6.setColumns(10);
-		
-		
-		t7 = new JTextField();
-		t7.setBounds(244, 321, 214, 20);
-		contentPane.add(t7);
-		t7.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Confirm");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -166,12 +185,14 @@ public class StaffRegister extends JFrame {
 				String Full_name=t1.getText();
 			    String NIC=t2.getText();
 				String Gender=t3.getText();
-				String Age=t4.getText();
+				 String Age=t4.getText();
 			    String Email=t6.getText();
-				String Password=t7.getText();
+				String Password=passwordField_1.getText();
 				// creating one object 
 				my_update obj=new my_update();
 				obj.my_db_update(Full_name,NIC,Gender,Age,Email,Password );
+				
+				
 			}
 		});
 		btnNewButton.addMouseListener(new MouseAdapter() {
@@ -183,11 +204,32 @@ public class StaffRegister extends JFrame {
 			}
 		});
 		
+		
 		btnNewButton.setBackground(new Color(95, 158, 160));
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 17));
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBounds(216, 421, 116, 23);
 		contentPane.add(btnNewButton);
+		
+		passwordField_1 = new JPasswordField();
+		passwordField_1.setBounds(244, 315, 214, 20);
+		contentPane.add(passwordField_1);
+		
+		passwordField_1.addKeyListener(new KeyAdapter() {
+	         public void keyPressed(KeyEvent ke) {
+	        	 String text = passwordField_1.getText();
+	             int length = text.length();
+
+	             if (length ==5) {
+	            	 
+	             } else if (length <=5) {
+	            	
+	            } else {
+	             JOptionPane.showMessageDialog(null, "limit exceed");
+	            }
+	         }
+	      });
+
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setForeground(new Color(95, 158, 160));
@@ -199,6 +241,8 @@ public class StaffRegister extends JFrame {
 		lblNewLabel_1.setIcon(new ImageIcon(profile.class.getResource("/IT20198886/Assets/login.jpeg")));
 		 contentPane.add(lblNewLabel_1);
 		 
+		 Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+			this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		
 	}
 }

@@ -71,6 +71,12 @@ public class Home extends JFrame {
 		panel.add(lbl_1);
 		
 		JLabel lbl_2 = new JLabel("-");
+		lbl_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
 		lbl_2.setForeground(new Color(255, 255, 255));
 		lbl_2.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lbl_2.setBounds(1310, 11, 22, 14);
@@ -106,6 +112,14 @@ public class Home extends JFrame {
 		contentPane.add(lbl_4);
 		
 		JLabel lbl_image2 = new JLabel("New label");
+		lbl_image2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				Login slogin = new Login();
+				slogin.setVisible(true);
+			}
+		});
 		lbl_image2.setBounds(615, 233, 139, 139);
 		contentPane.add(lbl_image2);
 		setUndecorated(true);
