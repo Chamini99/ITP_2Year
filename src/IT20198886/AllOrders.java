@@ -16,6 +16,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Toolkit;
 
@@ -26,16 +28,18 @@ import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JTextField;
 public class AllOrders extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
-
+	DefaultTableModel model;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -53,6 +57,7 @@ public class AllOrders extends JFrame {
 	}
      Connection connection=null;
      private JTable table_1;
+     private JTextField t1;
 	/**
 	 * Create the frame.
 	 */
@@ -65,7 +70,7 @@ public class AllOrders extends JFrame {
 		});
 		connection=MyConnection.dbconn;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 670, 393);
+		setBounds(100, 100, 670, 446);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -87,6 +92,8 @@ public class AllOrders extends JFrame {
 				 home.setVisible(true);
 			}
 		});
+		
+		
 		lblNewLabel.setBounds(649, 0, 21, 31);
 		panel.add(lblNewLabel);
 		lblNewLabel.setForeground(new Color(255, 255, 255));
@@ -118,7 +125,7 @@ public class AllOrders extends JFrame {
 		
 	
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(23, 90, 622, 279);
+		scrollPane.setBounds(22, 89, 622, 206);
 		contentPane.add(scrollPane);
 		
 		table_1 = new JTable();
@@ -126,14 +133,55 @@ public class AllOrders extends JFrame {
 		table_1.setBackground(new Color(255, 255, 255));
 		scrollPane.setViewportView(table_1);
 		
+		JLabel lblOrderNumber = new JLabel("Order Number");
+		lblOrderNumber.setForeground(new Color(95, 158, 160));
+		lblOrderNumber.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		lblOrderNumber.setBounds(162, 336, 163, 31);
+		contentPane.add(lblOrderNumber);
+		
+		t1 = new JTextField();
+		t1.setBounds(313, 344, 231, 23);
+		contentPane.add(t1);
+		t1.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Delete");
+		btnNewButton.addActionListener(new ActionListener() {
+			 @Override
+	         public void actionPerformed(ActionEvent ae) {
+				 String sql="DELETE FROM tbl_vaccineorder WHERE order_number='"+t1.getText()+"'";
+				 queryUpdate(sql,"delete");
+			 }
+
+			private void queryUpdate(String sql, String message) {
+				try 
+					   
+					(Statement stmt =  MyConnection.getConnection().createStatement()) {
+					     
+					   if(stmt.executeUpdate(sql)==1){
+					    DefaultTableModel model = (DefaultTableModel)table_1.getModel();
+					    model.setRowCount(0);
+					    ShowData();
+					    
+						JOptionPane.showMessageDialog(null, message + " Successfully!");
+					   }
+					  } catch (SQLException se) {
+					   se.printStackTrace();
+					  }
+				}
+				
+			
+		});
+		btnNewButton.setBackground(new Color(95, 158, 160));
+		btnNewButton.setForeground(new Color(255, 255, 255));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton.setBounds(279, 394, 136, 31);
+		contentPane.add(btnNewButton);
+	
 		
 	
 		
-		
-		
-		
 		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setBounds(0, 30, 676, 363);
+		lblNewLabel_2.setBounds(0, 30, 676, 440);
 		contentPane.add(lblNewLabel_2);
 		lblNewLabel_2.setIcon(new ImageIcon(AllOrders.class.getResource("/IT20198886/Assets/login.jpeg")));
 		 contentPane.add(lblNewLabel_2);
@@ -195,4 +243,9 @@ public class AllOrders extends JFrame {
 		}
 		
 	}
-}
+	
+	 
+	   }
+
+	
+	

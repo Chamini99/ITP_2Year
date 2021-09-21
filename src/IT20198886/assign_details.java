@@ -1,4 +1,4 @@
-package IT20198886;
+ackage IT20198886;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

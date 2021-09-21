@@ -18,6 +18,8 @@ import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -216,8 +218,6 @@ public class profile extends JFrame {
 		 
 	}
 	
-	
-
 	
 	}
 
