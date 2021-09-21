@@ -148,8 +148,8 @@ public class CompanyHome extends JFrame {
 		btnLogout.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				SupplierLogin sl = new SupplierLogin();
-				sl.setVisible(true);
+				SupplyHome sh = new SupplyHome();
+				sh.frame.setVisible(true);
 				setVisible(false);
 
 			}

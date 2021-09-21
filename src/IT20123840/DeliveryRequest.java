@@ -8,21 +8,31 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class DeliveryRequest extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField deliveryNo;
+	private JTextField vaccineName;
+	private JTextField quantity;
+	private JTextField handedOver;
+	private JTextField companyID;
 
 	/**
 	 * Launch the application.
@@ -111,39 +121,104 @@ public class DeliveryRequest extends JFrame {
 		lblDateOfDelivery.setBounds(54, 231, 108, 19);
 		contentPane.add(lblDateOfDelivery);
 		
-		textField = new JTextField();
-		textField.setBounds(219, 103, 108, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		deliveryNo = new JTextField();
+		deliveryNo.setBounds(219, 103, 108, 20);
+		contentPane.add(deliveryNo);
+		deliveryNo.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(219, 145, 108, 20);
-		contentPane.add(textField_1);
+		vaccineName = new JTextField();
+		vaccineName.setColumns(10);
+		vaccineName.setBounds(219, 145, 108, 20);
+		contentPane.add(vaccineName);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(219, 187, 108, 20);
-		contentPane.add(textField_2);
+		quantity = new JTextField();
+		quantity.setColumns(10);
+		quantity.setBounds(219, 187, 108, 20);
+		contentPane.add(quantity);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(219, 230, 108, 20);
-		contentPane.add(textField_3);
+		handedOver = new JTextField();
+		handedOver.setColumns(10);
+		handedOver.setBounds(219, 230, 108, 20);
+		contentPane.add(handedOver);
 		
 		JButton btnSend = new JButton("Send");
+		btnSend.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String delivery_no = deliveryNo.getText();
+				String vaccine_type = vaccineName.getText();
+				String d_quantity = quantity.getText();
+				String handedover_date = handedOver.getText();
+				String company_id = companyID.getText();
+				
+				if (deliveryNo.getText().isEmpty() || vaccineName.getText().isEmpty() ||quantity.getText().isEmpty() || handedOver.getText().isEmpty() || companyID.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(btnSend, "Please fill all fields");
+				}
+				
+				else {
+					try {
+						Class.forName("com.mysql.cj.jdbc.Driver");
+						Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/suwasetha_vaccine", "root", "");
+						
+						String query1 = "select * from tbl_delivery where delivery_no = '"+delivery_no+"' ";
+						Statement stmt1 = connection.createStatement();
+						ResultSet rs = stmt1.executeQuery(query1);
+						
+						if (rs.next()) {
+							JOptionPane.showConfirmDialog(btnSend, "This request is already sended");
+							
+						}
+						else {
+							String query = "insert into tbl_delivery (delivery_no, vaccine_type, d_quantity, handedOver_date, company_id) values ('"+delivery_no+"', '"+vaccine_type+"', '"+d_quantity+"', '"+handedover_date+"', '"+company_id+"')";
+						
+							Statement stmt = connection.createStatement();
+							int x = stmt.executeUpdate(query);
+						
+							JOptionPane.showConfirmDialog(btnSend, "The request has been sended successfully!!!");
+							CompanyHome ch = new CompanyHome();
+							ch.setVisible(true);
+							setVisible(false);
+							
+						}
+						
+						connection.close();
+					}
+					catch (Exception exception) {
+						exception.printStackTrace();
+					}
+				}
+			}
+		});
 		btnSend.setForeground(Color.WHITE);
 		btnSend.setFont(new Font("Calibri", Font.PLAIN, 20));
 		btnSend.setBackground(new Color(95, 158, 160));
-		btnSend.setBounds(54, 291, 102, 33);
+		btnSend.setBounds(54, 322, 102, 33);
 		contentPane.add(btnSend);
 		
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				CompanyHome ch = new CompanyHome();
+				ch.setVisible(true);
+				setVisible(false);
+			}
+		});
 		btnCancel.setForeground(Color.WHITE);
 		btnCancel.setFont(new Font("Calibri", Font.PLAIN, 20));
 		btnCancel.setBackground(new Color(95, 158, 160));
-		btnCancel.setBounds(225, 291, 102, 33);
+		btnCancel.setBounds(225, 322, 102, 33);
 		contentPane.add(btnCancel);
+		
+		JLabel lblCompanyId = new JLabel("Company ID");
+		lblCompanyId.setForeground(new Color(95, 158, 160));
+		lblCompanyId.setFont(new Font("Calibri", Font.PLAIN, 16));
+		lblCompanyId.setBounds(54, 272, 108, 19);
+		contentPane.add(lblCompanyId);
+		
+		companyID = new JTextField();
+		companyID.setColumns(10);
+		companyID.setBounds(219, 271, 108, 20);
+		contentPane.add(companyID);
 		
 		JLabel label = new JLabel("");
 		label.setBounds(0, 33, 380, 333);

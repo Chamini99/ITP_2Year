@@ -28,6 +28,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class CreateAccount extends JFrame {
 
@@ -195,6 +197,7 @@ public class CreateAccount extends JFrame {
 				String contact_no = mob.getText();
 				int len = contact_no.length();
 				String company_email = email.getText();
+				
 				String username = user.getText();
 				String password = passwordField.getText();
 				String confirmPassword = passwordField_1.getText();
