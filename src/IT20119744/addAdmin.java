@@ -346,7 +346,7 @@ public class addAdmin extends JFrame {
 		JButton btnAdd = new JButton("ADD");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				/*String admin_name = txtname.getText();
+				String admin_name = txtname.getText();
 				String admin_email	= txtemail.getText();
 				String admin_phone = txtphone.getText();
 				String admin_password = txtpassword.getText();
@@ -356,26 +356,36 @@ public class addAdmin extends JFrame {
 				
 				String name = ""+admin_name;
 				name+=" \n";
-				
-
-				try {
-					Class.forName("com.mysql.jdbc.Driver");
-					Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/suwasetha_vaccine","root","");
-					
-					String query= "INSERT INTO tbl_admin values(0,'"+admin_name+"','"+admin_email+"','"+admin_phone+"','"+admin_password+"','"+admin_confirm_password+"','"+admin_recovery_email+"')";
-					
-					Statement stmtadd=conn.createStatement();
-					int rsadd =stmtadd.executeUpdate(query);
-					if(rsadd==0) {
-						JOptionPane.showMessageDialog(btnAdd,"Already Exist");
-					}else {
-						JOptionPane.showMessageDialog(btnAdd,"Hello,"+name+"Your account is created Successfully!");
-					}
-					conn.close();
-				}catch(Exception e){
-					e.printStackTrace();
-				}*/
 				if(txtname.getText().isEmpty() || txtemail.getText().isEmpty() || txtphone.getText().isEmpty() || txtpassword.getText().isEmpty() || txtconfirmpassword.getText().isEmpty() || txtrecoveryemail.getText().isEmpty() ) {
+					JOptionPane.showMessageDialog(btnAdd, "Can't be Empty!");
+				}else {
+
+					try {
+						Class.forName("com.mysql.jdbc.Driver");
+						Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/suwasetha_vaccine","root","");
+						
+						String query= "INSERT INTO tbl_admin values(0,'"+admin_name+"','"+admin_email+"','"+admin_phone+"','"+admin_password+"','"+admin_confirm_password+"','"+admin_recovery_email+"')";
+						
+						Statement stmtadd=conn.createStatement();
+						int rsadd =stmtadd.executeUpdate(query);
+						if(rsadd==0) {
+							JOptionPane.showMessageDialog(btnAdd,"Already Exist");
+						}else {
+							JOptionPane.showMessageDialog(btnAdd,"Hello,"+name+"Your account is created Successfully!");
+							txtname.setText(null);
+							txtemail.setText(null);
+							txtphone.setText(null);
+							txtpassword.setText(null);
+							txtconfirmpassword.setText(null);
+							txtrecoveryemail.setText(null);
+							txtname.requestFocusInWindow();
+						}
+						conn.close();
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+				}
+				/*if(txtname.getText().isEmpty() || txtemail.getText().isEmpty() || txtphone.getText().isEmpty() || txtpassword.getText().isEmpty() || txtconfirmpassword.getText().isEmpty() || txtrecoveryemail.getText().isEmpty() ) {
 					JOptionPane.showMessageDialog(btnAdd, "Can't be Empty!");
 				}else {
 					try {
@@ -388,20 +398,21 @@ public class addAdmin extends JFrame {
 						prestmt.setString(4, txtpassword.getText());
 						prestmt.setString(5, txtconfirmpassword.getText());
 						prestmt.setString(6, txtrecoveryemail.getText());
-					
-						/*if(txtname.getText().isEmpty() || txtemail.getText().isEmpty() || txtphone.getText().isEmpty() || txtpassword.getText().isEmpty() || txtconfirmpassword.getText().isEmpty() || txtrecoveryemail.getText().isEmpty() ) {
-							JOptionPane.showMessageDialog(btnAdd, "Can't be Empty!");
-							prestmt.executeUpdate(null);
-						}*/
 						
 						prestmt.executeUpdate();
 						JOptionPane.showMessageDialog(btnAdd, "Your account is created Successfully!");
+						txtname.getText();
+						txtemail.getText();
+						txtphone.getText();
+						txtpassword.getText();
+						txtconfirmpassword.getText();
+						txtrecoveryemail.getText();
 					
 						con.close();
 					}catch(SQLException | HeadlessException ex){
 						JOptionPane.showMessageDialog(null, ex);
 					}
-				}	
+				}*/	
 			}	
 		});
 		

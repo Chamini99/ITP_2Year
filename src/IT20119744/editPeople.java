@@ -314,6 +314,8 @@ public class editPeople extends JFrame {
 		contentPane.add(lblNewLabel_5);
 		
 		JButton btnUpdate = new JButton("Update");
+		btnUpdate.setBackground(new Color(95, 158, 160));
+		btnUpdate.setForeground(new Color(255, 255, 255));
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(table.getSelectedRow()>=0);
@@ -326,6 +328,8 @@ public class editPeople extends JFrame {
 		contentPane.add(btnUpdate);
 		
 		JButton btnDelete = new JButton("Delete");
+		btnDelete.setBackground(new Color(95, 158, 160));
+		btnDelete.setForeground(new Color(255, 255, 255));
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(table.getSelectedRow()>=0);
@@ -338,30 +342,36 @@ public class editPeople extends JFrame {
 		
 		updateid = new JTextField();
 		updateid.setBounds(200, 122, 200, 33);
+		updateid.setForeground(new Color(95, 158, 160));
 		contentPane.add(updateid);
 		updateid.setColumns(10);
 		
 		updatenic = new JTextField();
+		updatenic.setForeground(new Color(95, 158, 160));
 		updatenic.setColumns(10);
 		updatenic.setBounds(200, 192, 200, 33);
 		contentPane.add(updatenic);
 		
 		updatename = new JTextField();
+		updatename.setForeground(new Color(95, 158, 160));
 		updatename.setColumns(10);
 		updatename.setBounds(202, 262, 200, 33);
 		contentPane.add(updatename);
 		
 		updateage = new JTextField();
+		updateage.setForeground(new Color(95, 158, 160));
 		updateage.setColumns(10);
 		updateage.setBounds(200, 332, 200, 33);
 		contentPane.add(updateage);
 		
 		updateemail = new JTextField();
+		updateemail.setForeground(new Color(95, 158, 160));
 		updateemail.setColumns(10);
 		updateemail.setBounds(200, 402, 200, 33);
 		contentPane.add(updateemail);
 		
 		updatepassword = new JTextField();
+		updatepassword.setForeground(new Color(95, 158, 160));
 		updatepassword.setColumns(10);
 		updatepassword.setBounds(200, 472, 200, 33);
 		contentPane.add(updatepassword);

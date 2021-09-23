@@ -136,6 +136,14 @@ public class manageStaff extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				setState(ICONIFIED);
 			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				label.setForeground(Color.RED);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				label.setForeground(Color.white);
+			}
 		});
 		label.setForeground(new Color(255, 255, 255));
 		label.setFont(new Font("Segoe UI", Font.BOLD, 40));
@@ -150,6 +158,14 @@ public class manageStaff extends JFrame {
 				if(JOptionPane.showConfirmDialog(null,"Do you want to Exit?","Confirmation",JOptionPane.YES_NO_OPTION)==0) {
 					manageStaff.this.dispose();
 				}
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblX.setForeground(Color.RED);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblX.setForeground(Color.white);
 			}
 		});
 		lblX.setForeground(new Color(255, 255, 255));

@@ -207,6 +207,8 @@ public class updateAdmin extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setUndecorated(true);
+		setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(95, 158, 160));
@@ -232,6 +234,14 @@ public class updateAdmin extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				setState(ICONIFIED);
 			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				label_1.setForeground(Color.RED);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				label_1.setForeground(Color.white);
+			}
 		});
 		label_1.setForeground(new Color(255, 255, 255));
 		label_1.setFont(new Font("Segoe UI", Font.BOLD, 40));
@@ -244,6 +254,17 @@ public class updateAdmin extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				setVisible(false);
 			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblX_1.setForeground(Color.RED);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblX_1.setForeground(Color.white);
+			}
+
+
+
 		});
 		lblX_1.setForeground(new Color(255, 255, 255));
 		lblX_1.setFont(new Font("Segoe UI", Font.BOLD, 22));

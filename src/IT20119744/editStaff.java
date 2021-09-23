@@ -324,6 +324,8 @@ public class editStaff extends JFrame {
 		
 		
 		JButton btnUpdate = new JButton("Update");
+		btnUpdate.setForeground(new Color(255, 255, 255));
+		btnUpdate.setBackground(new Color(95, 158, 160));
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(table.getSelectedRow()>=0);
@@ -335,6 +337,8 @@ public class editStaff extends JFrame {
 		contentPane.add(btnUpdate);
 		
 		JButton btnDelete = new JButton("Delete");
+		btnDelete.setForeground(new Color(255, 255, 255));
+		btnDelete.setBackground(new Color(95, 158, 160));
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(table.getSelectedRow()>=0);
@@ -374,9 +378,10 @@ public class editStaff extends JFrame {
 		updateemail.setForeground(new Color(95, 158, 160));
 		
 		updatepassword = new JTextField();
+		updatepassword.setForeground(new Color(95, 158, 160));
 		updatepassword.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		updatepassword.setColumns(10);
-		updatepassword.setBounds(200, 472, 200, 33);
+		updatepassword.setBounds(200, 471, 200, 33);
 		contentPane.add(updatepassword);
 		
 		searchstaff = new JTextField();

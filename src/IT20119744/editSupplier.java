@@ -301,6 +301,8 @@ public class editSupplier extends JFrame {
 		contentPane.add(lblNewLabel_5);
 		
 		JButton btnUpdate = new JButton("Update");
+		btnUpdate.setForeground(new Color(255, 255, 255));
+		btnUpdate.setBackground(new Color(95, 158, 160));
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(table.getSelectedRow()>=0);
@@ -313,6 +315,8 @@ public class editSupplier extends JFrame {
 		contentPane.add(btnUpdate);
 		
 		JButton btnDelete = new JButton("Delete");
+		btnDelete.setForeground(new Color(255, 255, 255));
+		btnDelete.setBackground(new Color(95, 158, 160));
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(table.getSelectedRow()>=0);
@@ -331,6 +335,7 @@ public class editSupplier extends JFrame {
 		updateid.setForeground(new Color(95, 158, 160));
 		
 		updatename = new JTextField();
+		updatename.setForeground(new Color(95, 158, 160));
 		updatename.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		updatename.setColumns(10);
 		updatename.setBounds(200, 192, 200, 33);

@@ -33,7 +33,7 @@ import java.awt.event.FocusEvent;
 
 public class adminLogin {
 
-	private JFrame frame;
+	JFrame frame;
 	private JTextField txtusername;
 	private JPasswordField txtpassword;
 
@@ -91,8 +91,9 @@ public class adminLogin {
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		txtusername = new JTextField();
+		txtusername.setFont(new Font("Times New Roman", Font.PLAIN, 26));
 		txtusername.setForeground(new Color(95, 158, 160));
-		txtusername.setBounds(250, 125, 250, 34);
+		txtusername.setBounds(250, 118, 250, 34);
 		frame.getContentPane().add(txtusername);
 		txtusername.setColumns(10);
 		
@@ -132,6 +133,7 @@ public class adminLogin {
 		});*/
 		
 		txtpassword = new JPasswordField();
+		txtpassword.setFont(new Font("Times New Roman", Font.PLAIN, 26));
 		txtpassword.setEchoChar((char)0);
 		txtpassword.setForeground(new Color(95, 158, 160));
 		txtpassword.setBounds(250, 172, 250, 34);
@@ -216,7 +218,5 @@ public class adminLogin {
 		lblNewLabel_7.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
 		frame.getContentPane().add(lblNewLabel_7);
 	}
-
-	
 
 }
