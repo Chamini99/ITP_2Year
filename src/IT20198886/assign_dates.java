@@ -67,7 +67,9 @@ public class assign_dates extends JFrame {
 		lblNewLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.exit(20);
+				dispose();
+				StaffHome home=new StaffHome();
+				home.setVisible(true);
 			}
 		});
 		lblNewLabel.setBounds(665, 11, 21, 14);

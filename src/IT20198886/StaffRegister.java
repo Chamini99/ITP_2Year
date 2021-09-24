@@ -79,7 +79,9 @@ public class StaffRegister extends JFrame {
 		lblX.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				System.exit(20);
+				dispose();
+				Login login=new Login();
+				login.setVisible(true);
 				
 			}
 		});
