@@ -3,11 +3,14 @@ package IT20122782;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Frame;
+import java.awt.HeadlessException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
@@ -15,7 +18,16 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import javax.swing.JRadioButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class DocRegistration extends JFrame {
 
@@ -23,11 +35,14 @@ public class DocRegistration extends JFrame {
 	private JTextField txt_name;
 	private JTextField txt_NIC;
 	private JTextField txt_email;
-	private JTextField txt_gender;
 	private JTextField txt_qualification;
 	private JTextField txt_contact;
 	private JTextField txt_username;
 	private JTextField txt_password;
+	
+	Connection con = null;
+	PreparedStatement prestmt = null;
+	ResultSet rs = null;
 
 	/**
 	 * Launch the application.
@@ -72,31 +87,25 @@ public class DocRegistration extends JFrame {
 		JLabel lblNIC = new JLabel("NIC");
 		lblNIC.setForeground(new Color(0, 51, 204));
 		lblNIC.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNIC.setBounds(95, 115, 56, 16);
+		lblNIC.setBounds(95, 125, 56, 16);
 		contentPane.add(lblNIC);
 		
 		JLabel lblEmail = new JLabel("Email");
 		lblEmail.setForeground(new Color(0, 51, 204));
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblEmail.setBounds(95, 144, 56, 24);
+		lblEmail.setBounds(95, 154, 56, 24);
 		contentPane.add(lblEmail);
-		
-		JLabel lblGender = new JLabel("Gender");
-		lblGender.setForeground(new Color(0, 51, 204));
-		lblGender.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblGender.setBounds(95, 181, 56, 16);
-		contentPane.add(lblGender);
 		
 		JLabel lblQualification = new JLabel("Qualification");
 		lblQualification.setForeground(new Color(0, 51, 204));
 		lblQualification.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblQualification.setBounds(95, 208, 112, 24);
+		lblQualification.setBounds(95, 191, 112, 24);
 		contentPane.add(lblQualification);
 		
 		JLabel lblContact = new JLabel("Contact number");
 		lblContact.setForeground(new Color(0, 51, 204));
 		lblContact.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblContact.setBounds(92, 245, 127, 16);
+		lblContact.setBounds(90, 237, 127, 16);
 		contentPane.add(lblContact);
 		
 		JLabel lblUsername = new JLabel("Username");
@@ -117,27 +126,22 @@ public class DocRegistration extends JFrame {
 		txt_name.setColumns(10);
 		
 		txt_NIC = new JTextField();
-		txt_NIC.setBounds(230, 113, 259, 22);
+		txt_NIC.setBounds(230, 121, 259, 22);
 		contentPane.add(txt_NIC);
 		txt_NIC.setColumns(10);
 		
 		txt_email = new JTextField();
-		txt_email.setBounds(230, 146, 259, 22);
+		txt_email.setBounds(230, 156, 259, 22);
 		contentPane.add(txt_email);
 		txt_email.setColumns(10);
 		
-		txt_gender = new JTextField();
-		txt_gender.setBounds(230, 175, 259, 22);
-		contentPane.add(txt_gender);
-		txt_gender.setColumns(10);
-		
 		txt_qualification = new JTextField();
-		txt_qualification.setBounds(230, 210, 259, 22);
+		txt_qualification.setBounds(230, 193, 259, 22);
 		contentPane.add(txt_qualification);
 		txt_qualification.setColumns(10);
 		
 		txt_contact = new JTextField();
-		txt_contact.setBounds(230, 243, 259, 22);
+		txt_contact.setBounds(230, 235, 259, 22);
 		contentPane.add(txt_contact);
 		txt_contact.setColumns(10);
 		
@@ -151,8 +155,38 @@ public class DocRegistration extends JFrame {
 		contentPane.add(txt_password);
 		txt_password.setColumns(10);
 		
-		JButton btn__signup = new JButton("Sign Up");
-		btn__signup.addMouseListener(new MouseAdapter() {
+		JButton btn_signup = new JButton("Sign Up");
+		btn_signup.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					String sql = "INSERT INTO tb_doctorinfo(name, nic, email, qualification, phone_no, username, password ) values (?,?,?,?,?,?,?)";
+					con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_doctor","root","");
+					prestmt = con.prepareStatement(sql);
+					prestmt.setString(1, txt_name.getText());
+					prestmt.setString(2, txt_NIC.getText());
+					prestmt.setString(3, txt_email.getText());
+					prestmt.setString(4, txt_qualification.getText());
+					prestmt.setString(5, txt_contact.getText());
+					prestmt.setString(6, txt_username.getText());
+					prestmt.setString(7, txt_password.getText());
+					
+					prestmt.executeUpdate();
+					JOptionPane.showMessageDialog(null, "Your account is created successfully!");
+					dispose();
+					DocProfile P= new DocProfile();
+					P.setVisible(true);
+					
+				}catch(SQLException | HeadlessException ex) {
+					JOptionPane.showMessageDialog(null, ex);
+				}
+				}
+			
+				
+				
+		});	
+		
+		/*btn_signup.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
@@ -160,12 +194,19 @@ public class DocRegistration extends JFrame {
 				m.setVisible(true);
 				setVisible(false);
 			}
-		});
-		btn__signup.setForeground(Color.WHITE);
-		btn__signup.setBackground(new Color(95, 158, 160));
-		btn__signup.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btn__signup.setBounds(230, 361, 127, 37);
-		contentPane.add(btn__signup);
+		});*/
+		btn_signup.setForeground(Color.WHITE);
+		btn_signup.setBackground(new Color(95, 158, 160));
+		btn_signup.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btn_signup.setBounds(230, 361, 127, 37);
+		contentPane.add(btn_signup);
+		
+		
+	
+
+			
+			
+		
 		
 		JLabel lblNewLabel_9 = new JLabel("");
 		lblNewLabel_9.setIcon(new ImageIcon(DocLogin.class.getResource("/IT20122782/Image/login.jpeg")));

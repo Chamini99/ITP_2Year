@@ -1,13 +1,20 @@
 package IT20122782;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
+
+import com.mysql.jdbc.Statement;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.event.MouseAdapter;
@@ -87,18 +94,39 @@ public class DocLogin {
 		JButton btn_login = new JButton("Login");
 		btn_login.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/db_doctor","root","");
+					java.sql.Statement stmt=conn.createStatement();
+					String sql= "select  * from tb_doctorinfo where username='"+txt_username.getText()+"'and password='"+txt_password.getText()+"'";
+					ResultSet rs= stmt.executeQuery(sql);
+					if(rs.next()) {
+						JOptionPane.showMessageDialog(null,"Login Sucessfully");
+						frame.dispose();
+						DocHome P= new DocHome();
+						P.setVisible(true);
+					}else {
+						JOptionPane.showMessageDialog(null,"Invalid Username or Password","ERROR",JOptionPane.ERROR_MESSAGE);
+						txt_username.setText(null);
+						txt_password.setText(null);
+						txt_username.requestFocusInWindow();
+					}
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+				
 			}
 		});
-		btn_login.setBackground(new Color(95, 158, 160));
+		/*btn_login.setBackground(new Color(95, 158, 160));
 		btn_login.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				DocHome m = new DocHome();
+				DocProfile m = new DocProfile();
 				m.setVisible(true);
 				frame.setVisible(false);
 			}
-		});
+		});*/
 		btn_login.setForeground(Color.WHITE);
 		btn_login.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btn_login.setBounds(249, 234, 127, 25);
