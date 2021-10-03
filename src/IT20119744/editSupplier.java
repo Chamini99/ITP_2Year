@@ -11,6 +11,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -327,6 +329,42 @@ public class editSupplier extends JFrame {
 		btnDelete.setBounds(228, 574, 150, 40);
 		contentPane.add(btnDelete);
 		
+		JLabel supplierid = new JLabel("");
+		supplierid.setForeground(Color.RED);
+		supplierid.setHorizontalAlignment(SwingConstants.CENTER);
+		supplierid.setBounds(200, 165, 200, 16);
+		contentPane.add(supplierid);
+		
+		JLabel suppliername = new JLabel("");
+		suppliername.setHorizontalAlignment(SwingConstants.CENTER);
+		suppliername.setForeground(Color.RED);
+		suppliername.setBounds(200, 235, 200, 16);
+		contentPane.add(suppliername);
+		
+		JLabel supplieraddress = new JLabel("");
+		supplieraddress.setHorizontalAlignment(SwingConstants.CENTER);
+		supplieraddress.setForeground(Color.RED);
+		supplieraddress.setBounds(200, 305, 200, 16);
+		contentPane.add(supplieraddress);
+		
+		JLabel supplieremail = new JLabel("");
+		supplieremail.setHorizontalAlignment(SwingConstants.CENTER);
+		supplieremail.setForeground(Color.RED);
+		supplieremail.setBounds(200, 375, 200, 16);
+		contentPane.add(supplieremail);
+		
+		JLabel supplierusername = new JLabel("");
+		supplierusername.setHorizontalAlignment(SwingConstants.CENTER);
+		supplierusername.setForeground(Color.RED);
+		supplierusername.setBounds(200, 445, 200, 16);
+		contentPane.add(supplierusername);
+		
+		JLabel supplierpassword = new JLabel("");
+		supplierpassword.setHorizontalAlignment(SwingConstants.CENTER);
+		supplierpassword.setForeground(Color.RED);
+		supplierpassword.setBounds(200, 515, 200, 16);
+		contentPane.add(supplierpassword);
+		
 		updateid = new JTextField();
 		updateid.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		updateid.setBounds(200, 122, 200, 33);
@@ -335,6 +373,19 @@ public class editSupplier extends JFrame {
 		updateid.setForeground(new Color(95, 158, 160));
 		
 		updatename = new JTextField();
+		updatename.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[a-zA-Z]{0,50}$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updatename.getText());
+				if(!match.matches()) {
+					suppliername.setText("Invalid Name!");
+				}else {
+					suppliername.setText(null);
+				}
+			}
+		});
 		updatename.setForeground(new Color(95, 158, 160));
 		updatename.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		updatename.setColumns(10);
@@ -342,6 +393,19 @@ public class editSupplier extends JFrame {
 		contentPane.add(updatename);
 		
 		updateaddress = new JTextField();
+		updateaddress.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[A-Za-z0-9'\\.\\-\\s\\,]$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updateaddress.getText());
+				if(!match.matches()) {
+					supplieraddress.setText("Invalid Name!");
+				}else {
+					supplieraddress.setText(null);
+				}
+			}
+		});
 		updateaddress.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updateaddress.setColumns(10);
 		updateaddress.setBounds(202, 262, 200, 33);
@@ -349,6 +413,19 @@ public class editSupplier extends JFrame {
 		updateaddress.setForeground(new Color(95, 158, 160));
 		
 		updateemail = new JTextField();
+		updateemail.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updateemail.getText());
+				if(!match.matches()) {
+					supplieremail.setText("Invalid Email!");
+				}else {
+					supplieremail.setText(null);
+				}
+			}
+		});
 		updateemail.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		updateemail.setColumns(10);
 		updateemail.setBounds(200, 332, 200, 33);
@@ -356,6 +433,19 @@ public class editSupplier extends JFrame {
 		updateemail.setForeground(new Color(95, 158, 160));
 		
 		updateusername = new JTextField();
+		updateusername.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[a-zA-Z0-9]{0,50}$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updateusername.getText());
+				if(!match.matches()) {
+					supplierusername.setText("Invalid Name!");
+				}else {
+					supplierusername.setText(null);
+				}
+			}
+		});
 		updateusername.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		updateusername.setColumns(10);
 		updateusername.setBounds(200, 402, 200, 33);
@@ -363,6 +453,20 @@ public class editSupplier extends JFrame {
 		updateusername.setForeground(new Color(95, 158, 160));
 		
 		updatepassword = new JTextField();
+		updatepassword.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&])(?=\\S+$).{8,20}$";
+				//(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\\\S+$).{8, 20}
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updatepassword.getText());
+				if(!match.matches()) {
+					supplierpassword.setText("Invalid Password!");
+				}else {
+					supplierpassword.setText(null);
+				}
+			}
+		});
 		updatepassword.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updatepassword.setColumns(10);
 		updatepassword.setBounds(200, 472, 200, 33);

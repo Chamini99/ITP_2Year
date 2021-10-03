@@ -11,6 +11,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -315,13 +317,6 @@ public class editStaff extends JFrame {
 		lblNewLabel_5.setBounds(20, 472, 170, 33);
 		contentPane.add(lblNewLabel_5);
 		
-		updateid = new JTextField();
-		updateid.setFont(new Font("Times New Roman", Font.PLAIN, 22));
-		updateid.setBounds(200, 122, 200, 33);
-		contentPane.add(updateid);
-		updateid.setColumns(10);
-		updateid.setForeground(new Color(95, 158, 160));
-		
 		
 		JButton btnUpdate = new JButton("Update");
 		btnUpdate.setForeground(new Color(255, 255, 255));
@@ -349,7 +344,51 @@ public class editStaff extends JFrame {
 		btnDelete.setBounds(218, 570, 150, 40);
 		contentPane.add(btnDelete);
 		
+		JLabel staffid = new JLabel("");
+		staffid.setBounds(200, 165, 200, 16);
+		contentPane.add(staffid);
+		
+		JLabel staffname = new JLabel("");
+		staffname.setBounds(200, 235, 200, 16);
+		contentPane.add(staffname);
+		
+		JLabel staffnic = new JLabel("");
+		staffnic.setBounds(200, 305, 200, 16);
+		contentPane.add(staffnic);
+		
+		JLabel staffage = new JLabel("");
+		staffage.setBounds(200, 375, 200, 16);
+		contentPane.add(staffage);
+		
+		JLabel staffemail = new JLabel("");
+		staffemail.setBounds(200, 445, 200, 16);
+		contentPane.add(staffemail);
+		
+		JLabel staffpassword = new JLabel("");
+		staffpassword.setBounds(200, 515, 200, 16);
+		contentPane.add(staffpassword);
+		
+		updateid = new JTextField();
+		updateid.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+		updateid.setBounds(200, 122, 200, 33);
+		contentPane.add(updateid);
+		updateid.setColumns(10);
+		updateid.setForeground(new Color(95, 158, 160));
+		
 		updatename = new JTextField();
+		updatename.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[a-zA-Z]{0,50}$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updatename.getText());
+				if(!match.matches()) {
+					staffname.setText("Invalid Name!");
+				}else {
+					staffname.setText(null);
+				}
+			}
+		});
 		updatename.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updatename.setColumns(10);
 		updatename.setBounds(200, 192, 200, 33);
@@ -357,6 +396,19 @@ public class editStaff extends JFrame {
 		updatename.setForeground(new Color(95, 158, 160));
 		
 		updatenic = new JTextField();
+		updatenic.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[0-9]{10}+[a-zA-Z]{1}$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updatenic.getText());
+				if(!match.matches()) {
+					staffnic.setText("Invalid Phone!");
+				}else {
+					staffnic.setText(null);
+				}
+			}
+		});
 		updatenic.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updatenic.setColumns(10);
 		updatenic.setBounds(200, 262, 200, 33);
@@ -364,6 +416,19 @@ public class editStaff extends JFrame {
 		updatenic.setForeground(new Color(95, 158, 160));
 		
 		updateage = new JTextField();
+		updateage.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[0-9]{0,3}$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updateage.getText());
+				if(!match.matches()) {
+					staffage.setText("Invalid Age!");
+				}else {
+					staffage.setText(null);
+				}
+			}
+		});
 		updateage.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updateage.setColumns(10);
 		updateage.setBounds(200, 332, 200, 33);
@@ -371,6 +436,19 @@ public class editStaff extends JFrame {
 		updateage.setForeground(new Color(95, 158, 160));
 		
 		updateemail = new JTextField();
+		updateemail.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updateemail.getText());
+				if(!match.matches()) {
+					staffemail.setText("Invalid Email!");
+				}else {
+					staffemail.setText(null);
+				}
+			}
+		});
 		updateemail.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updateemail.setColumns(10);
 		updateemail.setBounds(200, 402, 200, 33);
@@ -378,10 +456,24 @@ public class editStaff extends JFrame {
 		updateemail.setForeground(new Color(95, 158, 160));
 		
 		updatepassword = new JTextField();
+		updatepassword.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&])(?=\\S+$).{8,20}$";
+				//(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\\\S+$).{8, 20}
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updatepassword.getText());
+				if(!match.matches()) {
+					staffpassword.setText("Invalid Password!");
+				}else {
+					staffpassword.setText(null);
+				}
+			}
+		});
 		updatepassword.setForeground(new Color(95, 158, 160));
 		updatepassword.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		updatepassword.setColumns(10);
-		updatepassword.setBounds(200, 471, 200, 33);
+		updatepassword.setBounds(200, 472, 200, 33);
 		contentPane.add(updatepassword);
 		
 		searchstaff = new JTextField();

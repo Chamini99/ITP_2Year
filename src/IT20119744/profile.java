@@ -54,7 +54,7 @@ public class profile extends JFrame {
 	 */
 	public profile() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 580, 335);
+		setBounds(100, 100, 580, 450);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -125,93 +125,64 @@ public class profile extends JFrame {
 		lblNewLabel.setBounds(0, 100, 580, 25);
 		contentPane.add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("PEOPLE");
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				manageSupplier mSu = new manageSupplier();
+				mSu.setVisible(true);
+			}
+		});
+		lblNewLabel_1.setBounds(69, 317, 150, 104);
+		contentPane.add(lblNewLabel_1);
+		lblNewLabel_1.setIcon(new ImageIcon(Home.class.getResource("/IT20119744/assets/Color logo - no backgroundSupplier.png")));
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				manageAdmin mA = new manageAdmin();
+				mA.setVisible(true);
+			}
+		});
+		lblNewLabel_2.setBounds(360, 317, 150, 104);
+		contentPane.add(lblNewLabel_2);
+		lblNewLabel_2.setIcon(new ImageIcon(Home.class.getResource("/IT20119744/assets/Color logo - no backgroundadmin.png")));
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				managePeople P= new managePeople();
-				P.setVisible(true);				
-				setVisible(false);
+				dispose();
+				manageStaff mS = new manageStaff();
+				mS.setVisible(true);
 			}
 		});
-		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBackground(new Color(95, 158, 160));
-		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 22));
-		btnNewButton.setBounds(74, 150, 165, 33);
-		contentPane.add(btnNewButton);
+		lblNewLabel_3.setBounds(69, 176, 150, 104);
+		contentPane.add(lblNewLabel_3);
+		lblNewLabel_3.setIcon(new ImageIcon(Home.class.getResource("/IT20119744/assets/Color logo - no backgroundstaff.png")));
+		contentPane.add(lblNewLabel_3);
 		
-		JButton btnNewButton_1 = new JButton("DOCTOR");
-		btnNewButton_1.addMouseListener(new MouseAdapter() {
+		JLabel lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				manageDoctor D= new manageDoctor();
-				D.setVisible(true);				
-				setVisible(false);
+				dispose();
+				manageDoctor mD = new manageDoctor();
+				mD.setVisible(true);
 			}
 		});
-		btnNewButton_1.setForeground(new Color(255, 255, 255));
-		btnNewButton_1.setBackground(new Color(95, 158, 160));
-		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 22));
-		btnNewButton_1.setBounds(342, 150, 165, 33);
-		contentPane.add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("STAFF");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnNewButton_2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				manageStaff S= new manageStaff();
-				S.setVisible(true);				
-				setVisible(false);
-			}
-		});
-		btnNewButton_2.setForeground(new Color(255, 255, 255));
-		btnNewButton_2.setBackground(new Color(95, 158, 160));
-		btnNewButton_2.setFont(new Font("Times New Roman", Font.BOLD, 22));
-		btnNewButton_2.setBounds(74, 200, 165, 33);
-		contentPane.add(btnNewButton_2);
-	
-		
-		JButton btnNewButton_4 = new JButton("SUPPLIER");
-		btnNewButton_4.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				manageSupplier Su= new manageSupplier();
-				Su.setVisible(true);				
-				setVisible(false);
-			}
-		});
-		btnNewButton_4.setForeground(new Color(255, 255, 255));
-		btnNewButton_4.setBackground(new Color(95, 158, 160));
-		btnNewButton_4.setFont(new Font("Times New Roman", Font.BOLD, 22));
-		btnNewButton_4.setBounds(342, 200, 165, 33);
-		contentPane.add(btnNewButton_4);
-		
-		JButton btnNewButton_5 = new JButton("ADMIN");
-		btnNewButton_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
-		btnNewButton_5.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				manageAdmin A= new manageAdmin();
-				A.setVisible(true);				
-				setVisible(false);
-			}
-		});
-		btnNewButton_5.setForeground(new Color(255, 255, 255));
-		btnNewButton_5.setBackground(new Color(95, 158, 160));
-		btnNewButton_5.setFont(new Font("Times New Roman", Font.BOLD, 22));
-		btnNewButton_5.setBounds(216, 258, 165, 33);
-		contentPane.add(btnNewButton_5);
+		lblNewLabel_4.setBounds(360, 176, 150, 104);
+		contentPane.add(lblNewLabel_4);
+		lblNewLabel_4.setIcon(new ImageIcon(Home.class.getResource("/IT20119744/assets/Color logo - no backgrounddoctor.png")));
+		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_6 =new JLabel("");
-		lblNewLabel_6.setBounds(0, 0, 580, 335);
+		lblNewLabel_6.setBounds(0, 0, 580, 450);
 		lblNewLabel_6.setIcon(new ImageIcon(profile.class.getResource("/IT20119744/assets/login.jpeg")));
 		contentPane.add(lblNewLabel_6);
 		

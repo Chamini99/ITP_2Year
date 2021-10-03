@@ -12,6 +12,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -271,15 +273,6 @@ public class editDoctor extends JFrame {
 		lblNewLabel_2.setBounds(132, 46, 120, 33);
 		contentPane.add(lblNewLabel_2);
 		
-		
-		
-		JLabel lblNewLabel_3 = new JLabel("<< Back");
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setForeground(new Color(95, 158, 160));
-		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 24));
-		lblNewLabel_3.setBounds(20, 654, 100, 33);
-		contentPane.add(lblNewLabel_3, BorderLayout.SOUTH);
-		
 		JLabel lblSearch = new JLabel("Search");
 		lblSearch.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		lblSearch.setForeground(new Color(95, 158, 160));
@@ -305,109 +298,249 @@ public class editDoctor extends JFrame {
 		JLabel lblNewLabel = new JLabel("ID");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 22));
 		lblNewLabel.setForeground(new Color(95, 158, 160));
-		lblNewLabel.setBounds(20, 122, 170, 33);
+		lblNewLabel.setBounds(20, 100, 170, 33);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Name");
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 22));
 		lblNewLabel_1.setForeground(new Color(95, 158, 160));
-		lblNewLabel_1.setBounds(20, 192, 175, 33);
+		lblNewLabel_1.setBounds(20, 163, 175, 33);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_21 = new JLabel("NIC");
 		lblNewLabel_21.setFont(new Font("Times New Roman", Font.BOLD, 22));
 		lblNewLabel_21.setForeground(new Color(95, 158, 160));
-		lblNewLabel_21.setBounds(20, 262, 170, 33);
+		lblNewLabel_21.setBounds(20, 226, 170, 33);
 		contentPane.add(lblNewLabel_21);
 		
 		JLabel lblNewLabel_31 = new JLabel("Email");
 		lblNewLabel_31.setFont(new Font("Times New Roman", Font.BOLD, 22));
 		lblNewLabel_31.setForeground(new Color(95, 158, 160));
-		lblNewLabel_31.setBounds(20, 332, 170, 33);
+		lblNewLabel_31.setBounds(20, 289, 170, 33);
 		contentPane.add(lblNewLabel_31);
 		
 		JLabel lblNewLabel_4 = new JLabel("Qualification");
 		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 22));
 		lblNewLabel_4.setForeground(new Color(95, 158, 160));
-		lblNewLabel_4.setBounds(20, 402, 170, 33);
+		lblNewLabel_4.setBounds(20, 352, 170, 33);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Phone");
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 22));
 		lblNewLabel_5.setForeground(new Color(95, 158, 160));
-		lblNewLabel_5.setBounds(20, 472, 170, 33);
+		lblNewLabel_5.setBounds(20, 415, 170, 33);
 		contentPane.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_5_1 = new JLabel("Username");
 		lblNewLabel_5_1.setForeground(new Color(95, 158, 160));
 		lblNewLabel_5_1.setFont(new Font("Times New Roman", Font.BOLD, 22));
-		lblNewLabel_5_1.setBounds(20, 542, 170, 33);
+		lblNewLabel_5_1.setBounds(20, 478, 170, 33);
 		contentPane.add(lblNewLabel_5_1);
 		
 		JLabel lblNewLabel_4_1 = new JLabel("Password");
 		lblNewLabel_4_1.setForeground(new Color(95, 158, 160));
 		lblNewLabel_4_1.setFont(new Font("Times New Roman", Font.BOLD, 22));
-		lblNewLabel_4_1.setBounds(20, 612, 170, 33);
+		lblNewLabel_4_1.setBounds(20, 541, 170, 33);
 		contentPane.add(lblNewLabel_4_1);
+		
+		JLabel docid = new JLabel("");
+		docid.setHorizontalAlignment(SwingConstants.CENTER);
+		docid.setForeground(Color.RED);
+		docid.setBounds(200, 140, 200, 16);
+		contentPane.add(docid);
+		
+		JLabel docname = new JLabel("");
+		docname.setHorizontalAlignment(SwingConstants.CENTER);
+		docname.setForeground(Color.RED);
+		docname.setBounds(200, 204, 200, 16);
+		contentPane.add(docname);
+		
+		JLabel docnic = new JLabel("");
+		docnic.setHorizontalAlignment(SwingConstants.CENTER);
+		docnic.setForeground(Color.RED);
+		docnic.setBounds(200, 267, 200, 16);
+		contentPane.add(docnic);
+		
+		JLabel docemail = new JLabel("");
+		docemail.setHorizontalAlignment(SwingConstants.CENTER);
+		docemail.setForeground(Color.RED);
+		docemail.setBounds(200, 330, 200, 16);
+		contentPane.add(docemail);
+		
+		JLabel docqualification = new JLabel("");
+		docqualification.setHorizontalAlignment(SwingConstants.LEFT);
+		docqualification.setForeground(Color.RED);
+		docqualification.setBounds(200, 393, 200, 16);
+		contentPane.add(docqualification);
+		
+		JLabel docphone = new JLabel("");
+		docphone.setHorizontalAlignment(SwingConstants.CENTER);
+		docphone.setForeground(Color.RED);
+		docphone.setBounds(200, 456, 200, 16);
+		contentPane.add(docphone);
+		
+		JLabel docusername = new JLabel("");
+		docusername.setHorizontalAlignment(SwingConstants.CENTER);
+		docusername.setForeground(Color.RED);
+		docusername.setBounds(200, 519, 200, 16);
+		contentPane.add(docusername);
+		
+		JLabel docpassword = new JLabel("");
+		docpassword.setForeground(Color.RED);
+		docpassword.setBounds(200, 582, 200, 16);
+		contentPane.add(docpassword);
 		
 		updateid = new JTextField();
 		updateid.setFont(new Font("Times New Roman", Font.PLAIN, 22));
-		updateid.setBounds(200, 122, 200, 33);
+		updateid.setBounds(200, 100, 200, 33);
 		contentPane.add(updateid);
 		updateid.setColumns(10);
 		updateid.setForeground(new Color(95, 158, 160));
 		
 		updatename = new JTextField();
+		updatename.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[a-zA-Z]{0,50}$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updatename.getText());
+				if(!match.matches()) {
+					docname.setText("Invalid Name!");
+				}else {
+					docname.setText(null);
+				}
+			}
+		});
 		updatename.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updatename.setColumns(10);
-		updatename.setBounds(200, 192, 200, 33);
+		updatename.setBounds(200, 163, 200, 33);
 		contentPane.add(updatename);
 		updatename.setForeground(new Color(95, 158, 160));
 		
 		updatenic = new JTextField();
+		updatenic.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[0-9]{9}+[a-zA-Z]{1}$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updatenic.getText());
+				if(!match.matches()) {
+					docnic.setText("Invalid Phone!");
+				}else {
+					docnic.setText(null);
+				}
+			}
+		});
 		updatenic.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updatenic.setColumns(10);
-		updatenic.setBounds(200, 262, 200, 33);
+		updatenic.setBounds(200, 226, 200, 33);
 		contentPane.add(updatenic);
 		updatenic.setForeground(new Color(95, 158, 160));
 		
 		updateemail = new JTextField();
+		updateemail.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updateemail.getText());
+				if(!match.matches()) {
+					docemail.setText("Invalid Email!");
+				}else {
+					docemail.setText(null);
+				}
+
+			}
+		});
 		updateemail.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updateemail.setColumns(10);
-		updateemail.setBounds(200, 332, 200, 33);
+		updateemail.setBounds(200, 289, 200, 33);
 		contentPane.add(updateemail);
 		updateemail.setForeground(new Color(95, 158, 160));
 		
 		updatequalification = new JTextField();
+		updatequalification.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[a-zA-Z]{0,255}$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updatequalification.getText());
+				if(!match.matches()) {
+					docqualification.setText("Invalid Name!");
+				}else {
+					docqualification.setText(null);
+				}
+			}
+		});
 		updatequalification.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updatequalification.setColumns(10);
-		updatequalification.setBounds(200, 402, 200, 33);
+		updatequalification.setBounds(200, 352, 200, 33);
 		contentPane.add(updatequalification);
 		updatequalification.setForeground(new Color(95, 158, 160));
 		
 		updatephone = new JTextField();
+		updatephone.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[0-9]{10}$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updatephone.getText());
+				if(!match.matches()) {
+					docphone.setText("Invalid Phone!");
+				}else {
+					docphone.setText(null);
+				}
+			}
+		});
 		updatephone.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updatephone.setColumns(10);
-		updatephone.setBounds(200, 472, 200, 33);
+		updatephone.setBounds(200, 415, 200, 33);
 		contentPane.add(updatephone);
 		updatephone.setForeground(new Color(95, 158, 160));
 		
 		updateusername = new JTextField();
+		updateusername.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[a-zA-Z0-9]{0,50}$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updateusername.getText());
+				if(!match.matches()) {
+					docusername.setText("Invalid Name!");
+				}else {
+					docusername.setText(null);
+				}
+			}
+		});
 		updateusername.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updateusername.setColumns(10);
-		updateusername.setBounds(200, 542, 200, 33);
+		updateusername.setBounds(200, 478, 200, 33);
 		contentPane.add(updateusername);
 		updateusername.setForeground(new Color(95, 158, 160));
 		
 		updatepassword = new JTextField();
+		updatepassword.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&])(?=\\S+$).{8,20}$";
+				//(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\\\S+$).{8, 20}
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updatepassword.getText());
+				if(!match.matches()) {
+					docpassword.setText("Invalid Password!");
+				}else {
+					docpassword.setText(null);
+				}
+			}
+		});
 		updatepassword.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updatepassword.setColumns(10);
-		updatepassword.setBounds(200, 612, 200, 33);
+		updatepassword.setBounds(200, 541, 200, 33);
 		contentPane.add(updatepassword);
 		updatepassword.setForeground(new Color(95, 158, 160));
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(412, 122, 560, 440);
+		scrollPane.setBounds(412, 100, 560, 440);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();

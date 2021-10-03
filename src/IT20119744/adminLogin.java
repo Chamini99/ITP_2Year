@@ -106,11 +106,16 @@ public class adminLogin {
 					Statement stmt=conn.createStatement();
 					String sql= "select * from tbl_admin where admin_email='"+txtusername.getText()+"' and admin_password='"+txtpassword.getText()+"'";
 					ResultSet rs= stmt.executeQuery(sql);
+					//while(rs.next()) {
+						/*if(txtusername.equals("thamoda@gmail.com") &&  txtpassword.equals("Thamoda#123")){
+							frame.dispose();
+							addAdmin ad= new addAdmin();
+							ad.setVisible(true);*/
 					if(rs.next()) {
 						frame.dispose();
 						profile P= new profile();
 						P.setVisible(true);
-					}else {
+					}else{
 						JOptionPane.showMessageDialog(null,"Invalid Username or Password","ERROR",JOptionPane.ERROR_MESSAGE);
 						txtusername.setText(null);
 						txtpassword.setText(null);

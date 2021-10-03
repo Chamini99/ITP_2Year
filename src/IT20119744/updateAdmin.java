@@ -39,6 +39,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class updateAdmin extends JFrame {
 
@@ -191,6 +193,17 @@ public class updateAdmin extends JFrame {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public void validatePhone(JTextField field, JLabel label, String name) {
+		if(field.getText().length()>10 || field.getText().length()<10){
+			label.setText("Invalid Phone Number"+name);
+		}
+		else {
+			label.setVisible(false);
+		}
+	
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -314,6 +327,48 @@ public class updateAdmin extends JFrame {
 		lblNewLabel_5.setBounds(20, 472, 170, 33);
 		contentPane.add(lblNewLabel_5);
 		
+		JLabel id_val = new JLabel("");
+		id_val.setHorizontalAlignment(SwingConstants.CENTER);
+		id_val.setForeground(Color.RED);
+		id_val.setFont(new Font("Times New Roman", Font.ITALIC, 16));
+		id_val.setBounds(175, 165, 232, 20);
+		contentPane.add(id_val);
+		
+		JLabel name_val = new JLabel("");
+		name_val.setHorizontalAlignment(SwingConstants.CENTER);
+		name_val.setForeground(Color.RED);
+		name_val.setFont(new Font("Times New Roman", Font.ITALIC, 16));
+		name_val.setBounds(175, 235, 232, 20);
+		contentPane.add(name_val);
+		
+		JLabel email_val = new JLabel("");
+		email_val.setHorizontalAlignment(SwingConstants.CENTER);
+		email_val.setForeground(Color.RED);
+		email_val.setFont(new Font("Times New Roman", Font.ITALIC, 16));
+		email_val.setBounds(175, 305, 232, 20);
+		contentPane.add(email_val);
+		
+		JLabel phone_val = new JLabel("");
+		phone_val.setHorizontalAlignment(SwingConstants.CENTER);
+		phone_val.setForeground(Color.RED);
+		phone_val.setFont(new Font("Times New Roman", Font.ITALIC, 16));
+		phone_val.setBounds(175, 375, 232, 20);
+		contentPane.add(phone_val);
+		
+		JLabel password_val = new JLabel("");
+		password_val.setHorizontalAlignment(SwingConstants.CENTER);
+		password_val.setForeground(Color.RED);
+		password_val.setFont(new Font("Times New Roman", Font.ITALIC, 16));
+		password_val.setBounds(175, 445, 232, 20);
+		contentPane.add(password_val);
+		
+		JLabel remail_val = new JLabel("");
+		remail_val.setHorizontalAlignment(SwingConstants.CENTER);
+		remail_val.setForeground(Color.RED);
+		remail_val.setFont(new Font("Times New Roman", Font.ITALIC, 16));
+		remail_val.setBounds(175, 512, 232, 20);
+		contentPane.add(remail_val);
+		
 		updateid = new JTextField();
 		updateid.setForeground(new Color(95, 158, 160));
 		updateid.setFont(new Font("Times New Roman", Font.PLAIN, 22));
@@ -322,6 +377,19 @@ public class updateAdmin extends JFrame {
 		updateid.setColumns(10);
 		
 		updatename = new JTextField();
+		updatename.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[a-zA-Z]{0,50}$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updatename.getText());
+				if(!match.matches()) {
+					name_val.setText("Invalid Name!");
+				}else {
+					name_val.setText(null);
+				}
+			}
+		});
 		updatename.setForeground(new Color(95, 158, 160));
 		updatename.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updatename.setColumns(10);
@@ -329,6 +397,19 @@ public class updateAdmin extends JFrame {
 		contentPane.add(updatename);
 		
 		updateemail = new JTextField();
+		updateemail.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updateemail.getText());
+				if(!match.matches()) {
+					email_val.setText("Invalid Email!");
+				}else {
+					email_val.setText(null);
+				}
+			}
+		});
 		updateemail.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updateemail.setForeground(new Color(95, 158, 160));
 		updateemail.setBounds(200, 262, 200, 33);
@@ -336,6 +417,19 @@ public class updateAdmin extends JFrame {
 		updateemail.setColumns(10);
 		
 		updatephone = new JTextField();
+		updatephone.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[0-9]{10}$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updatephone.getText());
+				if(!match.matches()) {
+					phone_val.setText("Invalid Phone!");
+				}else {
+					phone_val.setText(null);
+				}
+			}
+		});
 		updatephone.setForeground(new Color(95, 158, 160));
 		updatephone.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updatephone.setBounds(200, 332, 200, 33);
@@ -343,6 +437,19 @@ public class updateAdmin extends JFrame {
 		updatephone.setColumns(10);
 		
 		updatepassword = new JTextField();
+		updatepassword.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&])(?=\\S+$).{8,20}$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updatepassword.getText());
+				if(!match.matches()) {
+					password_val.setText("Invalid Password!");
+				}else {
+					password_val.setText(null);
+				}
+			}
+		});
 		updatepassword.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updatepassword.setForeground(new Color(95, 158, 160));
 		updatepassword.setBounds(200, 402, 200, 33);
@@ -350,6 +457,19 @@ public class updateAdmin extends JFrame {
 		updatepassword.setColumns(10);
 		
 		updateremail = new JTextField();
+		updateremail.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updateremail.getText());
+				if(!match.matches()) {
+					remail_val.setText("Invalid Email!");
+				}else {
+					remail_val.setText(null);
+				}
+			}
+		});
 		updateremail.setForeground(new Color(95, 158, 160));
 		updateremail.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updateremail.setBounds(200, 472, 200, 33);
@@ -416,48 +536,6 @@ public class updateAdmin extends JFrame {
 			}
 		});
 		scrollPane.setViewportView(table);
-		
-		JLabel id_val = new JLabel("");
-		id_val.setHorizontalAlignment(SwingConstants.CENTER);
-		id_val.setForeground(Color.RED);
-		id_val.setFont(new Font("Times New Roman", Font.ITALIC, 16));
-		id_val.setBounds(175, 165, 232, 20);
-		contentPane.add(id_val);
-		
-		JLabel name_val = new JLabel("");
-		name_val.setHorizontalAlignment(SwingConstants.CENTER);
-		name_val.setForeground(Color.RED);
-		name_val.setFont(new Font("Times New Roman", Font.ITALIC, 16));
-		name_val.setBounds(175, 235, 232, 20);
-		contentPane.add(name_val);
-		
-		JLabel email_val = new JLabel("");
-		email_val.setHorizontalAlignment(SwingConstants.CENTER);
-		email_val.setForeground(Color.RED);
-		email_val.setFont(new Font("Times New Roman", Font.ITALIC, 16));
-		email_val.setBounds(175, 305, 232, 20);
-		contentPane.add(email_val);
-		
-		JLabel phone_val = new JLabel("");
-		phone_val.setHorizontalAlignment(SwingConstants.CENTER);
-		phone_val.setForeground(Color.RED);
-		phone_val.setFont(new Font("Times New Roman", Font.ITALIC, 16));
-		phone_val.setBounds(175, 375, 232, 20);
-		contentPane.add(phone_val);
-		
-		JLabel password_val = new JLabel("");
-		password_val.setHorizontalAlignment(SwingConstants.CENTER);
-		password_val.setForeground(Color.RED);
-		password_val.setFont(new Font("Times New Roman", Font.ITALIC, 16));
-		password_val.setBounds(175, 445, 232, 20);
-		contentPane.add(password_val);
-		
-		JLabel remail_val = new JLabel("");
-		remail_val.setHorizontalAlignment(SwingConstants.CENTER);
-		remail_val.setForeground(Color.RED);
-		remail_val.setFont(new Font("Times New Roman", Font.ITALIC, 16));
-		remail_val.setBounds(175, 512, 232, 20);
-		contentPane.add(remail_val);
 		
 		JLabel label_11 = new JLabel("<<");
 		label_11.addMouseListener(new MouseAdapter() {

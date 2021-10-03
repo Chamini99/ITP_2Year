@@ -13,6 +13,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -193,7 +195,7 @@ public class editPeople extends JFrame {
 			}
 		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 650);
+		setBounds(100, 100, 1000, 660);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -341,36 +343,149 @@ public class editPeople extends JFrame {
 		contentPane.add(btnDelete);
 		
 		updateid = new JTextField();
+		updateid.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+		updateid.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+			}
+		});
+		
+		JLabel peopleid = new JLabel("");
+		peopleid.setHorizontalAlignment(SwingConstants.CENTER);
+		peopleid.setForeground(Color.RED);
+		peopleid.setBounds(200, 165, 200, 16);
+		contentPane.add(peopleid);
+		
+		JLabel peoplenic = new JLabel("");
+		peoplenic.setHorizontalAlignment(SwingConstants.CENTER);
+		peoplenic.setForeground(Color.RED);
+		peoplenic.setBounds(200, 235, 200, 16);
+		contentPane.add(peoplenic);
+		
+		JLabel peoplename = new JLabel("");
+		peoplename.setHorizontalAlignment(SwingConstants.CENTER);
+		peoplename.setForeground(Color.RED);
+		peoplename.setBounds(200, 305, 200, 16);
+		contentPane.add(peoplename);
+		
+		JLabel peopleage = new JLabel("");
+		peopleage.setHorizontalAlignment(SwingConstants.CENTER);
+		peopleage.setForeground(Color.RED);
+		peopleage.setBounds(200, 375, 200, 16);
+		contentPane.add(peopleage);
+		
+		JLabel peopleemail = new JLabel("");
+		peopleemail.setHorizontalAlignment(SwingConstants.CENTER);
+		peopleemail.setForeground(Color.RED);
+		peopleemail.setBounds(200, 445, 200, 16);
+		contentPane.add(peopleemail);
+		
+		JLabel peoplepassword = new JLabel("");
+		peoplepassword.setHorizontalAlignment(SwingConstants.CENTER);
+		peoplepassword.setForeground(Color.RED);
+		peoplepassword.setBounds(200, 515, 200, 16);
+		contentPane.add(peoplepassword);
 		updateid.setBounds(200, 122, 200, 33);
 		updateid.setForeground(new Color(95, 158, 160));
 		contentPane.add(updateid);
 		updateid.setColumns(10);
 		
 		updatenic = new JTextField();
+		updatenic.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+		updatenic.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[0-9]{9}+[a-zA-Z]{1}$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updatenic.getText());
+				if(!match.matches()) {
+					peoplenic.setText("Invalid Name!");
+				}else {
+					peoplenic.setText(null);
+				}
+			}
+		});
 		updatenic.setForeground(new Color(95, 158, 160));
 		updatenic.setColumns(10);
 		updatenic.setBounds(200, 192, 200, 33);
 		contentPane.add(updatenic);
 		
 		updatename = new JTextField();
+		updatename.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+		updatename.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[a-zA-Z]{0,50}$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updatename.getText());
+				if(!match.matches()) {
+					peoplename.setText("Invalid Name!");
+				}else {
+					peoplename.setText(null);
+				}
+			}
+		});
 		updatename.setForeground(new Color(95, 158, 160));
 		updatename.setColumns(10);
 		updatename.setBounds(202, 262, 200, 33);
 		contentPane.add(updatename);
 		
 		updateage = new JTextField();
+		updateage.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+		updateage.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[0-9]{0,3}$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updateage.getText());
+				if(!match.matches()) {
+					peopleage.setText("Invalid Age!");
+				}else {
+					peopleage.setText(null);
+				}
+			}
+		});
 		updateage.setForeground(new Color(95, 158, 160));
 		updateage.setColumns(10);
 		updateage.setBounds(200, 332, 200, 33);
 		contentPane.add(updateage);
 		
 		updateemail = new JTextField();
+		updateemail.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+		updateemail.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updateemail.getText());
+				if(!match.matches()) {
+					peopleemail.setText("Invalid Email!");
+				}else {
+					peopleemail.setText(null);
+				}
+			}
+		});
 		updateemail.setForeground(new Color(95, 158, 160));
 		updateemail.setColumns(10);
 		updateemail.setBounds(200, 402, 200, 33);
 		contentPane.add(updateemail);
 		
 		updatepassword = new JTextField();
+		updatepassword.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+		updatepassword.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&])(?=\\S+$).{8,20}$";
+				//(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\\\S+$).{8, 20}
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updatepassword.getText());
+				if(!match.matches()) {
+					peoplepassword.setText("Invalid Password!");
+				}else {
+					peoplepassword.setText(null);
+				}
+			}
+		});
 		updatepassword.setForeground(new Color(95, 158, 160));
 		updatepassword.setColumns(10);
 		updatepassword.setBounds(200, 472, 200, 33);

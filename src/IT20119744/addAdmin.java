@@ -242,6 +242,11 @@ public class addAdmin extends JFrame {
 				}*/
 			}
 		});
+		txtname.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtname.setForeground(new Color(95, 158, 160));
+		txtname.setBounds(283, 100, 232, 33);
+		contentPane.add(txtname);
+		txtname.setColumns(10);
 		
 		JLabel password_validation = new JLabel("");
 		password_validation.setHorizontalAlignment(SwingConstants.CENTER);
@@ -263,17 +268,14 @@ public class addAdmin extends JFrame {
 		remail_validation.setFont(new Font("Times New Roman", Font.ITALIC, 16));
 		remail_validation.setBounds(283, 490, 232, 20);
 		contentPane.add(remail_validation);
-		txtname.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		txtname.setForeground(new Color(95, 158, 160));
-		txtname.setBounds(283, 100, 232, 33);
-		contentPane.add(txtname);
-		txtname.setColumns(10);
+		
 		
 		txtemail = new JTextField();
 		txtemail.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
-				String PATTERN ="^[a-zA-Z0-9]{0,255}@[a-zA-Z]{0,10}.[a-zA-Z]{0,5}$";
+				//String PATTERN ="^[a-zA-Z0-9]{0,255}@[a-zA-Z]{0,10}.[a-zA-Z]{0,5}$";
+				String PATTERN ="^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$";
 				Pattern patt= Pattern.compile(PATTERN);
 				Matcher match=patt.matcher(txtemail.getText());
 				if(!match.matches()) {
@@ -337,6 +339,19 @@ public class addAdmin extends JFrame {
 		txtpassword.setColumns(10);
 		
 		txtrecoveryemail = new JTextField();
+		txtrecoveryemail.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(txtrecoveryemail.getText());
+				if(!match.matches()) {
+					remail_validation.setText("Invalid Email!");
+				}else {
+					remail_validation.setText(null);
+				}
+			}
+		});
 		txtrecoveryemail.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		txtrecoveryemail.setForeground(new Color(95, 158, 160));
 		txtrecoveryemail.setBounds(283, 450, 232, 33);
