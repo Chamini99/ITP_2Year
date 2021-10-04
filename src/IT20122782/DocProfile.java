@@ -22,12 +22,16 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class DocProfile extends JFrame {
 
@@ -102,9 +106,11 @@ public class DocProfile extends JFrame {
 		lblNewLabel_2.setBounds(126, 160, 56, 16);
 		contentPane.add(lblNewLabel_2);
 		
+		
+	
 		txt_NIC = new JTextField();
 		txt_NIC.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txt_NIC.setBounds(369, 141, 256, 22);
+		txt_NIC.setBounds(301, 157, 256, 22);
 		contentPane.add(txt_NIC);
 		txt_NIC.setColumns(10);
 		
@@ -114,9 +120,28 @@ public class DocProfile extends JFrame {
 		lblNewLabel_3.setBounds(126, 193, 56, 16);
 		contentPane.add(lblNewLabel_3);
 		
+		JLabel lbuemail = new JLabel("");
+		lbuemail.setForeground(Color.RED);
+		lbuemail.setFont(new Font("Tahoma", Font.ITALIC, 13));
+		lbuemail.setBounds(593, 194, 158, 16);
+		contentPane.add(lbuemail);
+		
 		txt_email = new JTextField();
+		txt_email.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN = "^[a-zA-Z0-9]{0,30}[@][a-zA-Z]{0,20}[.][a-zA-Z]{0,5}$";
+				Pattern patt = Pattern.compile(PATTERN);
+				Matcher match = patt.matcher(txt_email.getText());
+				if(!match.matches()) {
+					lbuemail.setText("Invalid Email!");
+				}else {
+					lbuemail.setText(null);
+				}
+			}
+		});
 		txt_email.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txt_email.setBounds(369, 187, 256, 22);
+		txt_email.setBounds(301, 192, 256, 22);
 		contentPane.add(txt_email);
 		txt_email.setColumns(10);
 		
@@ -128,7 +153,7 @@ public class DocProfile extends JFrame {
 		
 		txt_qualification = new JTextField();
 		txt_qualification.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txt_qualification.setBounds(369, 230, 256, 22);
+		txt_qualification.setBounds(301, 235, 256, 22);
 		contentPane.add(txt_qualification);
 		txt_qualification.setColumns(10);
 		
@@ -138,9 +163,31 @@ public class DocProfile extends JFrame {
 		lblNewLabel_6.setBounds(126, 267, 132, 16);
 		contentPane.add(lblNewLabel_6);
 		
+		JLabel lbucontact = new JLabel("");
+		lbucontact.setForeground(Color.RED);
+		lbucontact.setFont(new Font("Tahoma", Font.ITALIC, 13));
+		lbucontact.setBounds(581, 274, 158, 16);
+		contentPane.add(lbucontact);
+		
+		
 		txt_contact = new JTextField();
+		txt_contact.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN = "^[0-9]{10}$";
+				Pattern patt = Pattern.compile(PATTERN);
+				Matcher match = patt.matcher(txt_contact.getText());
+				if(!match.matches()) {
+					lbucontact.setText("Invalid Contact Number!");
+				}else {
+					lbucontact.setText(null);
+				}
+			}
+				
+			
+		});
 		txt_contact.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txt_contact.setBounds(369, 265, 256, 22);
+		txt_contact.setBounds(301, 270, 256, 22);
 		contentPane.add(txt_contact);
 		txt_contact.setColumns(10);
 		
@@ -150,9 +197,28 @@ public class DocProfile extends JFrame {
 		lblNewLabel_7.setBounds(126, 306, 102, 16);
 		contentPane.add(lblNewLabel_7);
 		
+		JLabel lbuusername = new JLabel("");
+		lbuusername.setForeground(Color.RED);
+		lbuusername.setFont(new Font("Tahoma", Font.ITALIC, 13));
+		lbuusername.setBounds(581, 313, 158, 16);
+		contentPane.add(lbuusername);
+		
 		txt_username = new JTextField();
+		txt_username.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN = "^[a-z0-9]{0,30}$";
+				Pattern patt = Pattern.compile(PATTERN);
+				Matcher match = patt.matcher(txt_username.getText());
+				if(!match.matches()) {
+					lbuusername.setText("Invalid Username!");
+				}else {
+					lbuusername.setText(null);
+				}
+			}
+		});
 		txt_username.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txt_username.setBounds(369, 304, 256, 22);
+		txt_username.setBounds(301, 309, 256, 22);
 		contentPane.add(txt_username);
 		txt_username.setColumns(10);
 		
@@ -162,9 +228,28 @@ public class DocProfile extends JFrame {
 		lblNewLabel_8.setBounds(126, 341, 102, 16);
 		contentPane.add(lblNewLabel_8);
 		
+		JLabel lbupassword = new JLabel("");
+		lbupassword.setForeground(Color.RED);
+		lbupassword.setFont(new Font("Tahoma", Font.ITALIC, 13));
+		lbupassword.setBounds(581, 348, 158, 16);
+		contentPane.add(lbupassword);
+		
 		txt_password = new JTextField();
+		txt_password.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN = "^[a-zA-Z0-9]{0,12}[@#*/=][a-zA-Z0-9]{0,10}$";
+				Pattern patt = Pattern.compile(PATTERN);
+				Matcher match = patt.matcher(txt_password.getText());
+				if(!match.matches()) {
+					lbupassword.setText("Invalid Password!");
+				}else {
+					lbupassword.setText(null);
+				}
+			}
+		});
 		txt_password.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txt_password.setBounds(369, 339, 256, 22);
+		txt_password.setBounds(301, 344, 256, 22);
 		contentPane.add(txt_password);
 		txt_password.setColumns(10);
 		
@@ -245,7 +330,7 @@ public class DocProfile extends JFrame {
 		txt_name = new JTextField();
 		txt_name.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txt_name.setColumns(10);
-		txt_name.setBounds(369, 104, 256, 22);
+		txt_name.setBounds(301, 115, 256, 22);
 		contentPane.add(txt_name);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -269,16 +354,10 @@ public class DocProfile extends JFrame {
 		contentPane.add(lblNewLabel_4);
 		
 		txt_id = new JTextField();
-		txt_id.setBounds(369, 79, 256, 22);
+		txt_id.setBounds(301, 84, 256, 22);
 		contentPane.add(txt_id);
 		txt_id.setColumns(10);
 		
-		JLabel lblNewLabel_9 = new JLabel("");
-		lblNewLabel_9.setBackground(new Color(240, 240, 240));
-		lblNewLabel_9.setIcon(new ImageIcon(DocLogin.class.getResource("/IT20122782/Image/login.jpeg")));
-		lblNewLabel_9.setBounds(0, 33, 800, 767);
-		contentPane.add(lblNewLabel_9);
-	
 		ShowData();
 		
 	}
