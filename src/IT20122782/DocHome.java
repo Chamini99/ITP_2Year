@@ -11,14 +11,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Frame;
+import java.awt.Window;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class DocHome extends JFrame {
 
+	
 	private JPanel contentPane;
 
 	/**
@@ -48,7 +51,7 @@ public class DocHome extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 	    setUndecorated(true);
-		
+	    setLocationRelativeTo(null);
 		
 		JButton btn_myprofile = new JButton("My Profile");
 		btn_myprofile.addMouseListener(new MouseAdapter() {
@@ -151,6 +154,13 @@ public class DocHome extends JFrame {
 		panel.add(lblX_1);
 		
 		JButton btnNewButton = new JButton("Logout");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				DocLogin a = new DocLogin();
+				 a.setVisible(true);
+			}
+		});
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setBackground(new Color(95, 158, 160));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));

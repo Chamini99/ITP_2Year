@@ -47,6 +47,7 @@ public class DocAppoin extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 		
 		JLabel lblNewLabel = new JLabel("My Appoinments");
 		lblNewLabel.setForeground(new Color(95, 158, 160));

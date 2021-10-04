@@ -60,6 +60,8 @@ public class DocLogin {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setUndecorated(true);
+		frame.setLocationRelativeTo(null);  
+		
 		
 		JLabel lblLogin = new JLabel("Login to Doctor");
 		lblLogin.setForeground(new Color(95, 158, 160));
@@ -190,5 +192,13 @@ public class DocLogin {
 		lblNewLabel.setBounds(0, 31, 580, 304);
 		frame.getContentPane().add(lblNewLabel);
 	}
+
+	public void setVisible(boolean b) {
+		frame.setVisible(b);
+		
+	}
+
+	
+
 	}
 
