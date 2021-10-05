@@ -93,18 +93,18 @@ public class DocProfile extends JFrame {
 		lblNewLabel.setBounds(337, 46, 102, 25);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Name");
-		lblNewLabel_1.setForeground(new Color(0, 51, 204));
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(126, 118, 56, 16);
-		contentPane.add(lblNewLabel_1);
+		JLabel lbname = new JLabel("Name");
+		lbname.setForeground(new Color(0, 51, 204));
+		lbname.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbname.setBounds(126, 118, 56, 16);
+		contentPane.add(lbname);
 		
 		
-		JLabel lblNewLabel_2 = new JLabel("NIC");
-		lblNewLabel_2.setForeground(new Color(0, 51, 204));
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_2.setBounds(126, 160, 56, 16);
-		contentPane.add(lblNewLabel_2);
+		JLabel lbnic = new JLabel("NIC");
+		lbnic.setForeground(new Color(0, 51, 204));
+		lbnic.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbnic.setBounds(126, 160, 56, 16);
+		contentPane.add(lbnic);
 		
 		
 	
@@ -114,11 +114,11 @@ public class DocProfile extends JFrame {
 		contentPane.add(txt_NIC);
 		txt_NIC.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("Email");
-		lblNewLabel_3.setForeground(new Color(0, 51, 204));
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_3.setBounds(126, 193, 56, 16);
-		contentPane.add(lblNewLabel_3);
+		JLabel lbemail = new JLabel("Email");
+		lbemail.setForeground(new Color(0, 51, 204));
+		lbemail.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbemail.setBounds(126, 193, 56, 16);
+		contentPane.add(lbemail);
 		
 		JLabel lbuemail = new JLabel("");
 		lbuemail.setForeground(Color.RED);
@@ -134,7 +134,7 @@ public class DocProfile extends JFrame {
 				Pattern patt = Pattern.compile(PATTERN);
 				Matcher match = patt.matcher(txt_email.getText());
 				if(!match.matches()) {
-					lbuemail.setText("Invalid Email!");
+					lbuemail.setText("Invalid Update Email!");
 				}else {
 					lbuemail.setText(null);
 				}
@@ -145,11 +145,11 @@ public class DocProfile extends JFrame {
 		contentPane.add(txt_email);
 		txt_email.setColumns(10);
 		
-		JLabel lblNewLabel_5 = new JLabel("Qualification");
-		lblNewLabel_5.setForeground(new Color(0, 51, 204));
-		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_5.setBounds(126, 232, 88, 16);
-		contentPane.add(lblNewLabel_5);
+		JLabel lbqualification = new JLabel("Qualification");
+		lbqualification.setForeground(new Color(0, 51, 204));
+		lbqualification.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbqualification.setBounds(126, 232, 88, 16);
+		contentPane.add(lbqualification);
 		
 		txt_qualification = new JTextField();
 		txt_qualification.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -157,11 +157,11 @@ public class DocProfile extends JFrame {
 		contentPane.add(txt_qualification);
 		txt_qualification.setColumns(10);
 		
-		JLabel lblNewLabel_6 = new JLabel("Contact number");
-		lblNewLabel_6.setForeground(new Color(0, 51, 204));
-		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_6.setBounds(126, 267, 132, 16);
-		contentPane.add(lblNewLabel_6);
+		JLabel lbcontact = new JLabel("Contact number");
+		lbcontact.setForeground(new Color(0, 51, 204));
+		lbcontact.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbcontact.setBounds(126, 267, 132, 16);
+		contentPane.add(lbcontact);
 		
 		JLabel lbucontact = new JLabel("");
 		lbucontact.setForeground(Color.RED);
@@ -178,7 +178,7 @@ public class DocProfile extends JFrame {
 				Pattern patt = Pattern.compile(PATTERN);
 				Matcher match = patt.matcher(txt_contact.getText());
 				if(!match.matches()) {
-					lbucontact.setText("Invalid Contact Number!");
+					lbucontact.setText("Invalid Update Contact Number!");
 				}else {
 					lbucontact.setText(null);
 				}
@@ -191,11 +191,11 @@ public class DocProfile extends JFrame {
 		contentPane.add(txt_contact);
 		txt_contact.setColumns(10);
 		
-		JLabel lblNewLabel_7 = new JLabel("Username");
-		lblNewLabel_7.setForeground(new Color(0, 51, 204));
-		lblNewLabel_7.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_7.setBounds(126, 306, 102, 16);
-		contentPane.add(lblNewLabel_7);
+		JLabel lbusername = new JLabel("Username");
+		lbusername.setForeground(new Color(0, 51, 204));
+		lbusername.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbusername.setBounds(126, 306, 102, 16);
+		contentPane.add(lbusername);
 		
 		JLabel lbuusername = new JLabel("");
 		lbuusername.setForeground(Color.RED);
@@ -211,7 +211,7 @@ public class DocProfile extends JFrame {
 				Pattern patt = Pattern.compile(PATTERN);
 				Matcher match = patt.matcher(txt_username.getText());
 				if(!match.matches()) {
-					lbuusername.setText("Invalid Username!");
+					lbuusername.setText("Invalid Update Username!");
 				}else {
 					lbuusername.setText(null);
 				}
@@ -222,11 +222,11 @@ public class DocProfile extends JFrame {
 		contentPane.add(txt_username);
 		txt_username.setColumns(10);
 		
-		JLabel lblNewLabel_8 = new JLabel("Password");
-		lblNewLabel_8.setForeground(new Color(0, 51, 204));
-		lblNewLabel_8.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_8.setBounds(126, 341, 102, 16);
-		contentPane.add(lblNewLabel_8);
+		JLabel lbpassword = new JLabel("Password");
+		lbpassword.setForeground(new Color(0, 51, 204));
+		lbpassword.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbpassword.setBounds(126, 341, 102, 16);
+		contentPane.add(lbpassword);
 		
 		JLabel lbupassword = new JLabel("");
 		lbupassword.setForeground(Color.RED);
@@ -242,7 +242,7 @@ public class DocProfile extends JFrame {
 				Pattern patt = Pattern.compile(PATTERN);
 				Matcher match = patt.matcher(txt_password.getText());
 				if(!match.matches()) {
-					lbupassword.setText("Invalid Password!");
+					lbupassword.setText("Invalid Update Password!");
 				}else {
 					lbupassword.setText(null);
 				}
@@ -347,16 +347,21 @@ public class DocProfile extends JFrame {
 		});
 		scrollPane.setViewportView(table);
 		
-		JLabel lblNewLabel_4 = new JLabel("ID");
-		lblNewLabel_4.setForeground(new Color(0, 51, 204));
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_4.setBounds(126, 81, 56, 16);
-		contentPane.add(lblNewLabel_4);
+		JLabel lbid = new JLabel("ID");
+		lbid.setForeground(new Color(0, 51, 204));
+		lbid.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbid.setBounds(126, 81, 56, 16);
+		contentPane.add(lbid);
 		
 		txt_id = new JTextField();
 		txt_id.setBounds(301, 84, 256, 22);
 		contentPane.add(txt_id);
 		txt_id.setColumns(10);
+		
+		JLabel lblNewLabel_9 = new JLabel("");
+		lblNewLabel_9.setIcon(new ImageIcon(DocLogin.class.getResource("/IT20122782/Image/login.jpeg")));
+		lblNewLabel_9.setBounds(0, 32, 800, 755);
+		contentPane.add(lblNewLabel_9);
 		
 		ShowData();
 		
