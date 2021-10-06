@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -25,22 +26,26 @@ import java.sql.Statement;
 import java.text.MessageFormat;
 
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
 import javax.swing.JTextArea;
 import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class DocAppoin extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
+	private JTable tb;
 	
 	
 	Connection con = null;
 	PreparedStatement prestmt = null;
 	ResultSet rs = null;
+	private JTextField txtsearch;
 
 	/**
 	 * Launch the application.
@@ -127,15 +132,15 @@ public class DocAppoin extends JFrame {
 		scrollPane.setBounds(140, 173, 452, 283);
 		contentPane.add(scrollPane);
 		
-		table = new JTable();
-		scrollPane.setViewportView(table);
+		tb = new JTable();
+		scrollPane.setViewportView(tb);
 		
 		JButton btnprint = new JButton("Print Report");
 		btnprint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				MessageFormat header = new MessageFormat("Details Of Appoinments");
 				try {
-					table.print(JTable.PrintMode.FIT_WIDTH, header, null);
+					tb.print(JTable.PrintMode.FIT_WIDTH, header, null);
 				}catch(Exception e) {
 					JOptionPane.showMessageDialog(null,"Cannot be print!");
 				}
@@ -147,10 +152,31 @@ public class DocAppoin extends JFrame {
 		btnprint.setBounds(542, 486, 170, 35);
 		contentPane.add(btnprint);
 		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(DocLogin.class.getResource("/IT20122782/Image/login.jpeg")));
-		lblNewLabel_2.setBounds(0, 36, 771, 515);
-		contentPane.add(lblNewLabel_2);
+		JLabel lbsearch = new JLabel("Search");
+		lbsearch.setForeground(new Color(0, 51, 204));
+		lbsearch.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lbsearch.setBounds(34, 121, 84, 16);
+		contentPane.add(lbsearch);
+		
+		txtsearch = new JTextField();
+		txtsearch.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				DefaultTableModel table = (DefaultTableModel)tb.getModel();
+				String search = txtsearch.getText().toLowerCase();
+				TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+				tb.setRowSorter(tr);
+				tr.setRowFilter(RowFilter.regexFilter(search));
+			}
+		});
+		txtsearch.setBounds(115, 119, 150, 22);
+		contentPane.add(txtsearch);
+		txtsearch.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(DocLogin.class.getResource("/IT20122782/Image/login.jpeg")));
+		lblNewLabel.setBounds(0, 35, 771, 536);
+		contentPane.add(lblNewLabel);
 		
 		ShowData();
 	}
@@ -195,13 +221,13 @@ public class DocAppoin extends JFrame {
    		 st.close();
    		 con.close();
    		 
-   		 table.setModel(model);
-   		 table.setAutoResizeMode(0);
-   		 table.getColumnModel().getColumn(0).setPreferredWidth(40);
-   		 table.getColumnModel().getColumn(1).setPreferredWidth(100);
-   		 table.getColumnModel().getColumn(2).setPreferredWidth(100);
-   		 table.getColumnModel().getColumn(3).setPreferredWidth(100);
-   		 table.getColumnModel().getColumn(4).setPreferredWidth(150);
+   		 tb.setModel(model);
+   		 tb.setAutoResizeMode(0);
+   		 tb.getColumnModel().getColumn(0).setPreferredWidth(40);
+   		 tb.getColumnModel().getColumn(1).setPreferredWidth(100);
+   		 tb.getColumnModel().getColumn(2).setPreferredWidth(100);
+   		 tb.getColumnModel().getColumn(3).setPreferredWidth(100);
+   		 tb.getColumnModel().getColumn(4).setPreferredWidth(150);
    		 
    		 
    	 }catch(Exception e){
