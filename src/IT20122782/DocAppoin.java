@@ -71,14 +71,14 @@ public class DocAppoin extends JFrame {
 		setUndecorated(true);
 		setLocationRelativeTo(null);
 		
-		JLabel lblNewLabel = new JLabel("My Appoinments");
-		lblNewLabel.setForeground(new Color(95, 158, 160));
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel.setBounds(292, 48, 188, 35);
-		contentPane.add(lblNewLabel);
+		JLabel lblappoinment = new JLabel("My Appoinments");
+		lblappoinment.setForeground(new Color(95, 158, 160));
+		lblappoinment.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblappoinment.setBounds(292, 48, 188, 35);
+		contentPane.add(lblappoinment);
 		
-		JButton btnNewButton = new JButton("< Back");
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		JButton btnback = new JButton("< Back");
+		btnback.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
@@ -87,11 +87,11 @@ public class DocAppoin extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton.setBackground(new Color(95, 158, 160));
-		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnNewButton.setBounds(34, 486, 113, 35);
-		contentPane.add(btnNewButton);
+		btnback.setBackground(new Color(95, 158, 160));
+		btnback.setForeground(Color.WHITE);
+		btnback.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnback.setBounds(34, 486, 113, 35);
+		contentPane.add(btnback);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(95, 158, 160));

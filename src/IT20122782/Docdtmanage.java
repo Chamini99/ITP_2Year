@@ -31,7 +31,7 @@ import javax.swing.ImageIcon;
 public class Docdtmanage extends JFrame {
 
 	private JPanel contentPane;
-	private JButton btnNewButton;
+	private JButton btnback;
 	private JPanel panel;
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel_2;
@@ -77,11 +77,11 @@ public class Docdtmanage extends JFrame {
 		setUndecorated(true);
 		setLocationRelativeTo(null);
 		
-		JLabel lblNewLabel = new JLabel("Date & Time Management");
-		lblNewLabel.setForeground(new Color(95, 158, 160));
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel.setBounds(191, 54, 262, 25);
-		contentPane.add(lblNewLabel);
+		JLabel lblDTM = new JLabel("Date & Time Management");
+		lblDTM.setForeground(new Color(95, 158, 160));
+		lblDTM.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblDTM.setBounds(191, 54, 262, 25);
+		contentPane.add(lblDTM);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 103, 431, 326);
@@ -97,8 +97,8 @@ public class Docdtmanage extends JFrame {
 		});
 		scrollPane.setViewportView(table);
 		
-		btnNewButton = new JButton("< Back");
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		btnback = new JButton("< Back");
+		btnback.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
@@ -107,11 +107,11 @@ public class Docdtmanage extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setBackground(new Color(95, 158, 160));
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnNewButton.setBounds(41, 458, 111, 44);
-		contentPane.add(btnNewButton);
+		btnback.setForeground(Color.WHITE);
+		btnback.setBackground(new Color(95, 158, 160));
+		btnback.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnback.setBounds(41, 458, 111, 44);
+		contentPane.add(btnback);
 		
 		panel = new JPanel();
 		panel.setBackground(new Color(95, 158, 160));

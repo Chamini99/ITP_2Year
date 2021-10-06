@@ -87,11 +87,11 @@ public class DocProfile extends JFrame {
 		setUndecorated(true);
 		setLocationRelativeTo(null);  
 		
-		JLabel lblNewLabel = new JLabel("My Profile");
-		lblNewLabel.setForeground(new Color(95, 158, 160));
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel.setBounds(337, 46, 102, 25);
-		contentPane.add(lblNewLabel);
+		JLabel lblmyprofile = new JLabel("My Profile");
+		lblmyprofile.setForeground(new Color(95, 158, 160));
+		lblmyprofile.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblmyprofile.setBounds(337, 46, 102, 25);
+		contentPane.add(lblmyprofile);
 		
 		JLabel lbname = new JLabel("Name");
 		lbname.setForeground(new Color(0, 51, 204));
@@ -256,7 +256,7 @@ public class DocProfile extends JFrame {
 		
 	   
 		
-		JButton btnNewButton = new JButton("UPDATE");
+		JButton btnupdate = new JButton("UPDATE");
 		/*btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -266,21 +266,21 @@ public class DocProfile extends JFrame {
 				setVisible(false);
 			}
 		});*/
-		btnNewButton.addActionListener(new ActionListener() {
+		btnupdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(table.getSelectedRow() >= 0) {
 					Update(txt_id.getText());
 				}
 			}
 		});
-		btnNewButton.setBackground(new Color(95, 158, 160));
-		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnNewButton.setBounds(619, 403, 132, 41);
-		contentPane.add(btnNewButton);
+		btnupdate.setBackground(new Color(95, 158, 160));
+		btnupdate.setForeground(Color.WHITE);
+		btnupdate.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnupdate.setBounds(619, 403, 132, 41);
+		contentPane.add(btnupdate);
 		
-		JButton btnNewButton_1 = new JButton("< Back");
-		btnNewButton_1.addMouseListener(new MouseAdapter() {
+		JButton btnback = new JButton("< Back");
+		btnback.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
@@ -289,11 +289,11 @@ public class DocProfile extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_1.setForeground(Color.WHITE);
-		btnNewButton_1.setBackground(new Color(95, 158, 160));
-		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnNewButton_1.setBounds(30, 403, 122, 41);
-		contentPane.add(btnNewButton_1);
+		btnback.setForeground(Color.WHITE);
+		btnback.setBackground(new Color(95, 158, 160));
+		btnback.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnback.setBounds(30, 403, 122, 41);
+		contentPane.add(btnback);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(95, 158, 160));

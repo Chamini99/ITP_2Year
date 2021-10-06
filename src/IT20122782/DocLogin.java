@@ -94,6 +94,7 @@ public class DocLogin {
 		frame.getContentPane().add(txt_password);
 		
 		JButton btn_login = new JButton("Login");
+		btn_login.setBackground(new Color(95, 158, 160));
 		btn_login.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {

@@ -153,19 +153,19 @@ public class DocHome extends JFrame {
 		lblX_1.setBounds(524, 13, 32, 16);
 		panel.add(lblX_1);
 		
-		JButton btnNewButton = new JButton("Logout");
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		JButton btnlogout = new JButton("Logout");
+		btnlogout.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				DocLogin a = new DocLogin();
 				 a.setVisible(true);
 			}
 		});
-		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setBackground(new Color(95, 158, 160));
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnNewButton.setBounds(438, 284, 111, 38);
-		contentPane.add(btnNewButton);
+		btnlogout.setForeground(Color.WHITE);
+		btnlogout.setBackground(new Color(95, 158, 160));
+		btnlogout.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnlogout.setBounds(438, 284, 111, 38);
+		contentPane.add(btnlogout);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(DocLogin.class.getResource("/IT20122782/Image/login.jpeg")));
