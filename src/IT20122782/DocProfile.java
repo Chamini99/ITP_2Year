@@ -370,7 +370,7 @@ public class DocProfile extends JFrame {
 	static Connection con () {
 		try {
 			String driver = "com.mysql.jdbc.Driver";
-			String url = "jdbc:mysql://localhost/db_doctor";
+			String url = "jdbc:mysql://localhost/suwasetha_vaccine";
 			Class.forName(driver);
 			return DriverManager.getConnection(url,"root","");
 		}catch(Exception e){

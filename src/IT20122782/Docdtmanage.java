@@ -84,7 +84,7 @@ public class Docdtmanage extends JFrame {
 		contentPane.add(lblDTM);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 103, 431, 326);
+		scrollPane.setBounds(12, 137, 431, 261);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -146,49 +146,49 @@ public class Docdtmanage extends JFrame {
 		lb_id = new JLabel("ID");
 		lb_id.setForeground(new Color(0, 51, 204));
 		lb_id.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lb_id.setBounds(539, 111, 56, 16);
+		lb_id.setBounds(520, 163, 56, 16);
 		contentPane.add(lb_id);
 		
 		lb_day = new JLabel("DAY");
 		lb_day.setForeground(new Color(0, 51, 204));
 		lb_day.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lb_day.setBounds(539, 149, 56, 16);
+		lb_day.setBounds(520, 206, 56, 16);
 		contentPane.add(lb_day);
 		
 		lb_date = new JLabel("Date");
 		lb_date.setForeground(new Color(0, 51, 204));
 		lb_date.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lb_date.setBounds(539, 182, 56, 16);
+		lb_date.setBounds(520, 247, 56, 16);
 		contentPane.add(lb_date);
 		
 		lb_time = new JLabel("Time");
 		lb_time.setForeground(new Color(0, 51, 204));
 		lb_time.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lb_time.setBounds(539, 221, 56, 16);
+		lb_time.setBounds(520, 287, 56, 16);
 		contentPane.add(lb_time);
 		
 		txtid = new JTextField();
 		txtid.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtid.setBounds(607, 109, 181, 22);
+		txtid.setBounds(607, 160, 181, 22);
 		contentPane.add(txtid);
 		txtid.setColumns(10);
 		
 		txtday = new JTextField();
 		txtday.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtday.setColumns(10);
-		txtday.setBounds(607, 147, 181, 22);
+		txtday.setBounds(607, 203, 181, 22);
 		contentPane.add(txtday);
 		
 		txtdate = new JTextField();
 		txtdate.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtdate.setColumns(10);
-		txtdate.setBounds(607, 180, 181, 22);
+		txtdate.setBounds(607, 244, 181, 22);
 		contentPane.add(txtdate);
 		
 		txttime = new JTextField();
 		txttime.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txttime.setColumns(10);
-		txttime.setBounds(607, 219, 181, 22);
+		txttime.setBounds(607, 284, 181, 22);
 		contentPane.add(txttime);
 		
 		JButton btnUpdate = new JButton("Update");
@@ -202,7 +202,7 @@ public class Docdtmanage extends JFrame {
 		btnUpdate.setForeground(Color.WHITE);
 		btnUpdate.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnUpdate.setBackground(new Color(95, 158, 160));
-		btnUpdate.setBounds(607, 313, 111, 44);
+		btnUpdate.setBounds(534, 385, 111, 44);
 		contentPane.add(btnUpdate);
 		
 		JButton btnDelete = new JButton("Delete");
@@ -216,7 +216,7 @@ public class Docdtmanage extends JFrame {
 		btnDelete.setForeground(Color.WHITE);
 		btnDelete.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnDelete.setBackground(new Color(95, 158, 160));
-		btnDelete.setBounds(607, 385, 111, 44);
+		btnDelete.setBounds(677, 385, 111, 44);
 		contentPane.add(btnDelete);
 		
 		lblNewLabel_3 = new JLabel("");
@@ -230,7 +230,7 @@ public class Docdtmanage extends JFrame {
 	static Connection con () {
 		try {
 			String driver = "com.mysql.jdbc.Driver";
-			String url = "jdbc:mysql://localhost/db_doctor";
+			String url = "jdbc:mysql://localhost/suwasetha_vaccine";
 			Class.forName(driver);
 			return DriverManager.getConnection(url,"root","");
 		}catch(Exception e){

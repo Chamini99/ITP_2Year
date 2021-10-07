@@ -40,12 +40,12 @@ public class DocAppoin extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tb;
-	
+	private JTextField txtsearch;
 	
 	Connection con = null;
 	PreparedStatement prestmt = null;
 	ResultSet rs = null;
-	private JTextField txtsearch;
+	
 
 	/**
 	 * Launch the application.
@@ -75,6 +75,7 @@ public class DocAppoin extends JFrame {
 		contentPane.setLayout(null);
 		setUndecorated(true);
 		setLocationRelativeTo(null);
+		
 		
 		JLabel lblappoinment = new JLabel("My Appoinments");
 		lblappoinment.setForeground(new Color(95, 158, 160));
@@ -159,17 +160,18 @@ public class DocAppoin extends JFrame {
 		contentPane.add(lbsearch);
 		
 		txtsearch = new JTextField();
+		txtsearch.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtsearch.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
 				DefaultTableModel table = (DefaultTableModel)tb.getModel();
-				String search = txtsearch.getText().toLowerCase();
+				String searchString = txtsearch.getText();
 				TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
 				tb.setRowSorter(tr);
-				tr.setRowFilter(RowFilter.regexFilter(search));
+				tr.setRowFilter(RowFilter.regexFilter(searchString));
 			}
 		});
-		txtsearch.setBounds(115, 119, 150, 22);
+		txtsearch.setBounds(115, 119, 195, 28);
 		contentPane.add(txtsearch);
 		txtsearch.setColumns(10);
 		
@@ -184,7 +186,7 @@ public class DocAppoin extends JFrame {
 	static Connection con () {
 		try {
 			String driver = "com.mysql.jdbc.Driver";
-			String url = "jdbc:mysql://localhost/db_doctor";
+			String url = "jdbc:mysql://localhost/suwasetha_vaccine";
 			Class.forName(driver);
 			return DriverManager.getConnection(url,"root","");
 		}catch(Exception e){
@@ -234,4 +236,5 @@ public class DocAppoin extends JFrame {
    		 System.out.println("Error" +e);
    	 }
 		}
+
 }

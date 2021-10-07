@@ -99,7 +99,7 @@ public class DocLogin {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					Class.forName("com.mysql.jdbc.Driver");
-					Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/db_doctor","root","");
+					Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/suwasetha_vaccine","root","");
 					java.sql.Statement stmt=conn.createStatement();
 					String sql= "select  * from tb_doctorinfo where username='"+txt_username.getText()+"'and password='"+txt_password.getText()+"'";
 					ResultSet rs= stmt.executeQuery(sql);

@@ -267,7 +267,7 @@ public class DocRegistration extends JFrame {
 				
 				try {
 					String sql = "INSERT INTO tb_doctorinfo(name, nic, email, qualification, phone_no, username, password ) values (?,?,?,?,?,?,?)";
-					con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_doctor","root","");
+					con = DriverManager.getConnection("jdbc:mysql://localhost:3306/suwasetha_vaccine","root","");
 					prestmt = con.prepareStatement(sql);
 					prestmt.setString(1, txt_name.getText());
 					prestmt.setString(2, txt_NIC.getText());
