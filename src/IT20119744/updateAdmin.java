@@ -537,7 +537,7 @@ public class updateAdmin extends JFrame {
 		});
 		scrollPane.setViewportView(table);
 		
-		JLabel label_11 = new JLabel("<<");
+		JLabel label_11 = new JLabel("<<<");
 		label_11.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -548,7 +548,7 @@ public class updateAdmin extends JFrame {
 		});
 		label_11.setForeground(new Color(255, 255, 255));
 		label_11.setFont(new Font("Segoe UI Black", Font.BOLD, 24));
-		label_11.setBounds(23, 0, 40, 33);
+		label_11.setBounds(23, 0, 68, 33);
 		panel.add(label_11);
 		
 		JLabel lblNewLabel_6 =new JLabel("");

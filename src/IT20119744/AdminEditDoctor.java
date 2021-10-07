@@ -1,12 +1,17 @@
 package IT20119744;
 
 import java.awt.BorderLayout;
-
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,10 +21,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
@@ -27,16 +34,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.JScrollPane;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
-public class editDoctor extends JFrame {
+public class AdminEditDoctor extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField searchdoctor;
@@ -58,7 +57,7 @@ public class editDoctor extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					editDoctor frame = new editDoctor();
+					AdminEditDoctor frame = new AdminEditDoctor();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,6 +65,7 @@ public class editDoctor extends JFrame {
 			}
 		});
 	}
+	
 	
 	private void displaydoctor() {
 		DefaultTableModel model = new DefaultTableModel();
@@ -201,7 +201,7 @@ public class editDoctor extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public editDoctor() {
+	public AdminEditDoctor() {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
@@ -231,7 +231,7 @@ public class editDoctor extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				//setVisible(false);
 				if(JOptionPane.showConfirmDialog(null,"Do you want to Exit?","Confirmation",JOptionPane.YES_NO_OPTION)==0) {
-					editDoctor.this.dispose();
+					AdminEditDoctor.this.dispose();
 				}
 			}
 			@Override
@@ -576,7 +576,7 @@ public class editDoctor extends JFrame {
 		btnDelete.setBounds(744, 588, 150, 40);
 		contentPane.add(btnDelete);
 		
-		JLabel label_1 = new JLabel("<<<");
+		JLabel label_1 = new JLabel("<<");
 		label_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -587,7 +587,7 @@ public class editDoctor extends JFrame {
 		});
 		label_1.setForeground(new Color(255, 255, 255));
 		label_1.setFont(new Font("Segoe UI Black", Font.BOLD, 24));
-		label_1.setBounds(23, 0, 72, 33);
+		label_1.setBounds(23, 0, 40, 33);
 		panel.add(label_1);
 		
 		imagelbl =new JLabel("");
@@ -596,4 +596,5 @@ public class editDoctor extends JFrame {
 		imagelbl.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
 		contentPane.add(imagelbl);
 	}
+
 }

@@ -21,6 +21,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.MessageFormat;
 
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -32,13 +33,14 @@ import javax.swing.table.TableRowSorter;
 import javax.swing.JScrollPane;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.print.PrinterException;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class manageAdmin extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
+	private JTable table_admin;
 	private JTextField searchadmin;
 	private JButton btnDelete;
 	
@@ -89,14 +91,14 @@ public class manageAdmin extends JFrame {
 			stmt_retrive.close();
 			conn.close();
 			
-			table.setModel(model);
-			table.setAutoResizeMode(0);
-			table.getColumnModel().getColumn(0).setPreferredWidth(40);
-			table.getColumnModel().getColumn(1).setPreferredWidth(100);
-			table.getColumnModel().getColumn(2).setPreferredWidth(150);
-			table.getColumnModel().getColumn(3).setPreferredWidth(120);
-			table.getColumnModel().getColumn(4).setPreferredWidth(100);
-			table.getColumnModel().getColumn(5).setPreferredWidth(150);
+			table_admin.setModel(model);
+			table_admin.setAutoResizeMode(0);
+			table_admin.getColumnModel().getColumn(0).setPreferredWidth(40);
+			table_admin.getColumnModel().getColumn(1).setPreferredWidth(100);
+			table_admin.getColumnModel().getColumn(2).setPreferredWidth(150);
+			table_admin.getColumnModel().getColumn(3).setPreferredWidth(120);
+			table_admin.getColumnModel().getColumn(4).setPreferredWidth(100);
+			table_admin.getColumnModel().getColumn(5).setPreferredWidth(150);
 			
 			
 		}catch(Exception e){
@@ -120,7 +122,7 @@ public class manageAdmin extends JFrame {
 			}
 		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 580, 375);
+		setBounds(100, 100, 580, 420);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -230,11 +232,11 @@ public class manageAdmin extends JFrame {
 		searchadmin.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
-					DefaultTableModel tableadmin =(DefaultTableModel)table.getModel();
+					DefaultTableModel tableadmin =(DefaultTableModel)table_admin.getModel();
 					String search = searchadmin.getText().toLowerCase();
 					
 					TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tableadmin);
-					table.setRowSorter(tr);
+					table_admin.setRowSorter(tr);
 					tr.setRowFilter(RowFilter.regexFilter(search));
 					
 			}
@@ -256,10 +258,10 @@ public class manageAdmin extends JFrame {
 		contentPane.add(lblAdmin);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 142, 550, 180);
+		scrollPane.setBounds(12, 142, 550, 200);
 		contentPane.add(scrollPane);
 		
-		JLabel label_1 = new JLabel("<<");
+		JLabel label_1 = new JLabel("<<<");
 		label_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -270,14 +272,34 @@ public class manageAdmin extends JFrame {
 		});
 		label_1.setForeground(new Color(255, 255, 255));
 		label_1.setFont(new Font("Segoe UI Black", Font.BOLD, 24));
-		label_1.setBounds(23, 0, 40, 33);
+		label_1.setBounds(23, 0, 74, 33);
 		panel.add(label_1);
 		
-		table = new JTable();
-		scrollPane.setViewportView(table);
+		table_admin = new JTable();
+		scrollPane.setViewportView(table_admin);
+		
+		JButton btnPrintReport = new JButton("PRINT LIST");
+		btnPrintReport.setForeground(new Color(255, 255, 255));
+		btnPrintReport.setBackground(new Color(95, 158, 160));
+		btnPrintReport.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MessageFormat header = new MessageFormat("List of Admins");
+				MessageFormat footer = new MessageFormat("Suwasetha Vaccine Management");
+				
+				try {
+					table_admin.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+					
+				}catch(PrinterException e){
+					JOptionPane.showMessageDialog(null,"Cannot be Print"+e.getMessage());
+					
+				}
+			}
+		});
+		btnPrintReport.setBounds(208, 350, 150, 40);
+		contentPane.add(btnPrintReport);
 		
 		JLabel lblNewLabel_1 =new JLabel("");
-		lblNewLabel_1.setBounds(0, 0, 580, 375);
+		lblNewLabel_1.setBounds(0, 0, 580, 420);
 		lblNewLabel_1.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
 		contentPane.add(lblNewLabel_1);
 	}

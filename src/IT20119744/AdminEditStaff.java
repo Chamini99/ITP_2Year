@@ -4,8 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,31 +26,24 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
-import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
-public class editSupplier extends JFrame {
+public class AdminEditStaff extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField updateid;
 	private JTextField updatename;
-	private JTextField updateaddress;
+	private JTextField updatenic;
+	private JTextField updateage;
 	private JTextField updateemail;
-	private JTextField updateusername;
 	private JTextField updatepassword;
-	private JTextField searchsupplier;
+	private JTextField searchstaff;
 	private JTable table;
 
 	/**
@@ -54,7 +53,7 @@ public class editSupplier extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					editSupplier frame = new editSupplier();
+					AdminEditStaff frame = new AdminEditStaff();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -63,14 +62,16 @@ public class editSupplier extends JFrame {
 		});
 	}
 	
-	private void displaysupplier() {
+	private void displaystaff() {
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("ID");
 		model.addColumn("Name");
-		model.addColumn("Address");
+		model.addColumn("NIC");
+		model.addColumn("Age");
 		model.addColumn("Email");
-		model.addColumn("Username");
+		//model.addColumn("Phone");
 		model.addColumn("Password");
+		
 		
 		
 		//model.setColumnIdentifiers();
@@ -78,17 +79,18 @@ public class editSupplier extends JFrame {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/suwasetha_vaccine","root","");
 			Statement stmt=conn.createStatement();
-			String query= "select company_id, company_name, company_address, company_email, username, password from tbl_supplycompany";
+			String query= "select staff_id, Full_name, NIC, Age, Email, Password from tbl_staffmember";
 			ResultSet rs= stmt.executeQuery(query);
 			
 			while(rs.next()) {
 				model.addRow(new Object[] {
-						rs.getString("company_id"),
-						rs.getString("company_name"),
-						rs.getString("company_address"),
-						rs.getString("company_email"),
-						rs.getString("username"),
-						rs.getString("password")
+						rs.getString("staff_id"),
+						rs.getString("Full_name"),
+						rs.getString("NIC"),
+						rs.getString("Age"),
+						rs.getString("Email"),
+						rs.getString("Password")
+						
 				});
 			}
 			rs.close();
@@ -99,9 +101,9 @@ public class editSupplier extends JFrame {
 			table.setAutoResizeMode(0);
 			table.getColumnModel().getColumn(0).setPreferredWidth(40);
 			table.getColumnModel().getColumn(1).setPreferredWidth(100);
-			table.getColumnModel().getColumn(2).setPreferredWidth(150);
-			table.getColumnModel().getColumn(3).setPreferredWidth(120);
-			table.getColumnModel().getColumn(4).setPreferredWidth(100);
+			table.getColumnModel().getColumn(2).setPreferredWidth(80);
+			table.getColumnModel().getColumn(3).setPreferredWidth(40);
+			table.getColumnModel().getColumn(4).setPreferredWidth(150);
 			table.getColumnModel().getColumn(5).setPreferredWidth(150);
 			
 			
@@ -111,22 +113,22 @@ public class editSupplier extends JFrame {
 	
 	}
 	
-	private void settextfields(String company_id) {
+	private void settextfields(String staff_id) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/suwasetha_vaccine","root","");
-			String query= "select company_id, company_name, company_address, company_email, username, password from tbl_supplycompany where company_id = ?";
+			String query= "select staff_id, Full_name, NIC, Age, Email, Password from tbl_staffmember where staff_id = ?";
 			PreparedStatement ps = conn.prepareStatement(query);
-			ps.setString(1, company_id);
+			ps.setString(1, staff_id);
 			ResultSet rs= ps.executeQuery();
 			
 			while(rs.next()) {
-				updateid.setText(rs.getString("company_id"));
-				updatename.setText(rs.getString("company_name"));
-				updateaddress.setText(rs.getString("company_address"));
-				updateemail.setText(rs.getString("company_email"));
-				updateusername.setText(rs.getString("username"));
-				updatepassword.setText(rs.getString("password"));
+				updateid.setText(rs.getString("staff_id"));
+				updatename.setText(rs.getString("Full_name"));
+				updatenic.setText(rs.getString("NIC"));
+				updateage.setText(rs.getString("Age"));
+				updateemail.setText(rs.getString("Email"));
+				updatepassword.setText(rs.getString("Password"));
 				
 				
 			}
@@ -139,24 +141,24 @@ public class editSupplier extends JFrame {
 		}
 	}
 	
-	private void updatesupplier(String company_id) {
+	private void updatestaff(String staff_id) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/suwasetha_vaccine","root","");
-			String query= "update tbl_supplycompany set company_name = ?, company_address = ?, company_email = ?, username = ?, password = ?  where company_id = ?";
+			String query= "update tbl_staffmember set Full_name = ?, NIC = ?, Age = ?, Email = ?, Password = ?  where staff_id = ?";
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setString(1, updatename.getText());
-			ps.setString(2, updateaddress.getText());
-			ps.setString(3, updateemail.getText());
-			ps.setString(4, updateusername.getText());
+			ps.setString(2, updatenic.getText());
+			ps.setString(3, updateage.getText());
+			ps.setString(4, updateemail.getText());
 			ps.setString(5, updatepassword.getText());
-			ps.setString(6, company_id);
+			ps.setString(6, staff_id);
 			ps.execute();
 			
 			ps.close();
 			conn.close();
 			JOptionPane.showMessageDialog(null,"Sussfully Updated");
-			displaysupplier();
+			displaystaff();
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -164,13 +166,13 @@ public class editSupplier extends JFrame {
 	}
 	
 	
-	private void deletesupplier(String company_id) {
+	private void deletestaff(String staff_id) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/suwasetha_vaccine","root","");
-			String query= "delete from tbl_supplycompany where company_id = ?";
+			String query= "delete from tbl_staffmember where staff_id = ?";
 			PreparedStatement ps = conn.prepareStatement(query);
-			ps.setString(1, company_id);
+			ps.setString(1, staff_id);
 			
 			ps.execute();
 			
@@ -178,20 +180,21 @@ public class editSupplier extends JFrame {
 			conn.close();
 			//JOptionPane.showConfirmDialog(null,"Do you want to Delete?","Confirmation",JOptionPane.YES_NO_OPTION);
 			JOptionPane.showMessageDialog(null,"Sussfully Deleted");
-			displaysupplier();
+			displaystaff();
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Create the frame.
 	 */
-	public editSupplier() {
+	public AdminEditStaff() {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent arg0) {
-				displaysupplier();
+				displaystaff();
 			}
 		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -217,17 +220,17 @@ public class editSupplier extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				//setVisible(false);
 				if(JOptionPane.showConfirmDialog(null,"Do you want to Exit?","Confirmation",JOptionPane.YES_NO_OPTION)==0) {
-					editSupplier.this.dispose();
+					AdminEditStaff.this.dispose();
 				}
-				
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				lblX.setForeground(Color.RED);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				lblX.setForeground(Color.white);
+
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblX.setForeground(Color.RED);
 			}
 		});
 		lblX.setForeground(new Color(255, 255, 255));
@@ -242,23 +245,33 @@ public class editSupplier extends JFrame {
 				setState(ICONIFIED);
 			}
 			@Override
-			public void mouseEntered(MouseEvent e) {
-				label.setForeground(Color.RED);
-			}
-			@Override
 			public void mouseExited(MouseEvent e) {
 				label.setForeground(Color.white);
+
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				label.setForeground(Color.RED);
 			}
 		});
 		label.setForeground(new Color(255, 255, 255));
 		label.setFont(new Font("Segoe UI", Font.BOLD, 40));
 		setUndecorated(true);
 		
-		JLabel lblNewLabel_2 = new JLabel("Supplier");
+		JLabel lblNewLabel_2 = new JLabel("Staff");
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		lblNewLabel_2.setForeground(new Color(95, 158, 160));
 		lblNewLabel_2.setBounds(132, 46, 120, 33);
 		contentPane.add(lblNewLabel_2);
+		
+		
+		
+		/*JLabel lblNewLabel_3 = new JLabel("<< Back");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setForeground(new Color(95, 158, 160));
+		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		lblNewLabel_3.setBounds(20, 654, 100, 33);
+		contentPane.add(lblNewLabel_3, BorderLayout.SOUTH);*/
 		
 		JLabel lblSearch = new JLabel("Search");
 		lblSearch.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -279,19 +292,19 @@ public class editSupplier extends JFrame {
 		lblNewLabel_1.setBounds(20, 192, 175, 33);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_21 = new JLabel("Address");
+		JLabel lblNewLabel_21 = new JLabel("NIC");
 		lblNewLabel_21.setFont(new Font("Times New Roman", Font.BOLD, 22));
 		lblNewLabel_21.setForeground(new Color(95, 158, 160));
 		lblNewLabel_21.setBounds(20, 262, 170, 33);
 		contentPane.add(lblNewLabel_21);
 		
-		JLabel lblNewLabel_31 = new JLabel("Email");
+		JLabel lblNewLabel_31 = new JLabel("Age");
 		lblNewLabel_31.setFont(new Font("Times New Roman", Font.BOLD, 22));
 		lblNewLabel_31.setForeground(new Color(95, 158, 160));
 		lblNewLabel_31.setBounds(20, 332, 170, 33);
 		contentPane.add(lblNewLabel_31);
 		
-		JLabel lblNewLabel_4 = new JLabel("Username");
+		JLabel lblNewLabel_4 = new JLabel("Email");
 		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 22));
 		lblNewLabel_4.setForeground(new Color(95, 158, 160));
 		lblNewLabel_4.setBounds(20, 402, 170, 33);
@@ -303,18 +316,18 @@ public class editSupplier extends JFrame {
 		lblNewLabel_5.setBounds(20, 472, 170, 33);
 		contentPane.add(lblNewLabel_5);
 		
+		
 		JButton btnUpdate = new JButton("Update");
 		btnUpdate.setForeground(new Color(255, 255, 255));
 		btnUpdate.setBackground(new Color(95, 158, 160));
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(table.getSelectedRow()>=0);
-				updatesupplier(updateid.getText());
+				updatestaff(updateid.getText());
 			}
 		});
-		
 		btnUpdate.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		btnUpdate.setBounds(45, 574, 150, 40);
+		btnUpdate.setBounds(20, 570, 150, 40);
 		contentPane.add(btnUpdate);
 		
 		JButton btnDelete = new JButton("Delete");
@@ -323,51 +336,39 @@ public class editSupplier extends JFrame {
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(table.getSelectedRow()>=0);
-				deletesupplier(updateid.getText());
+				deletestaff(updateid.getText());
 			}
 		});
 		btnDelete.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		btnDelete.setBounds(228, 574, 150, 40);
+		btnDelete.setBounds(218, 570, 150, 40);
 		contentPane.add(btnDelete);
 		
-		JLabel supplierid = new JLabel("");
-		supplierid.setForeground(Color.RED);
-		supplierid.setHorizontalAlignment(SwingConstants.CENTER);
-		supplierid.setBounds(200, 165, 200, 16);
-		contentPane.add(supplierid);
+		JLabel staffid = new JLabel("");
+		staffid.setBounds(200, 165, 200, 16);
+		contentPane.add(staffid);
 		
-		JLabel suppliername = new JLabel("");
-		suppliername.setHorizontalAlignment(SwingConstants.CENTER);
-		suppliername.setForeground(Color.RED);
-		suppliername.setBounds(200, 235, 200, 16);
-		contentPane.add(suppliername);
+		JLabel staffname = new JLabel("");
+		staffname.setBounds(200, 235, 200, 16);
+		contentPane.add(staffname);
 		
-		JLabel supplieraddress = new JLabel("");
-		supplieraddress.setHorizontalAlignment(SwingConstants.CENTER);
-		supplieraddress.setForeground(Color.RED);
-		supplieraddress.setBounds(200, 305, 200, 16);
-		contentPane.add(supplieraddress);
+		JLabel staffnic = new JLabel("");
+		staffnic.setBounds(200, 305, 200, 16);
+		contentPane.add(staffnic);
 		
-		JLabel supplieremail = new JLabel("");
-		supplieremail.setHorizontalAlignment(SwingConstants.CENTER);
-		supplieremail.setForeground(Color.RED);
-		supplieremail.setBounds(200, 375, 200, 16);
-		contentPane.add(supplieremail);
+		JLabel staffage = new JLabel("");
+		staffage.setBounds(200, 375, 200, 16);
+		contentPane.add(staffage);
 		
-		JLabel supplierusername = new JLabel("");
-		supplierusername.setHorizontalAlignment(SwingConstants.CENTER);
-		supplierusername.setForeground(Color.RED);
-		supplierusername.setBounds(200, 445, 200, 16);
-		contentPane.add(supplierusername);
+		JLabel staffemail = new JLabel("");
+		staffemail.setBounds(200, 445, 200, 16);
+		contentPane.add(staffemail);
 		
-		JLabel supplierpassword = new JLabel("");
-		supplierpassword.setHorizontalAlignment(SwingConstants.CENTER);
-		supplierpassword.setForeground(Color.RED);
-		supplierpassword.setBounds(200, 515, 200, 16);
-		contentPane.add(supplierpassword);
+		JLabel staffpassword = new JLabel("");
+		staffpassword.setBounds(200, 515, 200, 16);
+		contentPane.add(staffpassword);
 		
 		updateid = new JTextField();
-		updateid.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		updateid.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updateid.setBounds(200, 122, 200, 33);
 		contentPane.add(updateid);
 		updateid.setColumns(10);
@@ -381,37 +382,57 @@ public class editSupplier extends JFrame {
 				Pattern patt= Pattern.compile(PATTERN);
 				Matcher match=patt.matcher(updatename.getText());
 				if(!match.matches()) {
-					suppliername.setText("Invalid Name!");
+					staffname.setText("Invalid Name!");
 				}else {
-					suppliername.setText(null);
+					staffname.setText(null);
 				}
 			}
 		});
-		updatename.setForeground(new Color(95, 158, 160));
-		updatename.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		updatename.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updatename.setColumns(10);
 		updatename.setBounds(200, 192, 200, 33);
 		contentPane.add(updatename);
+		updatename.setForeground(new Color(95, 158, 160));
 		
-		updateaddress = new JTextField();
-		updateaddress.addKeyListener(new KeyAdapter() {
+		updatenic = new JTextField();
+		updatenic.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
-				String PATTERN ="^[A-Za-z0-9'\\.\\-\\s\\,]$";
+				String PATTERN ="^[0-9]{10}+[a-zA-Z]{1}$";
 				Pattern patt= Pattern.compile(PATTERN);
-				Matcher match=patt.matcher(updateaddress.getText());
+				Matcher match=patt.matcher(updatenic.getText());
 				if(!match.matches()) {
-					supplieraddress.setText("Invalid Name!");
+					staffnic.setText("Invalid Phone!");
 				}else {
-					supplieraddress.setText(null);
+					staffnic.setText(null);
 				}
 			}
 		});
-		updateaddress.setFont(new Font("Times New Roman", Font.PLAIN, 22));
-		updateaddress.setColumns(10);
-		updateaddress.setBounds(202, 262, 200, 33);
-		contentPane.add(updateaddress);
-		updateaddress.setForeground(new Color(95, 158, 160));
+		updatenic.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+		updatenic.setColumns(10);
+		updatenic.setBounds(200, 262, 200, 33);
+		contentPane.add(updatenic);
+		updatenic.setForeground(new Color(95, 158, 160));
+		
+		updateage = new JTextField();
+		updateage.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String PATTERN ="^[0-9]{0,3}$";
+				Pattern patt= Pattern.compile(PATTERN);
+				Matcher match=patt.matcher(updateage.getText());
+				if(!match.matches()) {
+					staffage.setText("Invalid Age!");
+				}else {
+					staffage.setText(null);
+				}
+			}
+		});
+		updateage.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+		updateage.setColumns(10);
+		updateage.setBounds(200, 332, 200, 33);
+		contentPane.add(updateage);
+		updateage.setForeground(new Color(95, 158, 160));
 		
 		updateemail = new JTextField();
 		updateemail.addKeyListener(new KeyAdapter() {
@@ -421,37 +442,17 @@ public class editSupplier extends JFrame {
 				Pattern patt= Pattern.compile(PATTERN);
 				Matcher match=patt.matcher(updateemail.getText());
 				if(!match.matches()) {
-					supplieremail.setText("Invalid Email!");
+					staffemail.setText("Invalid Email!");
 				}else {
-					supplieremail.setText(null);
+					staffemail.setText(null);
 				}
 			}
 		});
-		updateemail.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		updateemail.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		updateemail.setColumns(10);
-		updateemail.setBounds(200, 332, 200, 33);
+		updateemail.setBounds(200, 402, 200, 33);
 		contentPane.add(updateemail);
 		updateemail.setForeground(new Color(95, 158, 160));
-		
-		updateusername = new JTextField();
-		updateusername.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				String PATTERN ="^[a-zA-Z0-9]{0,50}$";
-				Pattern patt= Pattern.compile(PATTERN);
-				Matcher match=patt.matcher(updateusername.getText());
-				if(!match.matches()) {
-					supplierusername.setText("Invalid Name!");
-				}else {
-					supplierusername.setText(null);
-				}
-			}
-		});
-		updateusername.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		updateusername.setColumns(10);
-		updateusername.setBounds(200, 402, 200, 33);
-		contentPane.add(updateusername);
-		updateusername.setForeground(new Color(95, 158, 160));
 		
 		updatepassword = new JTextField();
 		updatepassword.addKeyListener(new KeyAdapter() {
@@ -462,33 +463,33 @@ public class editSupplier extends JFrame {
 				Pattern patt= Pattern.compile(PATTERN);
 				Matcher match=patt.matcher(updatepassword.getText());
 				if(!match.matches()) {
-					supplierpassword.setText("Invalid Password!");
+					staffpassword.setText("Invalid Password!");
 				}else {
-					supplierpassword.setText(null);
+					staffpassword.setText(null);
 				}
 			}
 		});
-		updatepassword.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+		updatepassword.setForeground(new Color(95, 158, 160));
+		updatepassword.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		updatepassword.setColumns(10);
 		updatepassword.setBounds(200, 472, 200, 33);
 		contentPane.add(updatepassword);
-		updatepassword.setForeground(new Color(95, 158, 160));
 		
-		searchsupplier = new JTextField();
-		searchsupplier.addKeyListener(new KeyAdapter() {
+		searchstaff = new JTextField();
+		searchstaff.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
-				DefaultTableModel tablesupplier =(DefaultTableModel)table.getModel();
-				String search = searchsupplier.getText().toLowerCase();
+				DefaultTableModel tablestaff =(DefaultTableModel)table.getModel();
+				String search = searchstaff.getText().toLowerCase();
 				
-				TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tablesupplier);
+				TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tablestaff);
 				table.setRowSorter(tr);
 				tr.setRowFilter(RowFilter.regexFilter(search));
 			}
 		});
-		searchsupplier.setColumns(10);
-		searchsupplier.setBounds(699, 56, 200, 33);
-		contentPane.add(searchsupplier);
+		searchstaff.setColumns(10);
+		searchstaff.setBounds(696, 56, 200, 33);
+		contentPane.add(searchstaff);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(412, 122, 560, 440);
@@ -498,24 +499,24 @@ public class editSupplier extends JFrame {
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String updateid = table.getValueAt(table.getSelectedRow(), 0).toString();
-				settextfields(updateid);
+				String staff_id = table.getValueAt(table.getSelectedRow(), 0).toString();
+				settextfields(staff_id);
 			}
 		});
 		scrollPane.setViewportView(table);
 		
-		JLabel label_1 = new JLabel("<<<");
+		JLabel label_1 = new JLabel("<<");
 		label_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				manageSupplier mS= new manageSupplier ();
+				manageStaff mS= new manageStaff ();
 				mS.setVisible(true);				
 				setVisible(false);
 			}
 		});
 		label_1.setForeground(new Color(255, 255, 255));
 		label_1.setFont(new Font("Segoe UI Black", Font.BOLD, 24));
-		label_1.setBounds(23, 0, 67, 33);
+		label_1.setBounds(23, 0, 40, 33);
 		panel.add(label_1);
 		
 		JLabel lblNewLabel_11 =new JLabel("");

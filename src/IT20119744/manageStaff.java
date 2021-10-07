@@ -22,6 +22,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.MessageFormat;
 
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -30,13 +31,16 @@ import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.print.PrinterException;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class manageStaff extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
+	private JTable table_staff;
 	private JTextField searchstaff;
 
 	/**
@@ -90,14 +94,14 @@ public class manageStaff extends JFrame {
 			stmt.close();
 			conn.close();
 			
-			table.setModel(model);
-			table.setAutoResizeMode(0);
-			table.getColumnModel().getColumn(0).setPreferredWidth(40);
-			table.getColumnModel().getColumn(1).setPreferredWidth(100);
-			table.getColumnModel().getColumn(2).setPreferredWidth(80);
-			table.getColumnModel().getColumn(3).setPreferredWidth(40);
-			table.getColumnModel().getColumn(4).setPreferredWidth(150);
-			table.getColumnModel().getColumn(5).setPreferredWidth(150);
+			table_staff.setModel(model);
+			table_staff.setAutoResizeMode(0);
+			table_staff.getColumnModel().getColumn(0).setPreferredWidth(40);
+			table_staff.getColumnModel().getColumn(1).setPreferredWidth(100);
+			table_staff.getColumnModel().getColumn(2).setPreferredWidth(80);
+			table_staff.getColumnModel().getColumn(3).setPreferredWidth(40);
+			table_staff.getColumnModel().getColumn(4).setPreferredWidth(150);
+			table_staff.getColumnModel().getColumn(5).setPreferredWidth(150);
 			
 			
 		}catch(Exception e){
@@ -117,12 +121,13 @@ public class manageStaff extends JFrame {
 			}
 		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 580, 375);
+		setBounds(100, 100, 580, 420);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
+		setUndecorated(true);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(95, 158, 160));
@@ -172,7 +177,7 @@ public class manageStaff extends JFrame {
 		lblX.setFont(new Font("Segoe UI", Font.BOLD, 22));
 		lblX.setBounds(540, 2, 42, 33);
 		panel.add(lblX);
-		setUndecorated(true);
+		
 		
 		JLabel lblNewLabel_2 = new JLabel("Staff");
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 36));
@@ -184,18 +189,18 @@ public class manageStaff extends JFrame {
 		scrollPane.setBounds(10, 147, 550, 200);
 		contentPane.add(scrollPane);
 		
-		table = new JTable();
-		scrollPane.setViewportView(table);
+		table_staff = new JTable();
+		scrollPane.setViewportView(table_staff);
 		
 		searchstaff = new JTextField();
 		searchstaff.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
-				DefaultTableModel tablestaff =(DefaultTableModel)table.getModel();
+				DefaultTableModel tablestaff =(DefaultTableModel)table_staff.getModel();
 				String search = searchstaff.getText().toLowerCase();
 				
 				TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tablestaff);
-				table.setRowSorter(tr);
+				table_staff.setRowSorter(tr);
 				tr.setRowFilter(RowFilter.regexFilter(search));
 				
 			}
@@ -240,7 +245,7 @@ public class manageStaff extends JFrame {
 		btndelete.setBounds(442, 105, 120, 33);
 		contentPane.add(btndelete);
 		
-		JLabel label_1 = new JLabel("<<");
+		JLabel label_1 = new JLabel("<<<");
 		label_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -251,11 +256,31 @@ public class manageStaff extends JFrame {
 		});
 		label_1.setForeground(new Color(255, 255, 255));
 		label_1.setFont(new Font("Segoe UI Black", Font.BOLD, 24));
-		label_1.setBounds(23, 0, 40, 33);
+		label_1.setBounds(23, 0, 56, 33);
 		panel.add(label_1);
 		
+		JButton btnNewButton = new JButton("PRINT LIST");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MessageFormat header = new MessageFormat("List of Staff Members");
+				MessageFormat footer = new MessageFormat("Suwasetha Vaccine Management");
+				
+				try {
+					table_staff.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+					
+				}catch(PrinterException e1){
+					JOptionPane.showMessageDialog(null,"Cannot be Print"+e1.getMessage());
+					
+				}
+			}
+		});
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setBackground(new Color(95, 158, 160));
+		btnNewButton.setBounds(207, 360, 150, 40);
+		contentPane.add(btnNewButton);
+		
 		JLabel lblNewLabel_1 =new JLabel("");
-		lblNewLabel_1.setBounds(0, 0, 580, 375);
+		lblNewLabel_1.setBounds(0, 0, 580, 420);
 		lblNewLabel_1.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
 		contentPane.add(lblNewLabel_1);
 		

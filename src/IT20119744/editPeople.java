@@ -177,6 +177,7 @@ public class editPeople extends JFrame {
 			
 			ps.close();
 			conn.close();
+			//JOptionPane.showConfirmDialog(null,"Do you want to Delete?","Confirmation",JOptionPane.YES_NO_OPTION);
 			JOptionPane.showMessageDialog(null,"Sussfully Deleted");
 			displaypeople();
 		}catch(Exception e){
@@ -521,7 +522,7 @@ public class editPeople extends JFrame {
 		});
 		scrollPane.setViewportView(table);
 		
-		JLabel label_1 = new JLabel("<<");
+		JLabel label_1 = new JLabel("<<<");
 		label_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -532,7 +533,7 @@ public class editPeople extends JFrame {
 		});
 		label_1.setForeground(new Color(255, 255, 255));
 		label_1.setFont(new Font("Segoe UI Black", Font.BOLD, 24));
-		label_1.setBounds(23, 0, 40, 33);
+		label_1.setBounds(23, 0, 66, 33);
 		panel.add(label_1);
 		
 		JLabel lblNewLabel_11 =new JLabel("");

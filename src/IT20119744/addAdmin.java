@@ -91,7 +91,7 @@ public class addAdmin extends JFrame {
 	 */
 	public addAdmin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 580, 580);
+		setBounds(100, 100, 580, 630);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -237,9 +237,6 @@ public class addAdmin extends JFrame {
 				}else {
 					name_validation.setText(null);
 				}
-				/*if(txtname.getText().isEmpty()) {
-					name_validation.setText("Name can't be Empty");
-				}*/
 			}
 		});
 		txtname.setFont(new Font("Times New Roman", Font.PLAIN, 20));
@@ -386,7 +383,7 @@ public class addAdmin extends JFrame {
 						if(rsadd==0) {
 							JOptionPane.showMessageDialog(btnAdd,"Already Exist");
 						}else {
-							JOptionPane.showMessageDialog(btnAdd,"Hello,"+name+"Your account is created Successfully!");
+							JOptionPane.showMessageDialog(btnAdd,"Account is created Successfully!");
 							txtname.setText(null);
 							txtemail.setText(null);
 							txtphone.setText(null);
@@ -461,15 +458,30 @@ public class addAdmin extends JFrame {
 		btnAdd.setBackground(new Color(95, 158, 160));
 		btnAdd.setForeground(new Color(255, 255, 255));
 		btnAdd.setFont(new Font("Times New Roman", Font.BOLD, 28));
-		btnAdd.setBounds(250, 520, 97, 40);
+		btnAdd.setBounds(246, 518, 97, 40);
 		contentPane.add(btnAdd);
 		
 		
 		
 		setUndecorated(true);
 		
+		JButton btnSendUsenameAnd = new JButton("SEND USENAME AND PASSWORD");
+		btnSendUsenameAnd.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				email_send es= new email_send ();
+				es.setVisible(true);				
+				setVisible(false);
+			}
+		});
+		btnSendUsenameAnd.setBackground(new Color(95, 158, 160));
+		btnSendUsenameAnd.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		btnSendUsenameAnd.setForeground(new Color(255, 255, 255));
+		btnSendUsenameAnd.setBounds(129, 571, 350, 33);
+		contentPane.add(btnSendUsenameAnd);
+		
 		JLabel backgroundimg =new JLabel("");
-		backgroundimg.setBounds(0, 0, 580, 580);
+		backgroundimg.setBounds(0, 0, 580, 630);
 		backgroundimg.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
 		contentPane.add(backgroundimg);
 

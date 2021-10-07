@@ -21,6 +21,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.MessageFormat;
 
 import javax.swing.JTable;
 import javax.swing.JButton;
@@ -31,13 +32,14 @@ import javax.swing.RowFilter;
 import javax.swing.JScrollPane;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.print.PrinterException;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class manageSupplier extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
+	private JTable table_supplier;
 	private JTextField searchsupplier;
 
 	/**
@@ -88,14 +90,14 @@ public class manageSupplier extends JFrame {
 			stmt.close();
 			conn.close();
 			
-			table.setModel(model);
-			table.setAutoResizeMode(0);
-			table.getColumnModel().getColumn(0).setPreferredWidth(40);
-			table.getColumnModel().getColumn(1).setPreferredWidth(100);
-			table.getColumnModel().getColumn(2).setPreferredWidth(150);
-			table.getColumnModel().getColumn(3).setPreferredWidth(120);
-			table.getColumnModel().getColumn(4).setPreferredWidth(100);
-			table.getColumnModel().getColumn(5).setPreferredWidth(150);
+			table_supplier.setModel(model);
+			table_supplier.setAutoResizeMode(0);
+			table_supplier.getColumnModel().getColumn(0).setPreferredWidth(40);
+			table_supplier.getColumnModel().getColumn(1).setPreferredWidth(100);
+			table_supplier.getColumnModel().getColumn(2).setPreferredWidth(150);
+			table_supplier.getColumnModel().getColumn(3).setPreferredWidth(120);
+			table_supplier.getColumnModel().getColumn(4).setPreferredWidth(100);
+			table_supplier.getColumnModel().getColumn(5).setPreferredWidth(150);
 			
 			
 		}catch(Exception e){
@@ -115,7 +117,7 @@ public class manageSupplier extends JFrame {
 			}
 		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 580, 375);
+		setBounds(100, 100, 580, 420);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -182,18 +184,18 @@ public class manageSupplier extends JFrame {
 		scrollPane.setBounds(12, 147, 550, 200);
 		contentPane.add(scrollPane);
 		
-		table = new JTable();
-		scrollPane.setViewportView(table);
+		table_supplier = new JTable();
+		scrollPane.setViewportView(table_supplier);
 		
 		searchsupplier = new JTextField();
 		searchsupplier.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
-				DefaultTableModel tablesupplier =(DefaultTableModel)table.getModel();
+				DefaultTableModel tablesupplier =(DefaultTableModel)table_supplier.getModel();
 				String search = searchsupplier.getText().toLowerCase();
 				
 				TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tablesupplier);
-				table.setRowSorter(tr);
+				table_supplier.setRowSorter(tr);
 				tr.setRowFilter(RowFilter.regexFilter(search));
 			}
 		});
@@ -237,7 +239,7 @@ public class manageSupplier extends JFrame {
 		btndelete.setBounds(442, 105, 120, 33);
 		contentPane.add(btndelete);
 		
-		JLabel label_1 = new JLabel("<<");
+		JLabel label_1 = new JLabel("<<<");
 		label_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -248,11 +250,31 @@ public class manageSupplier extends JFrame {
 		});
 		label_1.setForeground(new Color(255, 255, 255));
 		label_1.setFont(new Font("Segoe UI Black", Font.BOLD, 24));
-		label_1.setBounds(23, 0, 40, 33);
+		label_1.setBounds(23, 0, 63, 33);
 		panel.add(label_1);
 		
+		JButton btnNewButton = new JButton("PRINT LIST");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MessageFormat header = new MessageFormat("List of Suppliers");
+				MessageFormat footer = new MessageFormat("Suwasetha Vaccine Management");
+				
+				try {
+					table_supplier.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+					
+				}catch(PrinterException e1){
+					JOptionPane.showMessageDialog(null,"Cannot be Print"+e1.getMessage());
+					
+				}
+			}
+		});
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setBackground(new Color(95, 158, 160));
+		btnNewButton.setBounds(207, 360, 150, 40);
+		contentPane.add(btnNewButton);
+		
 		JLabel lblNewLabel_1 =new JLabel("");
-		lblNewLabel_1.setBounds(0, 0, 580, 375);
+		lblNewLabel_1.setBounds(0, 0, 580, 420);
 		lblNewLabel_1.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
 		contentPane.add(lblNewLabel_1);
 		

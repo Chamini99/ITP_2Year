@@ -4,8 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,22 +26,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.RowFilter;
-import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
-public class editSupplier extends JFrame {
+public class AdminEditSupplier extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField updateid;
@@ -54,7 +54,7 @@ public class editSupplier extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					editSupplier frame = new editSupplier();
+					AdminEditSupplier frame = new AdminEditSupplier();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -183,11 +183,11 @@ public class editSupplier extends JFrame {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Create the frame.
 	 */
-	public editSupplier() {
+	public AdminEditSupplier() {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent arg0) {
@@ -217,7 +217,7 @@ public class editSupplier extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				//setVisible(false);
 				if(JOptionPane.showConfirmDialog(null,"Do you want to Exit?","Confirmation",JOptionPane.YES_NO_OPTION)==0) {
-					editSupplier.this.dispose();
+					AdminEditSupplier.this.dispose();
 				}
 				
 			}
@@ -504,18 +504,18 @@ public class editSupplier extends JFrame {
 		});
 		scrollPane.setViewportView(table);
 		
-		JLabel label_1 = new JLabel("<<<");
+		JLabel label_1 = new JLabel("<<");
 		label_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				manageSupplier mS= new manageSupplier ();
-				mS.setVisible(true);				
+				AdminManageSupplier AMSU= new AdminManageSupplier ();
+				AMSU.setVisible(true);				
 				setVisible(false);
 			}
 		});
 		label_1.setForeground(new Color(255, 255, 255));
 		label_1.setFont(new Font("Segoe UI Black", Font.BOLD, 24));
-		label_1.setBounds(23, 0, 67, 33);
+		label_1.setBounds(23, 0, 40, 33);
 		panel.add(label_1);
 		
 		JLabel lblNewLabel_11 =new JLabel("");

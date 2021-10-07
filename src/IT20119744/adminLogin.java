@@ -104,27 +104,31 @@ public class adminLogin {
 					Class.forName("com.mysql.jdbc.Driver");
 					Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/suwasetha_vaccine","root","");
 					Statement stmt=conn.createStatement();
-					String sql= "select * from tbl_admin where admin_email='"+txtusername.getText()+"' and admin_password='"+txtpassword.getText()+"'";
+					String sql= "select * from tbl_admin where BINARY admin_email='"+txtusername.getText()+"' and BINARY admin_password='"+txtpassword.getText()+"'";
 					ResultSet rs= stmt.executeQuery(sql);
-					//while(rs.next()) {
-						/*if(txtusername.equals("thamoda@gmail.com") &&  txtpassword.equals("Thamoda#123")){
-							frame.dispose();
-							addAdmin ad= new addAdmin();
-							ad.setVisible(true);*/
+					
 					if(rs.next()) {
-						frame.dispose();
-						profile P= new profile();
-						P.setVisible(true);
-					}else{
+						if(txtusername.getText().equals("thamoda@gmail.com") &&  txtpassword.getText().equals("Thamoda#123")){
+							frame.dispose();
+							profile P= new profile();
+							P.setVisible(true);
+						}else {
+							frame.dispose();
+							AdminHome CAH= new AdminHome();
+							CAH.setVisible(true);
+						}
+					}else {
 						JOptionPane.showMessageDialog(null,"Invalid Username or Password","ERROR",JOptionPane.ERROR_MESSAGE);
 						txtusername.setText(null);
 						txtpassword.setText(null);
 						txtusername.requestFocusInWindow();
+						
 					}
 				}catch(Exception e){
 					e.printStackTrace();
 				}
 			}
+
 		});
 		btnLogin.setBackground(new Color(95, 158, 160));
 		btnLogin.setForeground(new Color(255, 255, 255));
