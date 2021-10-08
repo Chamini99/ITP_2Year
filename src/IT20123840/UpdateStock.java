@@ -58,11 +58,12 @@ public class UpdateStock extends JFrame {
 	 */
 	public UpdateStock() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 450);
+		setBounds(100, 100, 450, 505);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(95, 158, 160));
@@ -103,56 +104,56 @@ public class UpdateStock extends JFrame {
 		JLabel lblCompanyID = new JLabel("Company ID");
 		lblCompanyID.setForeground(new Color(95, 158, 160));
 		lblCompanyID.setFont(new Font("Calibri", Font.PLAIN, 16));
-		lblCompanyID.setBounds(75, 316, 102, 20);
+		lblCompanyID.setBounds(75, 389, 102, 20);
 		contentPane.add(lblCompanyID);
 		
 		JLabel lblVaccineName = new JLabel("Vaccine Name");
 		lblVaccineName.setForeground(new Color(95, 158, 160));
 		lblVaccineName.setFont(new Font("Calibri", Font.PLAIN, 16));
-		lblVaccineName.setBounds(75, 150, 102, 20);
+		lblVaccineName.setBounds(75, 265, 102, 20);
 		contentPane.add(lblVaccineName);
 		
 		JLabel lblExpireDate = new JLabel("Expire Date");
 		lblExpireDate.setForeground(new Color(95, 158, 160));
 		lblExpireDate.setFont(new Font("Calibri", Font.PLAIN, 16));
-		lblExpireDate.setBounds(75, 191, 75, 20);
+		lblExpireDate.setBounds(75, 296, 75, 20);
 		contentPane.add(lblExpireDate);
 		
 		JLabel lblPricers = new JLabel("Price (Rs)");
 		lblPricers.setForeground(new Color(95, 158, 160));
 		lblPricers.setFont(new Font("Calibri", Font.PLAIN, 16));
-		lblPricers.setBounds(75, 233, 62, 20);
+		lblPricers.setBounds(75, 327, 62, 20);
 		contentPane.add(lblPricers);
 		
 		JLabel lblQuantity = new JLabel("Quantity");
 		lblQuantity.setForeground(new Color(95, 158, 160));
 		lblQuantity.setFont(new Font("Calibri", Font.PLAIN, 16));
-		lblQuantity.setBounds(75, 275, 56, 20);
+		lblQuantity.setBounds(75, 358, 56, 20);
 		contentPane.add(lblQuantity);
 		
 		txt_companyID = new JTextField();
-		txt_companyID.setBounds(243, 316, 132, 20);
+		txt_companyID.setBounds(243, 389, 132, 20);
 		contentPane.add(txt_companyID);
 		txt_companyID.setColumns(10);
 		
 		txt_vaccineName = new JTextField();
 		txt_vaccineName.setColumns(10);
-		txt_vaccineName.setBounds(243, 150, 132, 20);
+		txt_vaccineName.setBounds(243, 265, 132, 20);
 		contentPane.add(txt_vaccineName);
 		
 		txt_expireDate = new JTextField();
 		txt_expireDate.setColumns(10);
-		txt_expireDate.setBounds(243, 191, 132, 20);
+		txt_expireDate.setBounds(243, 296, 132, 20);
 		contentPane.add(txt_expireDate);
 		
 		txt_price = new JTextField();
 		txt_price.setColumns(10);
-		txt_price.setBounds(243, 233, 132, 20);
+		txt_price.setBounds(243, 327, 132, 20);
 		contentPane.add(txt_price);
 		
 		txt_quantity = new JTextField();
 		txt_quantity.setColumns(10);
-		txt_quantity.setBounds(243, 275, 132, 20);
+		txt_quantity.setBounds(243, 358, 132, 20);
 		contentPane.add(txt_quantity);
 		
 		JButton btnUpdate = new JButton("Update");
@@ -202,7 +203,7 @@ public class UpdateStock extends JFrame {
 		btnUpdate.setBackground(new Color(95, 158, 160));
 		btnUpdate.setForeground(new Color(255, 255, 255));
 		btnUpdate.setFont(new Font("Calibri", Font.PLAIN, 20));
-		btnUpdate.setBounds(75, 371, 102, 33);
+		btnUpdate.setBounds(75, 444, 102, 33);
 		contentPane.add(btnUpdate);
 		
 		JButton btnReset = new JButton("Reset");
@@ -219,11 +220,11 @@ public class UpdateStock extends JFrame {
 		btnReset.setForeground(Color.WHITE);
 		btnReset.setFont(new Font("Calibri", Font.PLAIN, 20));
 		btnReset.setBackground(new Color(95, 158, 160));
-		btnReset.setBounds(273, 371, 102, 33);
+		btnReset.setBounds(273, 444, 102, 33);
 		contentPane.add(btnReset);
 		
 		txt_vaccineID = new JTextField();
-		txt_vaccineID.setBounds(75, 102, 111, 20);
+		txt_vaccineID.setBounds(181, 99, 86, 20);
 		contentPane.add(txt_vaccineID);
 		txt_vaccineID.setColumns(10);
 		
@@ -264,11 +265,22 @@ public class UpdateStock extends JFrame {
 				}
 			}
 		});
-		btnView.setBounds(300, 101, 75, 23);
+		btnView.setBounds(300, 97, 75, 23);
 		contentPane.add(btnView);
 		
+		JLabel lblVaccineId = new JLabel("Vaccine ID");
+		lblVaccineId.setForeground(new Color(95, 158, 160));
+		lblVaccineId.setFont(new Font("Calibri", Font.PLAIN, 16));
+		lblVaccineId.setBounds(75, 99, 75, 20);
+		contentPane.add(lblVaccineId);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(140, 146, 177, 94);
+		contentPane.add(lblNewLabel);
+		lblNewLabel.setIcon(new ImageIcon(UpdateStock.class.getResource("/IT20123840/Assets/Vaccine04.PNG")));
+		
 		JLabel label = new JLabel("");
-		label.setBounds(0, 33, 450, 417);
+		label.setBounds(0, 33, 450, 472);
 		contentPane.add(label);
 		label.setIcon(new ImageIcon(UpdateStock.class.getResource("/IT20123840/Assets/login.jpeg")));
 		setUndecorated(true);

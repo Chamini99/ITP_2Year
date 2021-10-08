@@ -59,6 +59,7 @@ public class AddVaccine extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(95, 158, 160));
@@ -195,7 +196,7 @@ public class AddVaccine extends JFrame {
 		btnAdd.setForeground(Color.WHITE);
 		btnAdd.setFont(new Font("Calibri", Font.PLAIN, 20));
 		btnAdd.setBackground(new Color(95, 158, 160));
-		btnAdd.setBounds(80, 273, 75, 33);
+		btnAdd.setBounds(80, 273, 85, 33);
 		contentPane.add(btnAdd);
 		
 		JButton btnReset = new JButton("Reset");
@@ -211,7 +212,7 @@ public class AddVaccine extends JFrame {
 		btnReset.setForeground(Color.WHITE);
 		btnReset.setFont(new Font("Calibri", Font.PLAIN, 20));
 		btnReset.setBackground(new Color(95, 158, 160));
-		btnReset.setBounds(185, 273, 85, 33);
+		btnReset.setBounds(289, 273, 85, 33);
 		contentPane.add(btnReset);
 		setUndecorated(true);
 		
@@ -221,7 +222,12 @@ public class AddVaccine extends JFrame {
 		lblCompanyID.setBounds(80, 230, 102, 20);
 		contentPane.add(lblCompanyID);
 		
-		JButton btnBack = new JButton("Back");
+		JButton btnBack = new JButton("");
+		btnBack.setIcon(new ImageIcon(AddVaccine.class.getResource("/IT20123840/Assets/Back.PNG")));
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnBack.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -233,7 +239,7 @@ public class AddVaccine extends JFrame {
 		btnBack.setForeground(Color.WHITE);
 		btnBack.setFont(new Font("Calibri", Font.PLAIN, 20));
 		btnBack.setBackground(new Color(95, 158, 160));
-		btnBack.setBounds(295, 273, 79, 33);
+		btnBack.setBounds(397, 68, 43, 26);
 		contentPane.add(btnBack);
 		
 		

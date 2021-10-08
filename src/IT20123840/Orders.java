@@ -63,6 +63,7 @@ public class Orders extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(95, 158, 160));
@@ -106,7 +107,8 @@ public class Orders extends JFrame {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
-		JButton btnBack = new JButton("Back");
+		JButton btnBack = new JButton("");
+		btnBack.setIcon(new ImageIcon(Orders.class.getResource("/IT20123840/Assets/Back.PNG")));
 		btnBack.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

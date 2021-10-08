@@ -3,7 +3,6 @@ package IT20123840;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -20,11 +19,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Search extends JFrame {
+public class DeleteVaccine extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txt_vaccineID;
@@ -40,7 +40,7 @@ public class Search extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Search frame = new Search();
+					DeleteVaccine frame = new DeleteVaccine();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,14 +52,13 @@ public class Search extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Search() {
+	public DeleteVaccine() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 350);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(95, 158, 160));
@@ -70,7 +69,7 @@ public class Search extends JFrame {
 		JLabel lblX = new JLabel("  X");
 		lblX.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
 			}
 		});
@@ -82,7 +81,7 @@ public class Search extends JFrame {
 		JLabel lblX_1 = new JLabel("  -");
 		lblX_1.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void mouseClicked(MouseEvent e) {
 				setState(ICONIFIED);
 			}
 		});
@@ -91,27 +90,20 @@ public class Search extends JFrame {
 		lblX_1.setBounds(403, 0, 26, 33);
 		panel.add(lblX_1);
 		
-		JLabel lblNewLabel_1 = new JLabel("Find Vaccine");
-		lblNewLabel_1.setFont(new Font("Calibri", Font.BOLD, 28));
-		lblNewLabel_1.setForeground(new Color(95, 158, 160));
-		lblNewLabel_1.setBounds(152, 44, 147, 33);
-		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblVaccineId = new JLabel("Vaccine ID");
-		lblVaccineId.setForeground(new Color(95, 158, 160));
-		lblVaccineId.setFont(new Font("Calibri", Font.PLAIN, 16));
-		lblVaccineId.setBounds(52, 88, 75, 20);
-		contentPane.add(lblVaccineId);
-		
 		txt_vaccineID = new JTextField();
 		txt_vaccineID.setColumns(10);
-		txt_vaccineID.setBounds(151, 88, 132, 20);
+		txt_vaccineID.setBounds(92, 98, 132, 20);
 		contentPane.add(txt_vaccineID);
 		
-		JButton btnFind = new JButton("Find");
-		btnFind.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
+		JLabel lblNewLabel_1 = new JLabel("Delete Vaccine");
+		lblNewLabel_1.setForeground(new Color(95, 158, 160));
+		lblNewLabel_1.setFont(new Font("Calibri", Font.BOLD, 28));
+		lblNewLabel_1.setBounds(147, 44, 174, 33);
+		contentPane.add(lblNewLabel_1);
+		
+		JButton btnView = new JButton("View");
+		btnView.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/suwasetha_vaccine", "root", "");
@@ -141,75 +133,105 @@ public class Search extends JFrame {
 				}
 			}
 		});
-		btnFind.setForeground(new Color(240, 248, 255));
-		btnFind.setBackground(new Color(95, 158, 160));
-		btnFind.setFont(new Font("Calibri", Font.PLAIN, 20));
-		btnFind.setBounds(321, 84, 75, 26);
-		contentPane.add(btnFind);
+	
+		btnView.setForeground(new Color(240, 248, 255));
+		btnView.setFont(new Font("Calibri", Font.PLAIN, 20));
+		btnView.setBackground(new Color(95, 158, 160));
+		btnView.setBounds(299, 94, 75, 26);
+		contentPane.add(btnView);
 		
 		JLabel lblVaccineName = new JLabel("Vaccine Name");
 		lblVaccineName.setForeground(new Color(95, 158, 160));
 		lblVaccineName.setFont(new Font("Calibri", Font.PLAIN, 16));
-		lblVaccineName.setBounds(87, 134, 99, 20);
+		lblVaccineName.setBounds(92, 140, 99, 20);
 		contentPane.add(lblVaccineName);
-		
-		txt_vaccineName = new JTextField();
-		txt_vaccineName.setColumns(10);
-		txt_vaccineName.setBounds(232, 134, 132, 20);
-		contentPane.add(txt_vaccineName);
-		setUndecorated(true);
 		
 		JLabel lblExpireDate = new JLabel("Expire Date");
 		lblExpireDate.setForeground(new Color(95, 158, 160));
 		lblExpireDate.setFont(new Font("Calibri", Font.PLAIN, 16));
-		lblExpireDate.setBounds(87, 165, 75, 20);
+		lblExpireDate.setBounds(92, 171, 75, 20);
 		contentPane.add(lblExpireDate);
 		
 		JLabel lblPrice = new JLabel("Price");
 		lblPrice.setForeground(new Color(95, 158, 160));
 		lblPrice.setFont(new Font("Calibri", Font.PLAIN, 16));
-		lblPrice.setBounds(87, 196, 37, 20);
+		lblPrice.setBounds(92, 202, 37, 20);
 		contentPane.add(lblPrice);
 		
 		JLabel lblQuantity = new JLabel("Quantity");
 		lblQuantity.setForeground(new Color(95, 158, 160));
 		lblQuantity.setFont(new Font("Calibri", Font.PLAIN, 16));
-		lblQuantity.setBounds(87, 227, 57, 20);
+		lblQuantity.setBounds(92, 233, 57, 20);
 		contentPane.add(lblQuantity);
+		
+		txt_vaccineName = new JTextField();
+		txt_vaccineName.setColumns(10);
+		txt_vaccineName.setBounds(242, 140, 132, 20);
+		contentPane.add(txt_vaccineName);
 		
 		txt_expireDate = new JTextField();
 		txt_expireDate.setColumns(10);
-		txt_expireDate.setBounds(232, 165, 132, 20);
+		txt_expireDate.setBounds(242, 171, 132, 20);
 		contentPane.add(txt_expireDate);
 		
 		txt_price = new JTextField();
 		txt_price.setColumns(10);
-		txt_price.setBounds(232, 196, 132, 20);
+		txt_price.setBounds(242, 202, 132, 20);
 		contentPane.add(txt_price);
 		
 		txt_quantity = new JTextField();
 		txt_quantity.setColumns(10);
-		txt_quantity.setBounds(232, 227, 132, 20);
+		txt_quantity.setBounds(242, 233, 132, 20);
 		contentPane.add(txt_quantity);
 		
-		JButton btnBack = new JButton("Back");
-		btnBack.addMouseListener(new MouseAdapter() {
+		JButton btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/suwasetha_vaccine", "root", "");
+
+						String query = "delete from tbl_companystock where vaccine_id = '"+txt_vaccineID.getText()+"'";
+						Statement stmt = connection.createStatement();
+						int x = stmt.executeUpdate(query);
+					
+						JOptionPane.showConfirmDialog(btnDelete, "The vaccine has been deleted successfully!!!");
+						EditStock es = new EditStock();
+						es.setVisible(true);
+						setVisible(false);
+					
+					connection.close();
+				}
+				catch (Exception exception) {
+					exception.printStackTrace();
+				}
+			}
+		});
+		btnDelete.setForeground(Color.WHITE);
+		btnDelete.setFont(new Font("Calibri", Font.PLAIN, 20));
+		btnDelete.setBackground(new Color(95, 158, 160));
+		btnDelete.setBounds(92, 286, 94, 33);
+		contentPane.add(btnDelete);
+		
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				CompanyHome ch = new CompanyHome();
-				ch.setVisible(true);
+			public void mouseClicked(MouseEvent e) {
+				EditStock es = new EditStock();
+				es.setVisible(true);
 				setVisible(false);
 			}
 		});
-		btnBack.setForeground(new Color(240, 248, 255));
-		btnBack.setFont(new Font("Calibri", Font.PLAIN, 20));
-		btnBack.setBackground(new Color(95, 158, 160));
-		btnBack.setBounds(193, 258, 75, 26);
-		contentPane.add(btnBack);
+		btnCancel.setForeground(Color.WHITE);
+		btnCancel.setFont(new Font("Calibri", Font.PLAIN, 20));
+		btnCancel.setBackground(new Color(95, 158, 160));
+		btnCancel.setBounds(280, 286, 94, 33);
+		contentPane.add(btnCancel);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(0, 34, 450, 266);
+		lblNewLabel.setBounds(0, 32, 450, 318);
 		contentPane.add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon(Search.class.getResource("/IT20123840/Assets/login.jpeg")));
+		setUndecorated(true);
+		lblNewLabel.setIcon(new ImageIcon(DeleteVaccine.class.getResource("/IT20123840/Assets/login.jpeg")));
 	}
 }

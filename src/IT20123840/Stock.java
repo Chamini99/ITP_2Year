@@ -76,6 +76,7 @@ public class Stock extends JFrame {
 		panel.setBounds(0, 0, 580, 33);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		setLocationRelativeTo(null);
 		
 		JLabel lblX_1 = new JLabel("   -");
 		lblX_1.addMouseListener(new MouseAdapter() {
@@ -114,7 +115,8 @@ public class Stock extends JFrame {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
-		JButton btnBack = new JButton("Back");
+		JButton btnBack = new JButton("");
+		btnBack.setIcon(new ImageIcon(Stock.class.getResource("/IT20123840/Assets/Back.PNG")));
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				SupplyHome sh = new SupplyHome();
@@ -122,7 +124,7 @@ public class Stock extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnBack.setForeground(Color.WHITE);
+		btnBack.setForeground(new Color(240, 248, 255));
 		btnBack.setFont(new Font("Calibri", Font.PLAIN, 20));
 		btnBack.setBackground(new Color(95, 158, 160));
 		btnBack.setBounds(241, 288, 104, 37);

@@ -7,9 +7,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Window;
@@ -20,6 +23,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
+import java.text.MessageFormat;
 import java.util.Vector;
 
 import javax.swing.JTable;
@@ -31,11 +35,20 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class EditStock extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	private JTextField searchBar;
 
 	/**
 	 * Launch the application.
@@ -69,6 +82,7 @@ public class EditStock extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(95, 158, 160));
@@ -119,18 +133,18 @@ public class EditStock extends JFrame {
 		btnAddNewVaccine.setBackground(new Color(95, 158, 160));
 		btnAddNewVaccine.setForeground(new Color(255, 255, 255));
 		btnAddNewVaccine.setFont(new Font("Calibri", Font.PLAIN, 20));
-		btnAddNewVaccine.setBounds(384, 347, 196, 33);
+		btnAddNewVaccine.setBounds(215, 347, 196, 33);
 		contentPane.add(btnAddNewVaccine);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(40, 107, 540, 218);
+		scrollPane.setBounds(40, 126, 540, 199);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		setUndecorated(true);
 		
-		JButton btnUpdateStock = new JButton("Update Stock");
+		JButton btnUpdateStock = new JButton("Update");
 		btnUpdateStock.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -142,10 +156,15 @@ public class EditStock extends JFrame {
 		btnUpdateStock.setForeground(Color.WHITE);
 		btnUpdateStock.setFont(new Font("Calibri", Font.PLAIN, 20));
 		btnUpdateStock.setBackground(new Color(95, 158, 160));
-		btnUpdateStock.setBounds(40, 347, 196, 33);
+		btnUpdateStock.setBounds(40, 347, 105, 33);
 		contentPane.add(btnUpdateStock);
 		
-		JButton btnBack = new JButton("Back");
+		JButton btnBack = new JButton("");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnBack.setIcon(new ImageIcon(EditStock.class.getResource("/IT20123840/Assets/Back.PNG")));
 		btnBack.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -154,11 +173,66 @@ public class EditStock extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnBack.setForeground(Color.WHITE);
+		btnBack.setForeground(new Color(95, 158, 160));
 		btnBack.setFont(new Font("Calibri", Font.PLAIN, 20));
 		btnBack.setBackground(new Color(95, 158, 160));
-		btnBack.setBounds(497, 48, 83, 24);
+		btnBack.setBounds(495, 44, 44, 30);
 		contentPane.add(btnBack);
+		
+		JButton btnDelete = new JButton("Delete");
+		btnDelete.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				DeleteVaccine dv = new DeleteVaccine();
+				dv.setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnDelete.setForeground(Color.WHITE);
+		btnDelete.setFont(new Font("Calibri", Font.PLAIN, 20));
+		btnDelete.setBackground(new Color(95, 158, 160));
+		btnDelete.setBounds(475, 347, 105, 33);
+		contentPane.add(btnDelete);
+		
+		JButton btnPrint = new JButton("Print");
+		btnPrint.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MessageFormat header = new MessageFormat("Vaccine Details");
+				MessageFormat footer = new MessageFormat("Suwasetha Vaccine Management System");
+				
+				try {
+					table.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+				}
+				catch(Exception e1) {
+					JOptionPane.showMessageDialog(null, "Cannot be printed !" + e1.getMessage());
+				}
+			}
+		});
+		btnPrint.setIcon(new ImageIcon(EditStock.class.getResource("/IT20123840/Assets/Printing.PNG")));
+		btnPrint.setForeground(Color.WHITE);
+		btnPrint.setFont(new Font("Calibri", Font.PLAIN, 20));
+		btnPrint.setBackground(new Color(95, 158, 160));
+		btnPrint.setBounds(465, 85, 115, 30);
+		contentPane.add(btnPrint);
+		
+		searchBar = new JTextField();
+		searchBar.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				DefaultTableModel model = (DefaultTableModel)table.getModel();
+				TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+				table.setRowSorter(tr);
+				tr.setRowFilter(RowFilter.regexFilter(searchBar.getText().trim()));
+			}
+		});
+		searchBar.setBounds(40, 95, 174, 20);
+		contentPane.add(searchBar);
+		searchBar.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(EditStock.class.getResource("/IT20123840/Assets/search.PNG")));
+		lblNewLabel.setBounds(215, 95, 31, 20);
+		contentPane.add(lblNewLabel);
 		
 		JLabel label = new JLabel("");
 		label.setBounds(0, 0, 622, 404);
@@ -208,6 +282,14 @@ public class EditStock extends JFrame {
 		
 		catch(Exception e) {
 			System.out.println("error: " + e);
+		}
+	}
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "SwingAction");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
 		}
 	}
 }

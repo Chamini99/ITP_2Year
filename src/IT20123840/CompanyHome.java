@@ -54,6 +54,7 @@ public class CompanyHome extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(95, 158, 160));
@@ -99,6 +100,7 @@ public class CompanyHome extends JFrame {
 		
 		
 		JButton btn_EditStock = new JButton("Edit Stock");
+		btn_EditStock.setIcon(new ImageIcon(CompanyHome.class.getResource("/IT20123840/Assets/Edit.PNG")));
 		btn_EditStock.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -115,6 +117,7 @@ public class CompanyHome extends JFrame {
 		contentPane.add(btn_EditStock);
 		
 		JButton btnEditOrders = new JButton("Edit Orders");
+		btnEditOrders.setIcon(new ImageIcon(CompanyHome.class.getResource("/IT20123840/Assets/Edit.PNG")));
 		btnEditOrders.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -130,6 +133,7 @@ public class CompanyHome extends JFrame {
 		contentPane.add(btnEditOrders);
 		
 		JButton btnDelivery = new JButton("Delivery");
+		btnDelivery.setIcon(new ImageIcon(CompanyHome.class.getResource("/IT20123840/Assets/Delivery.PNG")));
 		btnDelivery.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -145,6 +149,7 @@ public class CompanyHome extends JFrame {
 		contentPane.add(btnDelivery);
 		
 		JButton btnLogout = new JButton("Logout");
+		btnLogout.setIcon(new ImageIcon(CompanyHome.class.getResource("/IT20123840/Assets/Logout.PNG")));
 		btnLogout.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -166,6 +171,7 @@ public class CompanyHome extends JFrame {
 		label_2.setIcon(new ImageIcon(CompanyHome.class.getResource("/IT20123840/Assets/search.PNG")));
 		
 		JButton btnMyProfile_1 = new JButton("My Profile");
+		btnMyProfile_1.setIcon(new ImageIcon(CompanyHome.class.getResource("/IT20123840/Assets/User01.PNG")));
 		btnMyProfile_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

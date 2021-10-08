@@ -49,6 +49,7 @@ public class SupplyHome {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setUndecorated(true);
+		frame.setLocationRelativeTo(null);
 		
 		JLabel lbl_SupplyMgt = new JLabel("Supply Management");
 		lbl_SupplyMgt.setForeground(new Color(95, 158, 160));

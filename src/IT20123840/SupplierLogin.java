@@ -60,6 +60,7 @@ public class SupplierLogin extends JFrame {
 		setUndecorated(true);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 		
 		JLabel lbl_Title = new JLabel("Suwasetha Medical Center");
 		lbl_Title.setForeground(new Color(95, 158, 160));
@@ -95,35 +96,35 @@ public class SupplierLogin extends JFrame {
 		btn_SignIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//Execute sql query to validate username & password
-				try {
-					Class.forName("com.mysql.jdbc.Driver");
-					Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/suwasetha_vaccine", "root", "");
-					Statement stmt = c.createStatement();
-					String sql = "Select * from tbl_supplycompany where username = '"+txt_Username.getText()+"' and password = '"+passwordField.getText()+"'";
-					ResultSet rs = stmt.executeQuery(sql);
-					
-					if (rs.next()) {
-						setVisible(false);
-						
-						/*Statement stmt1 = c.createStatement();
-						String sql1 = "select company_name from tbl_supplycompany where username = '"+txt_Username.getText()+"' and password = '"+passwordField.getText()+"'";
-						ResultSet rs1 = stmt1.executeQuery(sql1);
-						String s = rs1.getString("company_name");*/
-						
-						CompanyHome ch = new CompanyHome();
-						ch.setVisible(true);
-						
-					}
-					else {
-						JOptionPane.showMessageDialog(null, "Invalid Username or Password", "ERROR", JOptionPane.ERROR_MESSAGE);
-						txt_Username.setText(null);
-						passwordField.setText(null);
-						txt_Username.requestFocusInWindow();
-					}
+				if (txt_Username.getText().isEmpty() || passwordField.getText().isEmpty()){
+					JOptionPane.showMessageDialog(btn_SignIn, "Please fill all fields");
 				}
-				catch(Exception e1) {
-					e1.printStackTrace();
+				
+				else {
+					//Execute sql query to validate username & password
+					try {
+						Class.forName("com.mysql.jdbc.Driver");
+						Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/suwasetha_vaccine", "root", "");
+						Statement stmt = c.createStatement();
+						String sql = "Select * from tbl_supplycompany where BINARY username = '"+txt_Username.getText()+"' and BINARY password = '"+passwordField.getText()+"'";
+						ResultSet rs = stmt.executeQuery(sql);
+						
+						if (rs.next()) {
+							setVisible(false);
+							CompanyHome ch = new CompanyHome();
+							ch.setVisible(true);
+							
+						}
+						else {
+							JOptionPane.showMessageDialog(null, "Invalid Username or Password", "ERROR", JOptionPane.ERROR_MESSAGE);
+							txt_Username.setText(null);
+							passwordField.setText(null);
+							txt_Username.requestFocusInWindow();
+						}
+					}
+					catch(Exception e1) {
+						e1.printStackTrace();
+					}
 				}
 			}
 		});

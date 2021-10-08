@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -24,12 +25,20 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class EditOrders extends JFrame {
 
 	private JPanel contentPane;
 	private final JPanel panel = new JPanel();
 	private JTable table;
+	private JTextField searchBar;
 
 	/**
 	 * Launch the application.
@@ -67,6 +76,7 @@ public class EditOrders extends JFrame {
 		panel.setBounds(0, 0, 650, 33);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		setLocationRelativeTo(null);
 		
 		JLabel lblX = new JLabel("  X");
 		lblX.addMouseListener(new MouseAdapter() {
@@ -99,26 +109,11 @@ public class EditOrders extends JFrame {
 		contentPane.add(lblEditOrders);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(36, 81, 580, 212);
+		scrollPane.setBounds(36, 117, 580, 198);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
-		
-		JButton btnBack = new JButton("Back");
-		btnBack.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				CompanyHome ch = new CompanyHome();
-				ch.setVisible(true);
-				setVisible(false);
-			}
-		});
-		btnBack.setForeground(Color.WHITE);
-		btnBack.setFont(new Font("Calibri", Font.PLAIN, 20));
-		btnBack.setBackground(new Color(95, 158, 160));
-		btnBack.setBounds(533, 44, 83, 24);
-		contentPane.add(btnBack);
 		
 		JButton btnUpdateStatus = new JButton("Update Status");
 		btnUpdateStatus.addMouseListener(new MouseAdapter() {
@@ -132,8 +127,42 @@ public class EditOrders extends JFrame {
 		btnUpdateStatus.setForeground(Color.WHITE);
 		btnUpdateStatus.setFont(new Font("Calibri", Font.PLAIN, 20));
 		btnUpdateStatus.setBackground(new Color(95, 158, 160));
-		btnUpdateStatus.setBounds(232, 326, 196, 33);
+		btnUpdateStatus.setBounds(232, 342, 196, 33);
 		contentPane.add(btnUpdateStatus);
+		
+		JButton btnBack = new JButton("");
+		btnBack.setIcon(new ImageIcon(EditOrders.class.getResource("/IT20123840/Assets/Back.PNG")));
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CompanyHome ch = new CompanyHome();
+				ch.setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnBack.setForeground(new Color(95, 158, 160));
+		btnBack.setFont(new Font("Calibri", Font.PLAIN, 20));
+		btnBack.setBackground(new Color(95, 158, 160));
+		btnBack.setBounds(572, 48, 44, 30);
+		contentPane.add(btnBack);
+		
+		searchBar = new JTextField();
+		searchBar.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				DefaultTableModel model = (DefaultTableModel)table.getModel();
+				TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+				table.setRowSorter(tr);
+				tr.setRowFilter(RowFilter.regexFilter(searchBar.getText().trim()));
+			}
+		});
+		searchBar.setColumns(10);
+		searchBar.setBounds(36, 91, 174, 20);
+		contentPane.add(searchBar);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(EditOrders.class.getResource("/IT20123840/Assets/search.PNG")));
+		lblNewLabel.setBounds(210, 91, 31, 20);
+		contentPane.add(lblNewLabel);
 		
 		JLabel label = new JLabel("");
 		label.setBounds(0, 34, 650, 352);
