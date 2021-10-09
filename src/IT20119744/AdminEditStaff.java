@@ -103,7 +103,7 @@ public class AdminEditStaff extends JFrame {
 			table.getColumnModel().getColumn(1).setPreferredWidth(100);
 			table.getColumnModel().getColumn(2).setPreferredWidth(80);
 			table.getColumnModel().getColumn(3).setPreferredWidth(40);
-			table.getColumnModel().getColumn(4).setPreferredWidth(150);
+			table.getColumnModel().getColumn(4).setPreferredWidth(200);
 			table.getColumnModel().getColumn(5).setPreferredWidth(150);
 			
 			
@@ -480,7 +480,7 @@ public class AdminEditStaff extends JFrame {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				DefaultTableModel tablestaff =(DefaultTableModel)table.getModel();
-				String search = searchstaff.getText().toLowerCase();
+				String search = searchstaff.getText().trim();
 				
 				TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tablestaff);
 				table.setRowSorter(tr);
@@ -509,8 +509,8 @@ public class AdminEditStaff extends JFrame {
 		label_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				manageStaff mS= new manageStaff ();
-				mS.setVisible(true);				
+				AdminManageStaff AMS= new AdminManageStaff ();
+				AMS.setVisible(true);				
 				setVisible(false);
 			}
 		});
@@ -521,7 +521,7 @@ public class AdminEditStaff extends JFrame {
 		
 		JLabel lblNewLabel_11 =new JLabel("");
 		lblNewLabel_11.setBounds(0, 0, 1000, 660);
-		lblNewLabel_11.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
+		lblNewLabel_11.setIcon(new ImageIcon(AdminEditStaff.class.getResource("/IT20119744/assets/login.jpeg")));
 		contentPane.add(lblNewLabel_11);
 	}
 

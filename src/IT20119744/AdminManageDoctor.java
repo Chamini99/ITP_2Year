@@ -96,10 +96,10 @@ public class AdminManageDoctor extends JFrame {
 			table_doctor.setAutoResizeMode(0);
 			table_doctor.getColumnModel().getColumn(0).setPreferredWidth(40);
 			table_doctor.getColumnModel().getColumn(1).setPreferredWidth(100);
-			table_doctor.getColumnModel().getColumn(2).setPreferredWidth(50);
-			table_doctor.getColumnModel().getColumn(3).setPreferredWidth(150);
-			table_doctor.getColumnModel().getColumn(4).setPreferredWidth(150);
-			table_doctor.getColumnModel().getColumn(5).setPreferredWidth(120);
+			table_doctor.getColumnModel().getColumn(2).setPreferredWidth(80);
+			table_doctor.getColumnModel().getColumn(3).setPreferredWidth(200);
+			table_doctor.getColumnModel().getColumn(4).setPreferredWidth(200);
+			table_doctor.getColumnModel().getColumn(5).setPreferredWidth(80);
 			table_doctor.getColumnModel().getColumn(6).setPreferredWidth(100);
 			table_doctor.getColumnModel().getColumn(7).setPreferredWidth(150);
 			
@@ -207,7 +207,7 @@ public class AdminManageDoctor extends JFrame {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
 				DefaultTableModel tabledoctor =(DefaultTableModel)table_doctor.getModel();
-				String search = searchdoctor.getText().toLowerCase();
+				String search = searchdoctor.getText().trim();
 				
 				TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tabledoctor);
 				table_doctor.setRowSorter(tr);
@@ -282,7 +282,7 @@ public class AdminManageDoctor extends JFrame {
 		
 		JLabel lblNewLabel_1 =new JLabel("");
 		lblNewLabel_1.setBounds(0, 0, 580, 420);
-		lblNewLabel_1.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
+		lblNewLabel_1.setIcon(new ImageIcon(AdminManageDoctor.class.getResource("/IT20119744/assets/login.jpeg")));
 		contentPane.add(lblNewLabel_1);
 	}
 }

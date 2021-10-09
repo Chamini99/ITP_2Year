@@ -93,7 +93,7 @@ public class managePeople extends JFrame {
 			table_people.getColumnModel().getColumn(1).setPreferredWidth(100);
 			table_people.getColumnModel().getColumn(2).setPreferredWidth(150);
 			table_people.getColumnModel().getColumn(3).setPreferredWidth(120);
-			table_people.getColumnModel().getColumn(4).setPreferredWidth(100);
+			table_people.getColumnModel().getColumn(4).setPreferredWidth(200);
 			table_people.getColumnModel().getColumn(5).setPreferredWidth(150);
 			
 			
@@ -184,7 +184,7 @@ public class managePeople extends JFrame {
 		textField.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 150, 550, 200);
+		scrollPane.setBounds(10, 106, 550, 244);
 		contentPane.add(scrollPane);
 		
 		table_people = new JTable();
@@ -210,36 +210,6 @@ public class managePeople extends JFrame {
 		label_1.setBounds(23, 0, 64, 33);
 		panel.add(label_1);
 		
-		JButton btnUpdateAdmin = new JButton("UPDATE ");
-		btnUpdateAdmin.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				editPeople eP= new editPeople();
-				eP.setVisible(true);				
-				setVisible(false);
-			}
-		});
-		btnUpdateAdmin.setForeground(Color.WHITE);
-		btnUpdateAdmin.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		btnUpdateAdmin.setBackground(new Color(95, 158, 160));
-		btnUpdateAdmin.setBounds(12, 105, 120, 33);
-		contentPane.add(btnUpdateAdmin);
-		
-		JButton btndelete = new JButton("DELETE");
-		btndelete.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				editPeople eP= new editPeople();
-				eP.setVisible(true);				
-				setVisible(false);
-			}
-		});
-		btndelete.setForeground(Color.WHITE);
-		btndelete.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		btndelete.setBackground(new Color(95, 158, 160));
-		btndelete.setBounds(442, 105, 120, 33);
-		contentPane.add(btndelete);
-		
 		JButton btnNewButton = new JButton("PRINT LIST");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -262,7 +232,7 @@ public class managePeople extends JFrame {
 		
 		JLabel lblNewLabel_1 =new JLabel("");
 		lblNewLabel_1.setBounds(0, 0, 580, 420);
-		lblNewLabel_1.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
+		lblNewLabel_1.setIcon(new ImageIcon(managePeople.class.getResource("/IT20119744/assets/login.jpeg")));
 		contentPane.add(lblNewLabel_1);
 		
 	}

@@ -217,7 +217,7 @@ public class email_send extends JFrame {
 		
 		JLabel lblNewLabel_11 =new JLabel("");
 		lblNewLabel_11.setBounds(0, 0, 580, 580);
-		lblNewLabel_11.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
+		lblNewLabel_11.setIcon(new ImageIcon(email_send.class.getResource("/IT20119744/assets/login.jpeg")));
 		contentPane.add(lblNewLabel_11);
 		
 	}

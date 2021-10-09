@@ -138,7 +138,7 @@ public class AdminHome extends JFrame {
 			});
 			lblNewLabel_1.setBounds(219, 320, 150, 122);
 			contentPane.add(lblNewLabel_1);
-			lblNewLabel_1.setIcon(new ImageIcon(Home.class.getResource("/IT20119744/assets/SUPPLY.png")));
+			lblNewLabel_1.setIcon(new ImageIcon(AdminHome.class.getResource("/IT20119744/assets/SUPPLY.png")));
 			contentPane.add(lblNewLabel_1);
 			
 	
@@ -153,7 +153,7 @@ public class AdminHome extends JFrame {
 			});
 			lblNewLabel_3.setBounds(69, 150, 150, 137);
 			contentPane.add(lblNewLabel_3);
-			lblNewLabel_3.setIcon(new ImageIcon(Home.class.getResource("/IT20119744/assets/STAFF.png")));
+			lblNewLabel_3.setIcon(new ImageIcon(AdminHome.class.getResource("/IT20119744/assets/STAFF.png")));
 			contentPane.add(lblNewLabel_3);
 			
 			JLabel lblNewLabel_4 = new JLabel("");
@@ -167,7 +167,7 @@ public class AdminHome extends JFrame {
 			});
 			lblNewLabel_4.setBounds(380, 150, 150, 141);
 			contentPane.add(lblNewLabel_4);
-			lblNewLabel_4.setIcon(new ImageIcon(Home.class.getResource("/IT20119744/assets/DOCTOR.png")));
+			lblNewLabel_4.setIcon(new ImageIcon(AdminHome.class.getResource("/IT20119744/assets/DOCTOR.png")));
 			contentPane.add(lblNewLabel_4);
 			
 			JLabel lblNewLabel_6 =new JLabel("");

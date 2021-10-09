@@ -224,7 +224,7 @@ public class adminLogin {
 		
 		JLabel lblNewLabel_7 =new JLabel("");
 		lblNewLabel_7.setBounds(0, 0, 580, 335);
-		lblNewLabel_7.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
+		lblNewLabel_7.setIcon(new ImageIcon(adminLogin.class.getResource("/IT20119744/assets/login.jpeg")));
 		frame.getContentPane().add(lblNewLabel_7);
 	}
 

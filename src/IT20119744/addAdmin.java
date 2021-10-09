@@ -482,7 +482,7 @@ public class addAdmin extends JFrame {
 		
 		JLabel backgroundimg =new JLabel("");
 		backgroundimg.setBounds(0, 0, 580, 630);
-		backgroundimg.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
+		backgroundimg.setIcon(new ImageIcon(addAdmin.class.getResource("/IT20119744/assets/login.jpeg")));
 		contentPane.add(backgroundimg);
 
 		

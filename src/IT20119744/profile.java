@@ -151,7 +151,7 @@ public class profile extends JFrame {
 		});
 		lblNewLabel_1.setBounds(69, 310, 150, 122);
 		contentPane.add(lblNewLabel_1);
-		lblNewLabel_1.setIcon(new ImageIcon(Home.class.getResource("/IT20119744/assets/SUPPLY.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(profile.class.getResource("/IT20119744/assets/SUPPLY.png")));
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
@@ -165,7 +165,7 @@ public class profile extends JFrame {
 		});
 		lblNewLabel_2.setBounds(380, 310, 150, 137);
 		contentPane.add(lblNewLabel_2);
-		lblNewLabel_2.setIcon(new ImageIcon(Home.class.getResource("/IT20119744/assets/ADMIN.png")));
+		lblNewLabel_2.setIcon(new ImageIcon(profile.class.getResource("/IT20119744/assets/ADMIN.png")));
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
@@ -179,7 +179,7 @@ public class profile extends JFrame {
 		});
 		lblNewLabel_3.setBounds(69, 150, 150, 137);
 		contentPane.add(lblNewLabel_3);
-		lblNewLabel_3.setIcon(new ImageIcon(Home.class.getResource("/IT20119744/assets/STAFF.png")));
+		lblNewLabel_3.setIcon(new ImageIcon(profile.class.getResource("/IT20119744/assets/STAFF.png")));
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
@@ -193,7 +193,7 @@ public class profile extends JFrame {
 		});
 		lblNewLabel_4.setBounds(380, 150, 150, 141);
 		contentPane.add(lblNewLabel_4);
-		lblNewLabel_4.setIcon(new ImageIcon(Home.class.getResource("/IT20119744/assets/DOCTOR.png")));
+		lblNewLabel_4.setIcon(new ImageIcon(profile.class.getResource("/IT20119744/assets/DOCTOR.png")));
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_6 =new JLabel("");

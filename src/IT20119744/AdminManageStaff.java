@@ -97,7 +97,7 @@ public class AdminManageStaff extends JFrame {
 			table_staff.getColumnModel().getColumn(1).setPreferredWidth(100);
 			table_staff.getColumnModel().getColumn(2).setPreferredWidth(80);
 			table_staff.getColumnModel().getColumn(3).setPreferredWidth(40);
-			table_staff.getColumnModel().getColumn(4).setPreferredWidth(150);
+			table_staff.getColumnModel().getColumn(4).setPreferredWidth(200);
 			table_staff.getColumnModel().getColumn(5).setPreferredWidth(150);
 			
 			
@@ -205,7 +205,7 @@ public class AdminManageStaff extends JFrame {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				DefaultTableModel tabledoctor =(DefaultTableModel)table_staff.getModel();
-				String search = searchstaff.getText().toLowerCase();
+				String search = searchstaff.getText().trim();
 				
 				TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tabledoctor);
 				table_staff.setRowSorter(tr);
@@ -279,7 +279,7 @@ public class AdminManageStaff extends JFrame {
 		
 		JLabel lblNewLabel_1 =new JLabel("");
 		lblNewLabel_1.setBounds(5, 5, 570, 410);
-		lblNewLabel_1.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
+		lblNewLabel_1.setIcon(new ImageIcon(AdminManageStaff.class.getResource("/IT20119744/assets/login.jpeg")));
 		contentPane.add(lblNewLabel_1);
 		
 	}

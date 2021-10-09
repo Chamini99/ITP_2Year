@@ -100,7 +100,7 @@ public class AdminEditSupplier extends JFrame {
 			table.getColumnModel().getColumn(0).setPreferredWidth(40);
 			table.getColumnModel().getColumn(1).setPreferredWidth(100);
 			table.getColumnModel().getColumn(2).setPreferredWidth(150);
-			table.getColumnModel().getColumn(3).setPreferredWidth(120);
+			table.getColumnModel().getColumn(3).setPreferredWidth(200);
 			table.getColumnModel().getColumn(4).setPreferredWidth(100);
 			table.getColumnModel().getColumn(5).setPreferredWidth(150);
 			
@@ -479,7 +479,7 @@ public class AdminEditSupplier extends JFrame {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				DefaultTableModel tablesupplier =(DefaultTableModel)table.getModel();
-				String search = searchsupplier.getText().toLowerCase();
+				String search = searchsupplier.getText().trim();
 				
 				TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tablesupplier);
 				table.setRowSorter(tr);
@@ -520,7 +520,7 @@ public class AdminEditSupplier extends JFrame {
 		
 		JLabel lblNewLabel_11 =new JLabel("");
 		lblNewLabel_11.setBounds(0, 0, 1000, 660);
-		lblNewLabel_11.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
+		lblNewLabel_11.setIcon(new ImageIcon(AdminEditSupplier.class.getResource("/IT20119744/assets/login.jpeg")));
 		contentPane.add(lblNewLabel_11);
 	}
 

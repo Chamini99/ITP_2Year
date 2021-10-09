@@ -95,7 +95,7 @@ public class manageSupplier extends JFrame {
 			table_supplier.getColumnModel().getColumn(0).setPreferredWidth(40);
 			table_supplier.getColumnModel().getColumn(1).setPreferredWidth(100);
 			table_supplier.getColumnModel().getColumn(2).setPreferredWidth(150);
-			table_supplier.getColumnModel().getColumn(3).setPreferredWidth(120);
+			table_supplier.getColumnModel().getColumn(3).setPreferredWidth(200);
 			table_supplier.getColumnModel().getColumn(4).setPreferredWidth(100);
 			table_supplier.getColumnModel().getColumn(5).setPreferredWidth(150);
 			
@@ -192,7 +192,7 @@ public class manageSupplier extends JFrame {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				DefaultTableModel tablesupplier =(DefaultTableModel)table_supplier.getModel();
-				String search = searchsupplier.getText().toLowerCase();
+				String search = searchsupplier.getText().trim();
 				
 				TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tablesupplier);
 				table_supplier.setRowSorter(tr);
@@ -275,7 +275,7 @@ public class manageSupplier extends JFrame {
 		
 		JLabel lblNewLabel_1 =new JLabel("");
 		lblNewLabel_1.setBounds(0, 0, 580, 420);
-		lblNewLabel_1.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
+		lblNewLabel_1.setIcon(new ImageIcon(manageSupplier.class.getResource("/IT20119744/assets/login.jpeg")));
 		contentPane.add(lblNewLabel_1);
 		
 	}

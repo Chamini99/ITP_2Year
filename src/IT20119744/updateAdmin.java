@@ -491,11 +491,20 @@ public class updateAdmin extends JFrame {
 		contentPane.add(lblSearch);
 		
 		searchadmin = new JTextField();
+		/*searchadmin.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				DefaultTableModel tableadmin =(DefaultTableModel)table.getModel();
+				TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tableadmin);
+				table.setRowSorter(tr);
+				tr.setRowFilter(RowFilter.regexFilter(searchadmin.getText().trim()));
+			}
+		});*/
 		searchadmin.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
 				DefaultTableModel tableadmin =(DefaultTableModel)table.getModel();
-				String search = searchadmin.getText().toLowerCase();
+				String search = searchadmin.getText().trim();
 				
 				TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tableadmin);
 				table.setRowSorter(tr);
@@ -553,7 +562,7 @@ public class updateAdmin extends JFrame {
 		
 		JLabel lblNewLabel_6 =new JLabel("");
 		lblNewLabel_6.setBounds(0, 0, 1000, 650);
-		lblNewLabel_6.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
+		lblNewLabel_6.setIcon(new ImageIcon(updateAdmin.class.getResource("/IT20119744/assets/login.jpeg")));
 		contentPane.add(lblNewLabel_6);
 
 

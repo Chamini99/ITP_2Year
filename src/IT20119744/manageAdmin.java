@@ -95,10 +95,10 @@ public class manageAdmin extends JFrame {
 			table_admin.setAutoResizeMode(0);
 			table_admin.getColumnModel().getColumn(0).setPreferredWidth(40);
 			table_admin.getColumnModel().getColumn(1).setPreferredWidth(100);
-			table_admin.getColumnModel().getColumn(2).setPreferredWidth(150);
-			table_admin.getColumnModel().getColumn(3).setPreferredWidth(120);
-			table_admin.getColumnModel().getColumn(4).setPreferredWidth(100);
-			table_admin.getColumnModel().getColumn(5).setPreferredWidth(150);
+			table_admin.getColumnModel().getColumn(2).setPreferredWidth(200);
+			table_admin.getColumnModel().getColumn(3).setPreferredWidth(80);
+			table_admin.getColumnModel().getColumn(4).setPreferredWidth(150);
+			table_admin.getColumnModel().getColumn(5).setPreferredWidth(200);
 			
 			
 		}catch(Exception e){
@@ -233,7 +233,7 @@ public class manageAdmin extends JFrame {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
 					DefaultTableModel tableadmin =(DefaultTableModel)table_admin.getModel();
-					String search = searchadmin.getText().toLowerCase();
+					String search = searchadmin.getText().trim();
 					
 					TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tableadmin);
 					table_admin.setRowSorter(tr);
@@ -300,7 +300,7 @@ public class manageAdmin extends JFrame {
 		
 		JLabel lblNewLabel_1 =new JLabel("");
 		lblNewLabel_1.setBounds(0, 0, 580, 420);
-		lblNewLabel_1.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
+		lblNewLabel_1.setIcon(new ImageIcon(manageAdmin.class.getResource("/IT20119744/assets/login.jpeg")));
 		contentPane.add(lblNewLabel_1);
 	}
 }

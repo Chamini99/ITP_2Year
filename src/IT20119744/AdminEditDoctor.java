@@ -107,10 +107,10 @@ public class AdminEditDoctor extends JFrame {
 			table.setAutoResizeMode(0);
 			table.getColumnModel().getColumn(0).setPreferredWidth(40);
 			table.getColumnModel().getColumn(1).setPreferredWidth(100);
-			table.getColumnModel().getColumn(2).setPreferredWidth(50);
-			table.getColumnModel().getColumn(3).setPreferredWidth(150);
-			table.getColumnModel().getColumn(4).setPreferredWidth(150);
-			table.getColumnModel().getColumn(5).setPreferredWidth(120);
+			table.getColumnModel().getColumn(2).setPreferredWidth(80);
+			table.getColumnModel().getColumn(3).setPreferredWidth(200);
+			table.getColumnModel().getColumn(4).setPreferredWidth(200);
+			table.getColumnModel().getColumn(5).setPreferredWidth(80);
 			table.getColumnModel().getColumn(6).setPreferredWidth(100);
 			table.getColumnModel().getColumn(7).setPreferredWidth(150);
 			
@@ -285,7 +285,7 @@ public class AdminEditDoctor extends JFrame {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				DefaultTableModel tabledoctor =(DefaultTableModel)table.getModel();
-				String search = searchdoctor.getText().toLowerCase();
+				String search = searchdoctor.getText().trim();
 				
 				TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tabledoctor);
 				table.setRowSorter(tr);
@@ -580,8 +580,8 @@ public class AdminEditDoctor extends JFrame {
 		label_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				manageDoctor mD= new manageDoctor ();
-				mD.setVisible(true);				
+				AdminManageDoctor AMD= new AdminManageDoctor ();
+				AMD.setVisible(true);				
 				setVisible(false);
 			}
 		});
@@ -593,7 +593,7 @@ public class AdminEditDoctor extends JFrame {
 		imagelbl =new JLabel("");
 		imagelbl.setForeground(new Color(255, 255, 255));
 		imagelbl.setBounds(0, 0, 1000, 660);
-		imagelbl.setIcon(new ImageIcon(createAccount.class.getResource("/IT20119744/assets/login.jpeg")));
+		imagelbl.setIcon(new ImageIcon(AdminEditDoctor.class.getResource("/IT20119744/assets/login.jpeg")));
 		contentPane.add(imagelbl);
 	}
 
