@@ -22,6 +22,8 @@ import java.sql.Statement;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
@@ -37,6 +39,7 @@ public class UpdateProfile extends JFrame {
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
 	private JPasswordField passwordField_2;
+	private JLabel lbl_error4;
 
 	/**
 	 * Launch the application.
@@ -238,8 +241,8 @@ public class UpdateProfile extends JFrame {
 						int x = stmt.executeUpdate(query);
 					
 						JOptionPane.showConfirmDialog(btnUpdate, "Your account has been updated successfully!!!");
-						SupplierLogin sl = new SupplierLogin();
-						sl.setVisible(true);
+						CompanyHome ch = new CompanyHome();
+						ch.setVisible(true);
 						setVisible(false);
 						
 						connection.close();
@@ -250,6 +253,7 @@ public class UpdateProfile extends JFrame {
 			}
 			}
 		});
+		
 		btnUpdate.setFont(new Font("Calibri", Font.BOLD, 20));
 		btnUpdate.setBackground(new Color(95, 158, 160));
 		btnUpdate.setForeground(new Color(255, 255, 255));
@@ -380,6 +384,10 @@ public class UpdateProfile extends JFrame {
 		passwordField_2 = new JPasswordField();
 		passwordField_2.setBounds(230, 205, 107, 20);
 		contentPane.add(passwordField_2);
+		
+		JLabel lbl_error4 = new JLabel("");
+		lbl_error4.setBounds(293, 373, 180, 14);
+		contentPane.add(lbl_error4);
 		
 		JLabel label = new JLabel("");
 		label.setBounds(0, 32, 580, 547);

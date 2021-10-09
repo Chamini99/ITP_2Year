@@ -164,7 +164,7 @@ public class AddVaccine extends JFrame {
 						Class.forName("com.mysql.cj.jdbc.Driver");
 						Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/suwasetha_vaccine", "root", "");
 						
-						String query1 = "select * from tbl_companystock where vaccine_name = '"+vaccine_name+"' ";
+						String query1 = "select * from tbl_companystock where vaccine_name = '"+vaccineName+"' ";
 						Statement stmt1 = connection.createStatement();
 						ResultSet rs = stmt1.executeQuery(query1);
 						

@@ -58,6 +58,7 @@ public class SupplyHome {
 		frame.getContentPane().add(lbl_SupplyMgt);
 		
 		JButton btn_Stock = new JButton("Stock");
+		btn_Stock.setIcon(new ImageIcon(SupplyHome.class.getResource("/IT20123840/Assets/Stock.PNG")));
 		btn_Stock.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -69,10 +70,11 @@ public class SupplyHome {
 		btn_Stock.setBackground(new Color(95, 158, 160));
 		btn_Stock.setForeground(new Color(255, 255, 255));
 		btn_Stock.setFont(new Font("Calibri", Font.PLAIN, 20));
-		btn_Stock.setBounds(68, 127, 104, 37);
+		btn_Stock.setBounds(52, 127, 131, 37);
 		frame.getContentPane().add(btn_Stock);
 		
 		JButton btn_Orders = new JButton("Orders");
+		btn_Orders.setIcon(new ImageIcon(SupplyHome.class.getResource("/IT20123840/Assets/Odrers.PNG")));
 		btn_Orders.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -84,10 +86,11 @@ public class SupplyHome {
 		btn_Orders.setForeground(new Color(255, 255, 255));
 		btn_Orders.setBackground(new Color(95, 158, 160));
 		btn_Orders.setFont(new Font("Calibri", Font.PLAIN, 20));
-		btn_Orders.setBounds(244, 127, 104, 37);
+		btn_Orders.setBounds(226, 127, 131, 37);
 		frame.getContentPane().add(btn_Orders);
 		
 		JButton btn_Login = new JButton("Login");
+		btn_Login.setIcon(new ImageIcon(SupplyHome.class.getResource("/IT20123840/Assets/Login.PNG")));
 		btn_Login.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -99,7 +102,7 @@ public class SupplyHome {
 		btn_Login.setFont(new Font("Calibri", Font.PLAIN, 20));
 		btn_Login.setBackground(new Color(95, 158, 160));
 		btn_Login.setForeground(new Color(255, 255, 255));
-		btn_Login.setBounds(419, 127, 104, 37);
+		btn_Login.setBounds(401, 127, 131, 37);
 		frame.getContentPane().add(btn_Login);
 		
 		JPanel panel = new JPanel();
