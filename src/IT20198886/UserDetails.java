@@ -132,12 +132,6 @@ public class UserDetails extends JFrame {
 		btnNewButton.setBounds(249, 376, 194, 23);
 		contentPane.add(btnNewButton);
 		
-		JLabel lblNewLabel_4 = new JLabel("NIC to Search");
-		lblNewLabel_4.setFont(new Font("Dialog", Font.PLAIN, 15));
-		lblNewLabel_4.setForeground(new Color(95, 158, 160));
-		lblNewLabel_4.setBounds(450, 87, 109, 14);
-		contentPane.add(lblNewLabel_4);
-		
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setBounds(0, 31, 703, 379);
 		contentPane.add(lblNewLabel_2);

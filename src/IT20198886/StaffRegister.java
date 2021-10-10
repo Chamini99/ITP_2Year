@@ -23,12 +23,15 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JScrollBar;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class StaffRegister extends JFrame {
 
@@ -80,8 +83,7 @@ public class StaffRegister extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				Login login=new Login();
-				login.setVisible(true);
+				
 				
 			}
 		});
@@ -144,6 +146,11 @@ public class StaffRegister extends JFrame {
 		lblNewLabel_9.setBounds(119, 321, 98, 14);
 		contentPane.add(lblNewLabel_9);
 		
+		JLabel finalResult = new JLabel("");
+		finalResult.setForeground(Color.RED);
+		finalResult.setBounds(325, 290, 133, 14);
+		contentPane.add(finalResult);
+		
 		t1 = new JTextField();
 		t1.setBounds(244, 113, 214, 20);
 		contentPane.add(t1);
@@ -177,24 +184,69 @@ public class StaffRegister extends JFrame {
 	      });
 		
 		t6 = new JTextField();
+		t6.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				
+				boolean check = EmailValidation.isValid(t6.getText());  
+			    if (check) {  
+			      //finalResult.setText("Email is Valid");  
+			    	finalResult.setVisible(false);
+			    }  
+			    else {  
+			    	finalResult.setVisible(true);
+
+			      finalResult.setText("Email is not Valid");  
+			    }  
+				
+			}
+		});
 		t6.setBounds(244, 270, 214, 20);
 		contentPane.add(t6);
 		t6.setColumns(10);
 		
+		
 		JButton btnNewButton = new JButton("Confirm");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String Full_name=t1.getText();
-			    String NIC=t2.getText();
-				String Gender=t3.getText();
+			
+				
+				
+		       String Full_name=t1.getText();
+			   String NIC=t2.getText();
+			   String Gender=t3.getText();
 				 String Age=t4.getText();
 			    String Email=t6.getText();
 				String Password=passwordField_1.getText();
+				
+				int AgeInt = Integer.parseInt(Age);
 				// creating one object 
-				my_update obj=new my_update();
-				obj.my_db_update(Full_name,NIC,Gender,Age,Email,Password );
+			//	my_update obj=new my_update();
+			//	obj.my_db_update(Full_name,NIC,Gender,Age,Email,Password );
+				
+				try{  
+					 
+					Statement st=MyConnection.getConnection().createStatement();  
+					//int mark = Integer.parseInt(str3); // Mark is an integer
+					// Adding record 
+					String query1="INSERT INTO tbl_staffmember (Full_name,NIC,Gender,Age,Email,Password)"
+							+ "VALUES('" +Full_name+"','"+NIC+"','"+Gender+"','"+AgeInt+"','"+Email+"','"+Password+"')";
+					st.executeUpdate(query1); // record added. 
+					
+					JOptionPane.showMessageDialog(null, "Staff Member added successfully");
+					dispose();
+					StaffHome home = new StaffHome();
+					home.setVisible(true);
+					//con.close();  
+					
+				}catch(SQLException sqlException){
+					JOptionPane.showMessageDialog(null," Something Went Wrong");
+					sqlException.printStackTrace();} 
+					//////////////////////////////
 				
 				
+			
+
 			}
 		});
 		btnNewButton.addMouseListener(new MouseAdapter() {
@@ -236,7 +288,7 @@ public class StaffRegister extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setForeground(new Color(95, 158, 160));
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 17));
-		lblNewLabel_1.setBounds(0, 30, 552, 534);
+		lblNewLabel_1.setBounds(0, 29, 552, 653);
 		contentPane.add(lblNewLabel_1);
 		setUndecorated(true);
 		

@@ -7,6 +7,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -18,11 +20,17 @@ import javax.swing.JEditorPane;
 import javax.swing.JTable;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JScrollPane;
 
 public class assign_details extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
+	
 
 	/**
 	 * Launch the application.
@@ -39,11 +47,20 @@ public class assign_details extends JFrame {
 			}
 		});
 	}
-
+Connection connection=null;
+	
+	private JTable table;
 	/**
 	 * Create the frame.
 	 */
 	public assign_details() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowOpened(WindowEvent arg0) {
+				ShowData();
+			}
+		});
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 637, 408);
 		contentPane = new JPanel();
@@ -88,9 +105,12 @@ public class assign_details extends JFrame {
 		lblNewLabel_3.setBounds(281, 42, 153, 31);
 		contentPane.add(lblNewLabel_3);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(34, 100, 576, 229);
+		contentPane.add(scrollPane);
+		
 		table = new JTable();
-		table.setBounds(34, 100, 576, 229);
-		contentPane.add(table);
+		scrollPane.setViewportView(table);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setBounds(0, 31, 637, 377);
@@ -102,4 +122,45 @@ public class assign_details extends JFrame {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 	}
+	private void ShowData() {
+		Connection con=MyConnection.getConnection();
+		DefaultTableModel model=new DefaultTableModel();
+		model.addColumn("VaccineAssignID");
+		model.addColumn("NIC");
+		model.addColumn("vaccine_type");
+		model.addColumn("assign_date");
+		model.addColumn("dose");
+				try {
+			String query="select * from tbl_vaccineassign";
+			Statement st = con.createStatement();
+			ResultSet rs  =st . executeQuery(query);
+			while (rs.next())
+			{
+				model.addRow(new Object[] {
+						rs.getInt("VaccineAssignID"),
+						rs.getString("NIC"),
+						rs.getString("vaccine_type"),
+						rs.getString("assign_date"),
+						rs.getString("dose"),
+						
+						
+				});
+				
+			}
+			rs.close();
+			st.close();
+		
+			
+			table.setModel(model);
+			table.setAutoResizeMode(0);
+			table.getColumnModel().getColumn(0).setPreferredWidth(120);
+			table.getColumnModel().getColumn(1).setPreferredWidth(160);
+			table.getColumnModel().getColumn(2).setPreferredWidth(160);
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println("error " +e);
+		}
+}
 }

@@ -11,22 +11,40 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Toolkit;
 
 import javax.swing.JTable;
 import javax.swing.JTextField;
+
+import com.mysql.jdbc.PreparedStatement;
 import com.toedter.calendar.JDateChooser;
+
+import net.proteanit.sql.DbUtils;
+
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class assign_dates extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	private JTextField textField;
+	private JTextField t1;
+	private JTextField textField_1;
+	private JTextField textField_2;
 //test
 	/**
 	 * Launch the application.
@@ -107,10 +125,10 @@ public class assign_dates extends JFrame {
 		lblNewLabel_5.setBounds(155, 239, 63, 25);
 		contentPane.add(lblNewLabel_5);
 		
-		textField = new JTextField();
-		textField.setBounds(341, 244, 148, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		t1 = new JTextField();
+		t1.setBounds(341, 244, 148, 20);
+		contentPane.add(t1);
+		t1.setColumns(10);
 		
 		JLabel lblNewLabel_6 = new JLabel("Vaccine Date");
 		lblNewLabel_6.setFont(new Font("Dialog", Font.BOLD, 17));
@@ -118,19 +136,16 @@ public class assign_dates extends JFrame {
 		lblNewLabel_6.setBounds(155, 285, 126, 25);
 		contentPane.add(lblNewLabel_6);
 		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(341, 290, 148, 20);
-		contentPane.add(dateChooser);
-		
 		JLabel lblNewLabel_7 = new JLabel("Vaccine Type");
 		lblNewLabel_7.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblNewLabel_7.setForeground(new Color(95, 158, 160));
 		lblNewLabel_7.setBounds(155, 321, 126, 25);
 		contentPane.add(lblNewLabel_7);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(341, 326, 148, 20);
-		contentPane.add(comboBox);
+		JComboBox cb = new JComboBox();
+		cb.setModel(new DefaultComboBoxModel(new String[] {"Sinopharm", "Sputnic", "Pfizer", "Moderna"}));
+		cb.setBounds(341, 326, 148, 20);
+		contentPane.add(cb);
 		
 		JLabel lblNewLabel_8 = new JLabel("Dose");
 		lblNewLabel_8.setFont(new Font("Dialog", Font.BOLD, 17));
@@ -139,10 +154,53 @@ public class assign_dates extends JFrame {
 		contentPane.add(lblNewLabel_8);
 		
 		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1st Dose", "2nd Dose"}));
 		comboBox_1.setBounds(341, 371, 148, 20);
 		contentPane.add(comboBox_1);
 		
 		JButton btnNewButton = new JButton("Assign");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String NIC=t1.getText();
+				   String Vaccine_type=cb.getSelectedItem().toString();
+				   String assign_date=textField_2.getText();
+				   String dose=comboBox_1.getSelectedItem().toString();
+				  
+					
+					
+					// creating one object 
+				//	my_update obj=new my_update();
+				//	obj.my_db_update(Full_name,NIC,Gender,Age,Email,Password );
+					
+					try{  
+						 
+						Statement st=MyConnection.getConnection().createStatement();  
+						//int mark = Integer.parseInt(str3); // Mark is an integer
+						// Adding record 
+						String query1="INSERT INTO tbl_vaccineassign (NIC,vaccine_type,assign_date,dose)"
+								+ "VALUES('" +NIC+"','"+Vaccine_type+"','"+assign_date+"','"+dose+"')";
+						st.executeUpdate(query1); // record added. 
+						
+						JOptionPane.showMessageDialog(null, "Date added successfully");
+						dispose();
+						assign_details details = new assign_details();
+						details.setVisible(true);
+						//con.close();  
+						
+					}catch(SQLException sqlException){
+						JOptionPane.showMessageDialog(null," Something Went Wrong");
+						sqlException.printStackTrace();} 
+						//////////////////////////////
+					
+					
+				
+
+				
+				
+			}
+			
+			
+		});
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -160,6 +218,36 @@ public class assign_dates extends JFrame {
 		table = new JTable();
 		table.setBounds(66, 113, 592, 90);
 		contentPane.add(table);
+		
+		textField_1 = new JTextField();
+		
+		textField_1.addKeyListener(new KeyAdapter() {
+			Connection con=MyConnection.getConnection();
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				try {
+					
+					String query="select * from tbl_peopledetails where Registered_date=? ";
+					java.sql.PreparedStatement pst =con.prepareStatement(query);
+					pst.setString(1,textField_1.getText());
+					 ResultSet rs=pst.executeQuery();
+					 table.setModel(DbUtils.resultSetToTableModel(rs));
+					 
+					 pst.close();
+					
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		textField_1.setBounds(546, 90, 130, 20);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(341, 290, 148, 20);
+		contentPane.add(textField_2);
+		textField_2.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setBounds(-25, 32, 711, 445);
