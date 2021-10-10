@@ -30,6 +30,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.MessageFormat;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
@@ -140,7 +141,7 @@ public class AllOrders extends JFrame {
 		contentPane.add(lblOrderNumber);
 		
 		t1 = new JTextField();
-		t1.setBounds(313, 344, 231, 23);
+		t1.setBounds(313, 345, 150, 23);
 		contentPane.add(t1);
 		t1.setColumns(10);
 		
@@ -174,8 +175,31 @@ public class AllOrders extends JFrame {
 		btnNewButton.setBackground(new Color(95, 158, 160));
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton.setBounds(279, 394, 136, 31);
+		btnNewButton.setBounds(487, 345, 106, 25);
 		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Genarate Report");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MessageFormat header=new MessageFormat("Suwasetha Vaccine Management Order Details ");
+				MessageFormat footer=new MessageFormat("Suwasetha Medical Center ");
+				try {
+					
+					table_1.print(JTable.PrintMode.FIT_WIDTH,header,footer);
+				  
+				}catch (Exception e) {
+					JOptionPane.showMessageDialog(null," Can not be print!"+e.getMessage());
+					
+					  }
+			
+				
+				
+			}
+		});
+		btnNewButton_1.setForeground(new Color(255, 255, 255));
+		btnNewButton_1.setBackground(new Color(95, 158, 160));
+		btnNewButton_1.setBounds(313, 392, 150, 23);
+		contentPane.add(btnNewButton_1);
 	
 		
 	
@@ -243,8 +267,6 @@ public class AllOrders extends JFrame {
 		}
 		
 	}
-	
-	 
 	   }
 
 	
