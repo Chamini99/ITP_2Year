@@ -149,7 +149,9 @@ public class Login extends JFrame {
 		lblNewLabel_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				System.exit(20);
+				IT20198886.Home home=new IT20198886.Home();
+				home.setVisible(true);
+				dispose();
 			}
 		});
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 17));

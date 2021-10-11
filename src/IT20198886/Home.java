@@ -53,7 +53,7 @@ public class Home extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(95, 158, 160));
+		panel.setBackground(new Color(0, 139, 139));
 		panel.setBounds(0, 0, 1374, 31);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -67,7 +67,7 @@ public class Home extends JFrame {
 		});
 		lbl_1.setForeground(new Color(255, 255, 255));
 		lbl_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lbl_1.setBounds(1342, 11, 22, 14);
+		lbl_1.setBounds(1331, 11, 22, 14);
 		panel.add(lbl_1);
 		
 		JLabel lbl_2 = new JLabel("-");
@@ -157,13 +157,22 @@ public class Home extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lbl_image4 = new JLabel("New label");
+		lbl_image4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				dispose();
+				IT20123840.SupplierLogin slogin = new IT20123840.SupplierLogin();
+				slogin.setVisible(true);
+				
+			}
+		});
 		lbl_image4.setBounds(132, 483, 139, 139);
 		contentPane.add(lbl_image4);
 		
 		lbl_image4.setIcon(new ImageIcon(Home.class.getResource("/IT20198886/Assets/supplymgt.png")));
 		contentPane.add(lbl_image4);
 		
-		JLabel lblNewLabel = new JLabel("Supplu Management");
+		JLabel lblNewLabel = new JLabel("Supply Management");
 		lblNewLabel.setForeground(new Color(95, 158, 160));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNewLabel.setBounds(147, 653, 154, 29);
@@ -179,7 +188,7 @@ public class Home extends JFrame {
 		JLabel lblNewLabel_4 = new JLabel("Delivery Management");
 		lblNewLabel_4.setForeground(new Color(95, 158, 160));
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_4.setBounds(625, 662, 178, 20);
+		lblNewLabel_4.setBounds(598, 657, 178, 20);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lbl_image6 = new JLabel("New label");
@@ -200,14 +209,14 @@ public class Home extends JFrame {
 		JLabel lblNewLabel_5 = new JLabel("Admin Management");
 		lblNewLabel_5.setForeground(new Color(95, 158, 160));
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_5.setBounds(1075, 653, 154, 29);
+		lblNewLabel_5.setBounds(1053, 653, 154, 29);
 		contentPane.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_3 = new JLabel("New label");
 		lblNewLabel_3.setBounds(0, 29, 1358, 725);
 		contentPane.add(lblNewLabel_3);
 		
-		lblNewLabel_3.setIcon(new ImageIcon(Home.class.getResource("/IT20198886/Assets/homebg.jpg")));
+		lblNewLabel_3.setIcon(new ImageIcon(Home.class.getResource("/IT20198886/Assets/homebg2.jpg")));
 		contentPane.add(lblNewLabel_3);
 
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();

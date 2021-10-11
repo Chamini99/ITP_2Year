@@ -176,6 +176,8 @@ public class SupplierLogin extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
+				IT20198886.Home home=new IT20198886.Home();
+				home.setVisible(true);
 			}
 		});
 		lblX_1_1.setForeground(Color.WHITE);

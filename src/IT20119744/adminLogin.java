@@ -163,6 +163,8 @@ public class adminLogin  {
 			public void mouseClicked(MouseEvent arg0) {
 				//frame.setVisible(false);
 				if(JOptionPane.showConfirmDialog(null,"Do you want to Exit?","Confirmation",JOptionPane.YES_NO_OPTION)==0) {
+					IT20198886.Home home=new IT20198886.Home();
+					home.setVisible(true);
 					frame.dispose();
 				}
 			}

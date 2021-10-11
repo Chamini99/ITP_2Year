@@ -166,7 +166,8 @@ public class DocLogin {
 		lblX.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				
+				IT20198886.Home home=new IT20198886.Home();
+				home.setVisible(true);
 				frame.setVisible(false);
 			}
 		});
