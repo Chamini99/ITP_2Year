@@ -136,6 +136,14 @@ public class Home extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lbl_image3 = new JLabel("New label");
+		lbl_image3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				dispose();
+				IT20122782.DocLogin slogin = new IT20122782.DocLogin();
+				slogin.setVisible(true);
+			}
+		});
 		lbl_image3.setBounds(1053, 225, 144, 144);
 		contentPane.add(lbl_image3);
 		
@@ -175,6 +183,14 @@ public class Home extends JFrame {
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lbl_image6 = new JLabel("New label");
+		lbl_image6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				dispose();
+				IT20119744.AdminLog slogin1 = new IT20119744.AdminLog();
+				slogin1.setVisible(true);
+			}
+		});
 		lbl_image6.setBounds(1053, 483, 144, 139);
 		contentPane.add(lbl_image6);
 		
