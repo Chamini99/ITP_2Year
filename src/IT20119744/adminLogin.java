@@ -1,37 +1,41 @@
 package IT20119744;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.EventQueue;
+
+
+
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+
+import java.sql.Connection;
+
+import javax.swing.JTextField;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.JPanel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
-public class AdminLog extends JFrame {
+public class adminLogin  {
 
-	JFrame frame;
+	public JFrame frame;
 	private JTextField txtusername;
 	private JPasswordField txtpassword;
-	
-	
-	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
@@ -40,8 +44,8 @@ public class AdminLog extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AdminLog frame = new AdminLog();
-					frame.setVisible(true);
+					adminLogin window = new adminLogin();
+					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -50,9 +54,16 @@ public class AdminLog extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Create the application.
 	 */
-	public AdminLog() {
+	public adminLogin() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 580, 335);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -213,8 +224,9 @@ public class AdminLog extends JFrame {
 		
 		JLabel lblNewLabel_7 =new JLabel("");
 		lblNewLabel_7.setBounds(0, 0, 580, 335);
-		lblNewLabel_7.setIcon(new ImageIcon(AdminLog.class.getResource("/IT20119744/assets/login.jpeg")));
+		lblNewLabel_7.setIcon(new ImageIcon(adminLogin.class.getResource("/IT20119744/assets/login.jpeg")));
 		frame.getContentPane().add(lblNewLabel_7);
 	}
 
+	
 }

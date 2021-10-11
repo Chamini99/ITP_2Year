@@ -187,8 +187,8 @@ public class Home extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				IT20119744.AdminLog slogin1 = new IT20119744.AdminLog();
-				slogin1.setVisible(true);
+				IT20119744.adminLogin slogin1 = new IT20119744.adminLogin();
+				slogin1.frame.setVisible(true);
 			}
 		});
 		lbl_image6.setBounds(1053, 483, 144, 139);

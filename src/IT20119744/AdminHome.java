@@ -60,7 +60,7 @@ public class AdminHome extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				AdminLog aL = new AdminLog();
+				adminLogin aL = new adminLogin();
 				aL.frame.setVisible(true);
 			}
 		});
