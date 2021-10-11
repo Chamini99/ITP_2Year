@@ -402,7 +402,7 @@ public class AdminEditDoctor extends JFrame {
 		updatename.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
-				String PATTERN ="^[a-zA-Z]{0,50}$";
+				String PATTERN ="^[a-zA-Z]+ [a-zA-Z]+ [a-zA-Z]+$";
 				Pattern patt= Pattern.compile(PATTERN);
 				Matcher match=patt.matcher(updatename.getText());
 				if(!match.matches()) {

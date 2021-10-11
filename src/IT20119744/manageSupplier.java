@@ -93,9 +93,9 @@ public class manageSupplier extends JFrame {
 			table_supplier.setModel(model);
 			table_supplier.setAutoResizeMode(0);
 			table_supplier.getColumnModel().getColumn(0).setPreferredWidth(40);
-			table_supplier.getColumnModel().getColumn(1).setPreferredWidth(100);
-			table_supplier.getColumnModel().getColumn(2).setPreferredWidth(150);
-			table_supplier.getColumnModel().getColumn(3).setPreferredWidth(200);
+			table_supplier.getColumnModel().getColumn(1).setPreferredWidth(200);
+			table_supplier.getColumnModel().getColumn(2).setPreferredWidth(200);
+			table_supplier.getColumnModel().getColumn(3).setPreferredWidth(150);
 			table_supplier.getColumnModel().getColumn(4).setPreferredWidth(100);
 			table_supplier.getColumnModel().getColumn(5).setPreferredWidth(150);
 			

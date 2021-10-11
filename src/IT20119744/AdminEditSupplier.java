@@ -377,7 +377,7 @@ public class AdminEditSupplier extends JFrame {
 		updatename.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
-				String PATTERN ="^[a-zA-Z]{0,50}$";
+				String PATTERN ="^(?:((([^0-9_!¡?÷?¿/\\\\+=@#$%ˆ&*(){}|~<>;:[\\]'’,\\-.\\s])){1,}(['’,\\-\\.]){0,1}){2,}(([^0-9_!¡?÷?¿/\\\\+=@#$%ˆ&*(){}|~<>;:[\\]'’,\\-. ]))*(([ ]+){0,1}(((([^0-9_!¡?÷?¿/\\\\+=@#$%ˆ&*(){}|~<>;:[\\]'’,\\-\\.\\s])){1,})(['’\\-,\\.]){0,1}){2,}((([^0-9_!¡?÷?¿/\\\\+=@#$%ˆ&*(){}|~<>;:[\\]'’,\\-\\.\\s])){2,})?)*)$";
 				Pattern patt= Pattern.compile(PATTERN);
 				Matcher match=patt.matcher(updatename.getText());
 				if(!match.matches()) {
@@ -397,7 +397,7 @@ public class AdminEditSupplier extends JFrame {
 		updateaddress.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
-				String PATTERN ="^[A-Za-z0-9'\\.\\-\\s\\,]$";
+				String PATTERN ="^(?:((([^0-9_!¡?÷?¿/\\\\+=@#$%ˆ&*(){}|~<>;:[\\]'’,\\-.\\s])){1,}(['’,\\-\\.]){0,1}){2,}(([^0-9_!¡?÷?¿/\\\\+=@#$%ˆ&*(){}|~<>;:[\\]'’,\\-. ]))*(([ ]+){0,1}(((([^0-9_!¡?÷?¿/\\\\+=@#$%ˆ&*(){}|~<>;:[\\]'’,\\-\\.\\s])){1,})(['’\\-,\\.]){0,1}){2,}((([^0-9_!¡?÷?¿/\\\\+=@#$%ˆ&*(){}|~<>;:[\\]'’,\\-\\.\\s])){2,})?)*)$";
 				Pattern patt= Pattern.compile(PATTERN);
 				Matcher match=patt.matcher(updateaddress.getText());
 				if(!match.matches()) {
