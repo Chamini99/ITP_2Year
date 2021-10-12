@@ -87,11 +87,7 @@ public class Home extends JFrame {
 		lbl.setBounds(1323, 11, 22, 14);
 		panel.add(lbl);
 
-		lbl_1.setForeground(new Color(255, 255, 255));
-		lbl_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lbl_1.setBounds(1331, 11, 22, 14);
-		panel.add(lbl_1);
-
+		
 		
 		JLabel lbl_2 = new JLabel("-");
 		lbl_2.addMouseListener(new MouseAdapter() {
