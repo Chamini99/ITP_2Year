@@ -112,6 +112,21 @@ Connection connection=null;
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
+		JLabel lblUpdateVacineDate = new JLabel("Update Vacine Date Assigns");
+		lblUpdateVacineDate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				AssignUpdate as=new AssignUpdate();
+				as.setVisible(true);
+				
+			}
+		});
+		lblUpdateVacineDate.setForeground(new Color(220, 20, 60));
+		lblUpdateVacineDate.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		lblUpdateVacineDate.setBounds(425, 342, 225, 31);
+		contentPane.add(lblUpdateVacineDate);
+		
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setBounds(0, 31, 637, 377);
 		contentPane.add(lblNewLabel_2);

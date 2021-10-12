@@ -212,7 +212,7 @@ public class assign_dates extends JFrame {
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 17));
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(95, 158, 160));
-		btnNewButton.setBounds(276, 418, 89, 23);
+		btnNewButton.setBounds(275, 418, 89, 23);
 		contentPane.add(btnNewButton);
 		
 		table = new JTable();

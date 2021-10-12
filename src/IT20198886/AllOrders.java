@@ -172,12 +172,6 @@ public class AllOrders extends JFrame {
 				
 			
 		});
-		
-		JLabel lblUpdateTheVaccine = new JLabel("Update the Vaccine Order");
-		lblUpdateTheVaccine.setForeground(new Color(218, 165, 32));
-		lblUpdateTheVaccine.setFont(new Font("Segoe UI", Font.BOLD, 14));
-		lblUpdateTheVaccine.setBounds(467, 337, 225, 31);
-		contentPane.add(lblUpdateTheVaccine);
 		btnNewButton.setBackground(new Color(95, 158, 160));
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
