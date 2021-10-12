@@ -143,7 +143,7 @@ public class assign_dates extends JFrame {
 		contentPane.add(lblNewLabel_7);
 		
 		JComboBox cb = new JComboBox();
-		cb.setModel(new DefaultComboBoxModel(new String[] {"Sinopharm", "Sputnic", "Pfizer", "Moderna"}));
+		cb.setModel(new DefaultComboBoxModel(new String[] {"Astrazeneca Oxford", "Sputnik V", "Pfizer", "Moderna"}));
 		cb.setBounds(341, 326, 148, 20);
 		contentPane.add(cb);
 		
@@ -216,7 +216,7 @@ public class assign_dates extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		table = new JTable();
-		table.setBounds(66, 113, 592, 90);
+		table.setBounds(34, 118, 620, 90);
 		contentPane.add(table);
 		
 		textField_1 = new JTextField();

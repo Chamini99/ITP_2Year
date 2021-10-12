@@ -91,7 +91,7 @@ public class OrderVaccine extends JFrame {
 		contentPane.add(comboBox_1);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Moderna", "Sinopharm", "Pfizer", "Sputnic"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Astrazeneca Oxford", "Sputnik V", "Pfizer", "Moderna"}));
 		comboBox.setBounds(228, 202, 129, 20);
 		contentPane.add(comboBox);
 		panel_1.setBounds(384, 69, 342, 392);
