@@ -86,7 +86,7 @@ public class SplashWindow extends JFrame {
 	    JLabel lblNewLabel_1 = new JLabel("Suwasetha Medical Center");
         lblNewLabel_1.setForeground(Color.WHITE);
         lblNewLabel_1.setFont(new Font("Source Sans Pro Light", Font.BOLD, 30));
-        lblNewLabel_1.setBounds(207, 11, 411, 56);
+        lblNewLabel_1.setBounds(227, 11, 411, 56);
         contentPane.add(lblNewLabel_1);
         
         JLabel lblNewLabel_2_1 = new JLabel("No.356,Kandy Road,Kadawatha");
@@ -98,7 +98,7 @@ public class SplashWindow extends JFrame {
         JLabel lblNewLabel_2 = new JLabel("Vaccine Management System");
         lblNewLabel_2.setFont(new Font("Source Sans Pro ExtraLight", Font.PLAIN, 21));
         lblNewLabel_2.setForeground(new Color(230, 230, 250));
-        lblNewLabel_2.setBounds(245, 63, 291, 26);
+        lblNewLabel_2.setBounds(259, 64, 291, 26);
         contentPane.add(lblNewLabel_2);
         
         Load = new JProgressBar();
@@ -113,7 +113,7 @@ public class SplashWindow extends JFrame {
         JLabel lblNewLabel_2_1_2 = new JLabel("Main Branch");
         lblNewLabel_2_1_2.setForeground(new Color(230, 230, 250));
         lblNewLabel_2_1_2.setFont(new Font("Source Sans Pro ExtraLight", Font.BOLD, 16));
-        lblNewLabel_2_1_2.setBounds(410, 185, 291, 26);
+        lblNewLabel_2_1_2.setBounds(433, 181, 291, 26);
         contentPane.add(lblNewLabel_2_1_2);
         
         JLabel lblNewLabel_2_1_1 = new JLabel("+94 11 2 750 979");

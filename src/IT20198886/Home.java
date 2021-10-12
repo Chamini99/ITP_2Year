@@ -191,7 +191,7 @@ public class Home extends JFrame {
 		lblNewLabel_3.setBounds(0, 29, 1358, 725);
 		contentPane.add(lblNewLabel_3);
 		
-		lblNewLabel_3.setIcon(new ImageIcon(Home.class.getResource("/IT20198886/Assets/homebg.jpg")));
+		lblNewLabel_3.setIcon(new ImageIcon(Home.class.getResource("/IT20198886/Assets/homebg2.jpg")));
 		contentPane.add(lblNewLabel_3);
 
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();

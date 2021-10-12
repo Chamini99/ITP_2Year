@@ -75,12 +75,26 @@ public class AssignUpdate extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("X");
-		lblNewLabel.setBounds(558, 0, 11, 21);
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				dispose();
+				StaffHome sh=new StaffHome();
+				sh.setVisible(true);
+			}
+		});
+		lblNewLabel.setBounds(557, 4, 11, 21);
 		lblNewLabel.setFont(new Font("Trebuchet MS", Font.BOLD, 18));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("-");
+		lblNewLabel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setState(JFrame.ICONIFIED);
+			}
+		});
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel_1.setBounds(523, 11, 24, 6);
@@ -232,6 +246,7 @@ public class AssignUpdate extends JFrame {
 		contentPane.add(txt_date);
 		
 		pre_dose = new JTextField();
+		pre_dose.setVisible(false);
 		pre_dose.setColumns(10);
 		pre_dose.setBounds(436, 357, 133, 20);
 		contentPane.add(pre_dose);
