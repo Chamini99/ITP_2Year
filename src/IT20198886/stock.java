@@ -79,8 +79,7 @@ public class stock extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				StaffHome home=new StaffHome();
-				home.setVisible(true);
+				
 			}
 		});
 		lblNewLabel.setBounds(459, 11, 25, 14);

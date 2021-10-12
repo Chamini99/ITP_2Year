@@ -79,8 +79,7 @@ public class AssignUpdate extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				StaffHome sh=new StaffHome();
-				sh.setVisible(true);
+				
 			}
 		});
 		lblNewLabel.setBounds(557, 4, 11, 21);

@@ -211,8 +211,7 @@ public class OrderVaccine extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				StaffHome home=new StaffHome();
-				home.setVisible(true);
+				
 			}
 		});
 		lblNewLabel.setBounds(709, 11, 17, 14);

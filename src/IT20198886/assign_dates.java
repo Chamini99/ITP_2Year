@@ -97,8 +97,7 @@ public class assign_dates extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				StaffHome home=new StaffHome();
-				home.setVisible(true);
+				
 			}
 		});
 		lblNewLabel.setBounds(665, 11, 21, 14);

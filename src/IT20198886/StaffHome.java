@@ -78,20 +78,19 @@ public class StaffHome extends JFrame {
 		});
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Segoe UI", Font.BOLD, 18));
-		lblNewLabel_1.setBounds(179, 530, 130, 25);
+		lblNewLabel_1.setBounds(179, 565, 130, 25);
 		contentPane.add(lblNewLabel_1);
 		
 		lblRequestOrder = new JLabel("Request Order");
 		lblRequestOrder.setFont(new Font("Segoe UI", Font.BOLD, 18));
 		lblRequestOrder.setForeground(new Color(255, 255, 255));
-		lblRequestOrder.setBounds(179, 379, 130, 25);
+		lblRequestOrder.setBounds(179, 465, 130, 25);
 		contentPane.add(lblRequestOrder);
 		
 		lbl_order = new JLabel("New label");
 		lbl_order.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				dispose();
 				OrderVaccine order=new OrderVaccine();
 				order.setVisible(true);
 			}
@@ -106,7 +105,7 @@ public class StaffHome extends JFrame {
 
 			}
 		});
-		lbl_order.setBounds(36, 349, 303, 92);
+		lbl_order.setBounds(36, 435, 303, 92);
 		contentPane.add(lbl_order);
 		
 		lbl_order.setIcon(new ImageIcon(StaffHome.class.getResource("/IT20198886/Assets/reuqestorder.png")));
@@ -115,7 +114,7 @@ public class StaffHome extends JFrame {
 		lblNewLabel = new JLabel("View Users");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 18));
-		lblNewLabel.setBounds(179, 236, 122, 25);
+		lblNewLabel.setBounds(187, 176, 122, 25);
 		contentPane.add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
@@ -170,7 +169,6 @@ public class StaffHome extends JFrame {
 		lbl_logo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				dispose();
 				 stock cstock=new stock();
 				 cstock.setVisible(true);
 			}
@@ -187,6 +185,40 @@ public class StaffHome extends JFrame {
 			}
 		});
 		
+		JLabel lbl_order_1 = new JLabel("New label");
+		lbl_order_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				assign_details ad=new assign_details();
+				ad.setVisible(true);
+			}
+		});
+		lbl_order_1.setBounds(36, 329, 303, 92);
+		contentPane.add(lbl_order_1);
+		
+		JLabel lbl_order_1_1 = new JLabel("New label");
+		lbl_order_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+			assign_dates as=new assign_dates();
+			as.setVisible(true);
+			}
+		});
+		lbl_order_1_1.setBounds(36, 234, 303, 92);
+		contentPane.add(lbl_order_1_1);
+		
+		JLabel lblRequestOrder_1 = new JLabel("View Vaccing Assigns");
+		lblRequestOrder_1.setForeground(Color.WHITE);
+		lblRequestOrder_1.setFont(new Font("Segoe UI", Font.BOLD, 18));
+		lblRequestOrder_1.setBounds(140, 359, 292, 25);
+		contentPane.add(lblRequestOrder_1);
+		
+		JLabel lblAssignVaccineDate = new JLabel("Assign Vaccine Date ");
+		lblAssignVaccineDate.setForeground(Color.WHITE);
+		lblAssignVaccineDate.setFont(new Font("Segoe UI", Font.BOLD, 18));
+		lblAssignVaccineDate.setBounds(140, 264, 212, 25);
+		contentPane.add(lblAssignVaccineDate);
+		
 		lblViewStocks = new JLabel("View Stocks");
 		lblViewStocks.setForeground(new Color(255, 255, 255));
 		lblViewStocks.setFont(new Font("Segoe UI", Font.BOLD, 18));
@@ -195,15 +227,19 @@ public class StaffHome extends JFrame {
 		lbl_logo.setBounds(36, 44, 316, 119);
 		contentPane.add(lbl_logo);
 		
-		
 		lbl_logo.setIcon(new ImageIcon(StaffHome.class.getResource("/IT20198886/Assets/222.png")));
 		contentPane.add(lbl_logo);
+		
+		lbl_order_1_1.setIcon(new ImageIcon(StaffHome.class.getResource("/IT20198886/Assets/viewassign.png")));
+		contentPane.add(lbl_order_1_1);
+		
+		lbl_order_1.setIcon(new ImageIcon(StaffHome.class.getResource("/IT20198886/Assets/assignvaccine.png")));
+		contentPane.add(lbl_order_1);
 		
 		JLabel lbl_people = new JLabel("New label");
 		lbl_people.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				dispose();
 				UserDetails user=new UserDetails();
 				user.setVisible(true);
 			}
@@ -218,7 +254,7 @@ public class StaffHome extends JFrame {
 
 			}
 		});
-		lbl_people.setBounds(36, 206, 305, 92);
+		lbl_people.setBounds(36, 146, 305, 92);
 		contentPane.add(lbl_people);
 		
 		lbl_people.setIcon(new ImageIcon(StaffHome.class.getResource("/IT20198886/Assets/viewusers.png")));
@@ -228,7 +264,6 @@ public class StaffHome extends JFrame {
 		lbl_view.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				dispose();
 				AllOrders all=new AllOrders();
 				all.setVisible(true);
 			}
@@ -243,7 +278,7 @@ public class StaffHome extends JFrame {
 
 			}
 		});
-		lbl_view.setBounds(36, 503, 303, 86);
+		lbl_view.setBounds(36, 538, 303, 86);
 		contentPane.add(lbl_view);
 		
 		lbl_view.setIcon(new ImageIcon(StaffHome.class.getResource("/IT20198886/Assets/viewoders.png")));

@@ -83,7 +83,8 @@ public class StaffRegister extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				
+				Login lg=new Login();
+				lg.setVisible(true);
 				
 			}
 		});

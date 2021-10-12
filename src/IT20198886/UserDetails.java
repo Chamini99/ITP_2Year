@@ -82,8 +82,7 @@ public class UserDetails extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				StaffHome home=new StaffHome();
-				home.setVisible(true);
+				
 			}
 		});
 		lblNewLabel.setBounds(682, 11, 11, 21);

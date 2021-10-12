@@ -80,8 +80,7 @@ Connection connection=null;
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				StaffHome sh=new StaffHome();
-				sh.setVisible(true);
+				
 			}
 		});
 		lblNewLabel.setBounds(622, 11, 15, 14);

@@ -89,8 +89,7 @@ public class AllOrders extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			     dispose();
-			     StaffHome home=new StaffHome();
-				 home.setVisible(true);
+			    
 			}
 		});
 		
