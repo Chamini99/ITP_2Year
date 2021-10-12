@@ -126,7 +126,7 @@ public class AllOrders extends JFrame {
 		
 	
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(22, 89, 622, 206);
+		scrollPane.setBounds(22, 120, 622, 206);
 		contentPane.add(scrollPane);
 		
 		table_1 = new JTable();
@@ -135,13 +135,13 @@ public class AllOrders extends JFrame {
 		scrollPane.setViewportView(table_1);
 		
 		JLabel lblOrderNumber = new JLabel("Order Number");
-		lblOrderNumber.setForeground(new Color(95, 158, 160));
-		lblOrderNumber.setFont(new Font("Segoe UI", Font.BOLD, 20));
-		lblOrderNumber.setBounds(162, 336, 163, 31);
+		lblOrderNumber.setForeground(new Color(255, 0, 0));
+		lblOrderNumber.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblOrderNumber.setBounds(32, 342, 163, 31);
 		contentPane.add(lblOrderNumber);
 		
 		t1 = new JTextField();
-		t1.setBounds(313, 345, 150, 23);
+		t1.setBounds(130, 347, 73, 23);
 		contentPane.add(t1);
 		t1.setColumns(10);
 		
@@ -172,10 +172,16 @@ public class AllOrders extends JFrame {
 				
 			
 		});
+		
+		JLabel lblUpdateTheVaccine = new JLabel("Update the Vaccine Order");
+		lblUpdateTheVaccine.setForeground(new Color(218, 165, 32));
+		lblUpdateTheVaccine.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		lblUpdateTheVaccine.setBounds(467, 337, 225, 31);
+		contentPane.add(lblUpdateTheVaccine);
 		btnNewButton.setBackground(new Color(95, 158, 160));
 		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton.setBounds(487, 345, 106, 25);
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btnNewButton.setBounds(220, 345, 73, 25);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Genarate Report");
@@ -198,7 +204,7 @@ public class AllOrders extends JFrame {
 		});
 		btnNewButton_1.setForeground(new Color(255, 255, 255));
 		btnNewButton_1.setBackground(new Color(95, 158, 160));
-		btnNewButton_1.setBounds(313, 392, 150, 23);
+		btnNewButton_1.setBounds(494, 93, 150, 23);
 		contentPane.add(btnNewButton_1);
 	
 		
