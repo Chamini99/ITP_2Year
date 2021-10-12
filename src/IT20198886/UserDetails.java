@@ -107,7 +107,7 @@ public class UserDetails extends JFrame {
 		JLabel lblNewLabel_3 = new JLabel("User Details");
 		lblNewLabel_3.setForeground(new Color(95, 158, 160));
 		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 19));
-		lblNewLabel_3.setBounds(266, 48, 132, 25);
+		lblNewLabel_3.setBounds(298, 42, 132, 25);
 		contentPane.add(lblNewLabel_3);
 		
 		JScrollPane scrollPane = new JScrollPane();
