@@ -19,7 +19,7 @@ public class vaccineupdate extends JFrame {
 	private JPanel contentPane;
 	private JTextField t1;
 	private JTextField t2;
-	private JTextField textField;
+	private JTextField t3;
 	private JTextField t4;
 
 	/**
@@ -121,11 +121,11 @@ public class vaccineupdate extends JFrame {
 		contentPane.add(t2);
 		t2.setColumns(10);
 		
-		textField = new JTextField();
-		textField.setText("");
-		textField.setBounds(243, 220, 236, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		t3 = new JTextField();
+		t3.setText("");
+		t3.setBounds(243, 220, 236, 20);
+		contentPane.add(t3);
+		t3.setColumns(10);
 		
 		t4 = new JTextField();
 		t4.setBounds(243, 253, 236, 20);
