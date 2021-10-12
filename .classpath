@@ -3,8 +3,8 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="jcalendar-1.4.jar"/>
-	<classpathentry kind="lib" path="F:/Sliit/2ndyear/2ndSemester/ITP_PROJECT/NewITPProject/ITP_2Year/com.mysql.jdbc_5.1.5.jar"/>
-	<classpathentry kind="lib" path="F:/Sliit/2ndyear/2ndSemester/ITP_PROJECT/NewITPProject/ITP_2Year/javax.mail-1.6.2.jar"/>
-	<classpathentry kind="lib" path="F:/Sliit/2ndyear/2ndSemester/ITP_PROJECT/NewITPProject/ITP_2Year/rs2xml.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Pulasthi Shamil/Documents/GitHub/ITP_2Year/com.mysql.jdbc_5.1.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Pulasthi Shamil/Documents/GitHub/ITP_2Year/javax.mail-1.6.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Pulasthi Shamil/Documents/GitHub/ITP_2Year/rs2xml.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
