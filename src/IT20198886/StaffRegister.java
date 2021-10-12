@@ -66,14 +66,14 @@ public class StaffRegister extends JFrame {
 	 */
 	public StaffRegister() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 552, 447);
+		setBounds(100, 100, 552, 564);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(0, 128, 128));
+		panel.setBackground(new Color(95, 158, 160));
 		panel.setBounds(0, 0, 552, 31);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -104,10 +104,10 @@ public class StaffRegister extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		
-		JLabel lblNewLabel_2 = new JLabel("Staff Member Register ");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_2.setForeground(new Color(0, 128, 128));
-		lblNewLabel_2.setBounds(190, 52, 240, 19);
+		JLabel lblNewLabel_2 = new JLabel("Register");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel_2.setForeground(new Color(95, 158, 160));
+		lblNewLabel_2.setBounds(244, 42, 126, 19);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Full Name");
@@ -206,7 +206,7 @@ public class StaffRegister extends JFrame {
 		t6.setColumns(10);
 		
 		
-		JButton btnNewButton = new JButton("Register");
+		JButton btnNewButton = new JButton("Confirm");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			
@@ -235,7 +235,7 @@ public class StaffRegister extends JFrame {
 					
 					JOptionPane.showMessageDialog(null, "Staff Member added successfully");
 					dispose();
-					Login home = new Login();
+					StaffHome home = new StaffHome();
 					home.setVisible(true);
 					//con.close();  
 					
@@ -260,9 +260,9 @@ public class StaffRegister extends JFrame {
 		
 		
 		btnNewButton.setBackground(new Color(95, 158, 160));
-		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 15));
+		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 17));
 		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBounds(215, 372, 142, 31);
+		btnNewButton.setBounds(216, 421, 116, 23);
 		contentPane.add(btnNewButton);
 		
 		passwordField_1 = new JPasswordField();
@@ -287,7 +287,7 @@ public class StaffRegister extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setForeground(new Color(95, 158, 160));
-		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblNewLabel_1.setBounds(0, 29, 552, 653);
 		contentPane.add(lblNewLabel_1);
 		setUndecorated(true);

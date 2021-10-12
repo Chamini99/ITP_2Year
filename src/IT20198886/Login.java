@@ -61,13 +61,13 @@ public class Login extends JFrame {
 		setUndecorated(true);
 
 		JLabel lblUserName = new JLabel("User Name");
-		lblUserName.setForeground(new Color(0, 128, 128));
+		lblUserName.setForeground(new Color(95, 158, 160));
 		lblUserName.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
 		lblUserName.setBounds(96, 150, 128, 14);
 		contentPane.add(lblUserName);
 
 		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setForeground(new Color(0, 128, 128));
+		lblPassword.setForeground(new Color(95, 158, 160));
 		lblPassword.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
 		lblPassword.setBounds(96, 191, 128, 14);
 		contentPane.add(lblPassword);
@@ -128,19 +128,19 @@ public class Login extends JFrame {
 			}
 		});
 		btnSignIn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-		btnSignIn.setBackground(new Color(0, 128, 128));
+		btnSignIn.setBackground(new Color(95, 158, 160));
 		btnSignIn.setForeground(new Color(255, 255, 255));
 		btnSignIn.setBounds(244, 244, 139, 33);
 		contentPane.add(btnSignIn);
 
 		JLabel lblStaffLogin = new JLabel("Staff Login");
-		lblStaffLogin.setForeground(new Color(47, 79, 79));
-		lblStaffLogin.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
-		lblStaffLogin.setBounds(255, 91, 128, 37);
+		lblStaffLogin.setForeground(new Color(95, 158, 160));
+		lblStaffLogin.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
+		lblStaffLogin.setBounds(244, 89, 128, 37);
 		contentPane.add(lblStaffLogin);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(0, 128, 128));
+		panel.setBackground(new Color(95, 158, 160));
 		panel.setBounds(0, 0, 580, 31);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -172,9 +172,9 @@ public class Login extends JFrame {
 		panel.add(lblNewLabel_2_1);
 
 		JLabel lblNewLabel_1 = new JLabel("Suwasetha Medical Center");
-		lblNewLabel_1.setForeground(new Color(0, 128, 128));
+		lblNewLabel_1.setForeground(new Color(95, 158, 160));
 		lblNewLabel_1.setFont(new Font("Source Sans Pro Light", Font.BOLD, 30));
-		lblNewLabel_1.setBounds(132, 42, 411, 56);
+		lblNewLabel_1.setBounds(121, 37, 411, 56);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_3 = new JLabel("Register");
@@ -188,15 +188,9 @@ public class Login extends JFrame {
 			}
 		});
 		
-		JLabel lblNewLabel_3_1 = new JLabel("Don't You Have Account ? ");
-		lblNewLabel_3_1.setForeground(new Color(95, 158, 160));
-		lblNewLabel_3_1.setFont(new Font("Trebuchet MS", Font.BOLD, 14));
-		lblNewLabel_3_1.setBounds(172, 289, 211, 36);
-		contentPane.add(lblNewLabel_3_1);
-		
-		lblNewLabel_3.setForeground(new Color(220, 20, 60));
+		lblNewLabel_3.setForeground(new Color(95, 158, 160));
 		lblNewLabel_3.setFont(new Font("Trebuchet MS", Font.BOLD, 16));
-		lblNewLabel_3.setBounds(345, 288, 139, 36);
+		lblNewLabel_3.setBounds(276, 288, 139, 36);
 		contentPane.add(lblNewLabel_3);
 
 		JLabel lblNewLabel = new JLabel("");

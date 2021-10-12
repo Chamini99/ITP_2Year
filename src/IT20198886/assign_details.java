@@ -79,9 +79,7 @@ Connection connection=null;
 		lblNewLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				dispose();
-				StaffHome sh=new StaffHome();
-				sh.setVisible(true);
+				System.exit(20);
 			}
 		});
 		lblNewLabel.setBounds(622, 11, 15, 14);
@@ -101,10 +99,10 @@ Connection connection=null;
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		
-		JLabel lblNewLabel_3 = new JLabel("People Vaccine Assign Details");
-		lblNewLabel_3.setForeground(new Color(0, 128, 128));
-		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 16));
-		lblNewLabel_3.setBounds(210, 57, 303, 31);
+		JLabel lblNewLabel_3 = new JLabel("Assign Details");
+		lblNewLabel_3.setForeground(new Color(95, 158, 160));
+		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 19));
+		lblNewLabel_3.setBounds(281, 42, 153, 31);
 		contentPane.add(lblNewLabel_3);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -113,21 +111,6 @@ Connection connection=null;
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
-		
-		JLabel lblUpdateVacineDate = new JLabel("Update Vacine Date Assigns");
-		lblUpdateVacineDate.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				AssignUpdate as=new AssignUpdate();
-				as.setVisible(true);
-				
-			}
-		});
-		lblUpdateVacineDate.setForeground(new Color(47, 79, 79));
-		lblUpdateVacineDate.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		lblUpdateVacineDate.setBounds(402, 344, 225, 31);
-		contentPane.add(lblUpdateVacineDate);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setBounds(0, 31, 637, 377);

@@ -82,19 +82,19 @@ public class OrderVaccine extends JFrame {
 		
 		txt_supID = new JTextField();
 		txt_supID.setVisible(false);
-		txt_supID.setBounds(640, 105, 86, 20);
+		txt_supID.setBounds(228, 74, 86, 20);
 		contentPane.add(txt_supID);
 		txt_supID.setColumns(10);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(202, 252, 129, 20);
+		comboBox_1.setBounds(228, 258, 129, 20);
 		contentPane.add(comboBox_1);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Astrazeneca Oxford", "Sputnik V", "Pfizer", "Moderna"}));
-		comboBox.setBounds(202, 196, 129, 20);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Moderna", "Sinopharm", "Pfizer", "Sputnic"}));
+		comboBox.setBounds(228, 202, 129, 20);
 		contentPane.add(comboBox);
-		panel_1.setBounds(364, 139, 342, 327);
+		panel_1.setBounds(384, 69, 342, 392);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -122,17 +122,17 @@ public class OrderVaccine extends JFrame {
 		txt_cardName = new JTextField();
 		txt_cardName.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		txt_cardName.setColumns(10);
-		txt_cardName.setBounds(196, 118, 132, 26);
+		txt_cardName.setBounds(197, 181, 132, 26);
 		panel_1.add(txt_cardName);
 		
 		txt_cvv = new JTextField();
 		txt_cvv.setColumns(10);
-		txt_cvv.setBounds(196, 155, 132, 26);
+		txt_cvv.setBounds(197, 218, 132, 26);
 		panel_1.add(txt_cvv);
 		
 		txt_acnumber = new JTextField();
 		txt_acnumber.setColumns(10);
-		txt_acnumber.setBounds(196, 203, 132, 26);
+		txt_acnumber.setBounds(197, 266, 132, 26);
 		panel_1.add(txt_acnumber);
 		
 		txt_acnumber.addKeyListener(new KeyAdapter() {
@@ -151,57 +151,57 @@ public class OrderVaccine extends JFrame {
 		
 		txt_exdate = new JTextField();
 		txt_exdate.setColumns(10);
-		txt_exdate.setBounds(196, 242, 132, 26);
+		txt_exdate.setBounds(197, 305, 132, 26);
 		panel_1.add(txt_exdate);
 		
 		JLabel lblNewLabel_9 = new JLabel("Expire Date");
 		lblNewLabel_9.setForeground(new Color(95, 158, 160));
-		lblNewLabel_9.setFont(new Font("DialogInput", Font.BOLD, 14));
-		lblNewLabel_9.setBounds(15, 236, 125, 27);
+		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblNewLabel_9.setBounds(16, 299, 125, 27);
 		panel_1.add(lblNewLabel_9);
 		
 		JLabel lblNewLabel_acc = new JLabel("Account Number");
 		lblNewLabel_acc.setForeground(new Color(95, 158, 160));
-		lblNewLabel_acc.setFont(new Font("DialogInput", Font.BOLD, 14));
-		lblNewLabel_acc.setBounds(15, 203, 149, 14);
+		lblNewLabel_acc.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblNewLabel_acc.setBounds(16, 266, 149, 14);
 		panel_1.add(lblNewLabel_acc);
 		
 		
 		JLabel lblNewLabel_7 = new JLabel("CVV");
 		lblNewLabel_7.setForeground(new Color(95, 158, 160));
-		lblNewLabel_7.setFont(new Font("DialogInput", Font.BOLD, 14));
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblNewLabel_7.setBackground(Color.WHITE);
-		lblNewLabel_7.setBounds(15, 167, 46, 14);
+		lblNewLabel_7.setBounds(16, 230, 46, 14);
 		panel_1.add(lblNewLabel_7);
 		
 		JLabel lblNewLabel_6 = new JLabel("Card holder's name");
 		lblNewLabel_6.setForeground(new Color(95, 158, 160));
-		lblNewLabel_6.setFont(new Font("DialogInput", Font.BOLD, 14));
-		lblNewLabel_6.setBounds(10, 124, 165, 21);
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblNewLabel_6.setBounds(11, 187, 165, 21);
 		panel_1.add(lblNewLabel_6);
 		
 	
 		
 		JLabel lblNewLabel_4_1 = new JLabel("Total Amount");
 		lblNewLabel_4_1.setForeground(new Color(255, 0, 0));
-		lblNewLabel_4_1.setFont(new Font("DialogInput", Font.BOLD, 17));
-		lblNewLabel_4_1.setBounds(36, 82, 131, 14);
+		lblNewLabel_4_1.setFont(new Font("Dialog", Font.BOLD, 17));
+		lblNewLabel_4_1.setBounds(33, 81, 131, 14);
 		panel_1.add(lblNewLabel_4_1);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Pay for vaccines");
-		lblNewLabel_3_1.setForeground(new Color(47, 79, 79));
-		lblNewLabel_3_1.setFont(new Font("DialogInput", Font.BOLD, 16));
-		lblNewLabel_3_1.setBounds(93, 21, 180, 31);
+		lblNewLabel_3_1.setForeground(new Color(95, 158, 160));
+		lblNewLabel_3_1.setFont(new Font("Dialog", Font.BOLD, 19));
+		lblNewLabel_3_1.setBounds(95, 11, 180, 31);
 		panel_1.add(lblNewLabel_3_1);
 		
 		JLabel lbl_pricepay = new JLabel("2500");
 		lbl_pricepay.setForeground(new Color(255, 0, 0));
-		lbl_pricepay.setFont(new Font("DialogInput", Font.BOLD, 17));
-		lbl_pricepay.setBounds(201, 82, 131, 14);
+		lbl_pricepay.setFont(new Font("Dialog", Font.PLAIN, 17));
+		lbl_pricepay.setBounds(198, 81, 131, 14);
 		panel_1.add(lbl_pricepay);
 		
 		Panel panel = new Panel();
-		panel.setBackground(new Color(0, 128, 128));
+		panel.setBackground(new Color(95, 158, 160));
 		panel.setBounds(0, 0, 746, 31);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -326,40 +326,40 @@ public class OrderVaccine extends JFrame {
 				
 			}
 		});
-		btn_Continue.setBackground(new Color(47, 79, 79));
+		btn_Continue.setBackground(new Color(95, 158, 160));
 		btn_Continue.setFont(new Font("Dialog", Font.BOLD, 13));
 		btn_Continue.setForeground(new Color(255, 255, 255));
-		btn_Continue.setBounds(75, 375, 236, 27);
+		btn_Continue.setBounds(78, 388, 236, 27);
 		contentPane.add(btn_Continue);
 		setUndecorated(true);
 		 
 		 JLabel lblNewLabel_3 = new JLabel("Request Vaccine");
-		 lblNewLabel_3.setForeground(new Color(0, 128, 128));
+		 lblNewLabel_3.setForeground(new Color(95, 158, 160));
 		 lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 17));
-		 lblNewLabel_3.setBounds(307, 73, 155, 27);
+		 lblNewLabel_3.setBounds(135, 138, 155, 27);
 		 contentPane.add(lblNewLabel_3);
 		 
 		 JLabel lblNewLabel_4 = new JLabel("Vaccine Type");
 		 lblNewLabel_4.setForeground(new Color(95, 158, 160));
-		 lblNewLabel_4.setFont(new Font("Dialog", Font.BOLD, 14));
+		 lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 17));
 		 lblNewLabel_4.setBounds(37, 196, 129, 27);
 		 contentPane.add(lblNewLabel_4);
 		 
 		 JLabel lblSupplyCompany = new JLabel("Supply Company");
 		 lblSupplyCompany.setForeground(new Color(95, 158, 160));
-		 lblSupplyCompany.setFont(new Font("Dialog", Font.BOLD, 14));
+		 lblSupplyCompany.setFont(new Font("Dialog", Font.BOLD, 17));
 		 lblSupplyCompany.setBounds(37, 252, 140, 27);
 		 contentPane.add(lblSupplyCompany);
 		 
 		 JLabel lblVaccineAmount = new JLabel("Vaccine Amount");
 		 lblVaccineAmount.setForeground(new Color(95, 158, 160));
-		 lblVaccineAmount.setFont(new Font("Dialog", Font.BOLD, 14));
+		 lblVaccineAmount.setFont(new Font("Dialog", Font.BOLD, 17));
 		 lblVaccineAmount.setBounds(37, 305, 155, 27);
 		 contentPane.add(lblVaccineAmount);
 		 
 		 txt_ammount = new JTextField();
 		 txt_ammount.setColumns(10);
-		 txt_ammount.setBounds(202, 305, 129, 27);
+		 txt_ammount.setBounds(228, 311, 129, 27);
 		 contentPane.add(txt_ammount);
 		 
 		 JLabel lblNewLabel_2 = new JLabel("New label");
@@ -367,7 +367,7 @@ public class OrderVaccine extends JFrame {
 		 contentPane.add(lblNewLabel_2);
 		 
 		 
-		 JButton btn_Submit = new JButton("Pay & Order");
+		 JButton btn_Submit = new JButton("Pay");
 		 btn_Submit.addActionListener(new ActionListener() {
 		 	public void actionPerformed(ActionEvent arg0) {
 		 	}
@@ -416,9 +416,9 @@ public class OrderVaccine extends JFrame {
 			});
 			btn_Submit.setInheritsPopupMenu(true);
 			btn_Submit.setForeground(Color.WHITE);
-			btn_Submit.setFont(new Font("Tahoma", Font.BOLD, 14));
-			btn_Submit.setBackground(new Color(0, 128, 128));
-			btn_Submit.setBounds(120, 284, 125, 23);
+			btn_Submit.setFont(new Font("Tahoma", Font.BOLD, 16));
+			btn_Submit.setBackground(new Color(95, 158, 160));
+			btn_Submit.setBounds(124, 358, 125, 23);
 			panel_1.add(btn_Submit);
 			
 		 lblNewLabel_2.setIcon(new ImageIcon(OrderVaccine.class.getResource("/IT20198886/Assets/login.jpeg")));

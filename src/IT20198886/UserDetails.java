@@ -72,7 +72,7 @@ public class UserDetails extends JFrame {
 		setUndecorated(true);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(0, 128, 128));
+		panel.setBackground(new Color(95, 158, 160));
 		panel.setBounds(0, 0, 703, 31);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -104,14 +104,14 @@ public class UserDetails extends JFrame {
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		
-		JLabel lblNewLabel_3 = new JLabel("Registered User Details");
+		JLabel lblNewLabel_3 = new JLabel("User Details");
 		lblNewLabel_3.setForeground(new Color(95, 158, 160));
-		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 16));
-		lblNewLabel_3.setBounds(263, 42, 304, 25);
+		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 19));
+		lblNewLabel_3.setBounds(266, 48, 132, 25);
 		contentPane.add(lblNewLabel_3);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 88, 683, 213);
+		scrollPane.setBounds(10, 106, 683, 259);
 		contentPane.add(scrollPane);
 		
 		table_2 = new JTable();
@@ -126,10 +126,10 @@ public class UserDetails extends JFrame {
 				dates.setVisible(true);
 			}
 		});
-		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 14));
-		btnNewButton.setBackground(new Color(47, 79, 79));
+		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnNewButton.setBackground(new Color(95, 158, 160));
 		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBounds(263, 329, 194, 31);
+		btnNewButton.setBounds(249, 376, 194, 23);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");

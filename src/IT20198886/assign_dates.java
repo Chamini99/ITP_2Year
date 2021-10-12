@@ -7,8 +7,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
-
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -39,9 +37,6 @@ import java.awt.event.KeyEvent;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.JScrollPane;
 
 public class assign_dates extends JFrame {
 
@@ -71,12 +66,6 @@ public class assign_dates extends JFrame {
 	 * Create the frame.
 	 */
 	public assign_dates() {
-		addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowOpened(WindowEvent arg0) {
-				ShowData();
-			}
-		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 686, 477);
 		contentPane = new JPanel();
@@ -119,83 +108,57 @@ public class assign_dates extends JFrame {
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		
 		JLabel lblNewLabel_3 = new JLabel("Assign Vaccine Date");
-		lblNewLabel_3.setBounds(275, 52, 214, 25);
-		lblNewLabel_3.setForeground(new Color(0, 128, 128));
-		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblNewLabel_3.setBounds(275, 32, 214, 25);
+		lblNewLabel_3.setForeground(new Color(95, 158, 160));
+		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 19));
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Registered Date");
-		lblNewLabel_4.setBounds(331, 91, 120, 21);
-		lblNewLabel_4.setFont(new Font("Dialog", Font.PLAIN, 14));
+		lblNewLabel_4.setBounds(412, 87, 120, 21);
+		lblNewLabel_4.setFont(new Font("Dialog", Font.ITALIC, 16));
 		lblNewLabel_4.setForeground(new Color(95, 158, 160));
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("NIC");
-		lblNewLabel_5.setBounds(204, 282, 63, 25);
-		lblNewLabel_5.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblNewLabel_5.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblNewLabel_5.setForeground(new Color(95, 158, 160));
+		lblNewLabel_5.setBounds(155, 239, 63, 25);
 		contentPane.add(lblNewLabel_5);
 		
 		t1 = new JTextField();
-		t1.setBounds(345, 286, 148, 20);
+		t1.setBounds(341, 244, 148, 20);
 		contentPane.add(t1);
 		t1.setColumns(10);
 		
 		JLabel lblNewLabel_6 = new JLabel("Vaccine Date");
-		lblNewLabel_6.setBounds(204, 313, 126, 25);
-		lblNewLabel_6.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblNewLabel_6.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblNewLabel_6.setForeground(new Color(95, 158, 160));
+		lblNewLabel_6.setBounds(155, 285, 126, 25);
 		contentPane.add(lblNewLabel_6);
 		
-		JButton btnReset = new JButton("Reset");
-		btnReset.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				ShowData();
-
-				
-			}
-		});
-		btnReset.setForeground(Color.WHITE);
-		btnReset.setFont(new Font("Dialog", Font.BOLD, 11));
-		btnReset.setBackground(new Color(178, 34, 34));
-		btnReset.setBounds(586, 91, 68, 21);
-		contentPane.add(btnReset);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(34, 124, 620, 143);
-		contentPane.add(scrollPane);
-		
-		table = new JTable();
-		scrollPane.setViewportView(table);
-		table.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-		table.setBackground(new Color(255, 255, 255));
-		
 		JLabel lblNewLabel_7 = new JLabel("Vaccine Type");
-		lblNewLabel_7.setBounds(204, 344, 126, 25);
-		lblNewLabel_7.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblNewLabel_7.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblNewLabel_7.setForeground(new Color(95, 158, 160));
+		lblNewLabel_7.setBounds(155, 321, 126, 25);
 		contentPane.add(lblNewLabel_7);
 		
 		JComboBox cb = new JComboBox();
-		cb.setBounds(345, 348, 148, 20);
-		cb.setModel(new DefaultComboBoxModel(new String[] {"Astrazeneca Oxford", "Sputnik V", "Pfizer", "Moderna"}));
+		cb.setModel(new DefaultComboBoxModel(new String[] {"Sinopharm", "Sputnic", "Pfizer", "Moderna"}));
+		cb.setBounds(341, 326, 148, 20);
 		contentPane.add(cb);
 		
 		JLabel lblNewLabel_8 = new JLabel("Dose");
-		lblNewLabel_8.setBounds(204, 380, 63, 14);
-		lblNewLabel_8.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblNewLabel_8.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblNewLabel_8.setForeground(new Color(95, 158, 160));
+		lblNewLabel_8.setBounds(155, 371, 63, 14);
 		contentPane.add(lblNewLabel_8);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(345, 379, 148, 20);
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1st Dose", "2nd Dose"}));
+		comboBox_1.setBounds(341, 371, 148, 20);
 		contentPane.add(comboBox_1);
 		
-		JButton btnNewButton = new JButton("Assign Vaccine ");
-		btnNewButton.setBounds(274, 420, 158, 31);
+		JButton btnNewButton = new JButton("Assign");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String NIC=t1.getText();
@@ -246,14 +209,17 @@ public class assign_dates extends JFrame {
 				dates.setVisible(true);
 			}
 		});
-		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 14));
+		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 17));
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(95, 158, 160));
+		btnNewButton.setBounds(276, 418, 89, 23);
 		contentPane.add(btnNewButton);
-		scrollPane.setViewportView(table);
+		
+		table = new JTable();
+		table.setBounds(66, 113, 592, 90);
+		contentPane.add(table);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(451, 93, 130, 20);
 		
 		textField_1.addKeyListener(new KeyAdapter() {
 			Connection con=MyConnection.getConnection();
@@ -274,11 +240,12 @@ public class assign_dates extends JFrame {
 				}
 			}
 		});
+		textField_1.setBounds(546, 90, 130, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(345, 317, 148, 20);
+		textField_2.setBounds(341, 290, 148, 20);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
@@ -289,64 +256,8 @@ public class assign_dates extends JFrame {
 		lblNewLabel_2.setIcon(new ImageIcon(assign_dates.class.getResource("/IT20198886/Assets/login.jpeg")));
 		contentPane.add(lblNewLabel_2);
 		
+
 		 Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 			this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-	}
-	private void ShowData() {
-		Connection con=MyConnection.getConnection();
-		DefaultTableModel model=new DefaultTableModel();
-		model.addColumn("People ID");
-		model.addColumn("NIC");
-		model.addColumn("Name");
-		model.addColumn("Registered Date");
-		model.addColumn("Age");
-		model.addColumn("Gender");
-		model.addColumn("Email ");
-		
-		
-		try {
-			String query="select * from tbl_peopledetails";
-			Statement st = con.createStatement();
-			ResultSet rs  =st . executeQuery(query);
-			while (rs.next())
-			{
-				model.addRow(new Object[] {
-						rs.getInt("people_id"),
-						rs.getString("NIC"),
-						rs.getString("Name"),
-						rs.getDate("Registered_date"),
-						rs.getInt("Age"),
-						rs.getString("Gender"),
-						rs.getString("Email"),
-						
-
-						
-				});
-				
-			}
-			rs.close();
-			st.close();
-		
-			
-			table.setModel(model);
-			table.setAutoResizeMode(0);
-			table.getColumnModel().getColumn(0).setPreferredWidth(60);
-			table.getColumnModel().getColumn(1).setPreferredWidth(120);
-			table.getColumnModel().getColumn(2).setPreferredWidth(140);
-			table.getColumnModel().getColumn(3).setPreferredWidth(100);
-			table.getColumnModel().getColumn(4).setPreferredWidth(60);
-			table.getColumnModel().getColumn(5).setPreferredWidth(80);
-			table.getColumnModel().getColumn(6).setPreferredWidth(100);
-			table.getColumnModel().getColumn(7).setPreferredWidth(100);
-
-			
-			
-		} catch (Exception e) {
-			System.out.println("error " +e);
-		}
-		
-		
-		
-		
 	}
 }
