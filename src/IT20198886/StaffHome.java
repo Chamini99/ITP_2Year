@@ -119,7 +119,7 @@ public class StaffHome extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(95, 158, 160));
+		panel.setBackground(new Color(0, 128, 128));
 		panel.setBounds(0, 0, 1008, 40);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -160,7 +160,7 @@ public class StaffHome extends JFrame {
 		lblX.setForeground(new Color(255, 255, 255));
 		lblX.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
-		JLabel lbl_suwasetha = new JLabel("STAFF MANAGEMENT");
+		JLabel lbl_suwasetha = new JLabel("STAFF MANAGEMENT PANEL");
 		lbl_suwasetha.setBounds(10, -5, 345, 55);
 		panel.add(lbl_suwasetha);
 		lbl_suwasetha.setForeground(new Color(255, 255, 255));

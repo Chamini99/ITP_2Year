@@ -235,7 +235,7 @@ public class StaffRegister extends JFrame {
 					
 					JOptionPane.showMessageDialog(null, "Staff Member added successfully");
 					dispose();
-					StaffHome home = new StaffHome();
+					Login home = new Login();
 					home.setVisible(true);
 					//con.close();  
 					
