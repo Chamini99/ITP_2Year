@@ -10,6 +10,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Toolkit;
 
@@ -22,6 +24,7 @@ public class Home extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lbl_logo;
+	private JLabel lbl;
 
 	/**
 	 * Launch the application.
@@ -53,22 +56,42 @@ public class Home extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(0, 139, 139));
+		panel.setBackground(new Color(47, 79, 79));
+
 		panel.setBounds(0, 0, 1374, 31);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lbl_1 = new JLabel("X");
-		lbl_1.addMouseListener(new MouseAdapter() {
+		lbl = new JLabel("X");
+		lbl.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.exit(20);
+				if(JOptionPane.showConfirmDialog(null,"Do you want to exit from the system?","Confirmation",JOptionPane.YES_NO_OPTION)==0) {
+					System.exit(20);
+				}
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lbl.setForeground(Color.RED);
+
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lbl.setForeground(Color.WHITE);
+
 			}
 		});
+
+		lbl.setForeground(new Color(255, 255, 255));
+		lbl.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lbl.setBounds(1323, 11, 22, 14);
+		panel.add(lbl);
+
 		lbl_1.setForeground(new Color(255, 255, 255));
 		lbl_1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lbl_1.setBounds(1331, 11, 22, 14);
 		panel.add(lbl_1);
+
 		
 		JLabel lbl_2 = new JLabel("-");
 		lbl_2.addMouseListener(new MouseAdapter() {
@@ -81,7 +104,7 @@ public class Home extends JFrame {
 		});
 		lbl_2.setForeground(new Color(255, 255, 255));
 		lbl_2.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lbl_2.setBounds(1310, 11, 22, 14);
+		lbl_2.setBounds(1291, 11, 22, 14);
 		panel.add(lbl_2);
 		
 		lbl_logo = new JLabel("");
@@ -108,7 +131,7 @@ public class Home extends JFrame {
 		contentPane.add(lbl_image1);
 		
 		JLabel lbl_4 = new JLabel("People Management");
-		lbl_4.setForeground(new Color(95, 158, 160));
+		lbl_4.setForeground(new Color(47, 79, 79));
 		lbl_4.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lbl_4.setBounds(132, 364, 189, 48);
 		contentPane.add(lbl_4);
@@ -130,7 +153,7 @@ public class Home extends JFrame {
 		contentPane.add(lbl_image2);
 		
 		JLabel lblNewLabel_1 = new JLabel("Staff Management");
-		lblNewLabel_1.setForeground(new Color(95, 158, 160));
+		lblNewLabel_1.setForeground(new Color(47, 79, 79));
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNewLabel_1.setBounds(615, 374, 144, 29);
 		contentPane.add(lblNewLabel_1);
@@ -151,7 +174,7 @@ public class Home extends JFrame {
 		contentPane.add(lbl_image3);
 		
 		JLabel lblNewLabel_2 = new JLabel("Doctor Management");
-		lblNewLabel_2.setForeground(new Color(95, 158, 160));
+		lblNewLabel_2.setForeground(new Color(47, 79, 79));
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNewLabel_2.setBounds(1063, 379, 154, 19);
 		contentPane.add(lblNewLabel_2);
@@ -172,13 +195,22 @@ public class Home extends JFrame {
 		lbl_image4.setIcon(new ImageIcon(Home.class.getResource("/IT20198886/Assets/supplymgt.png")));
 		contentPane.add(lbl_image4);
 		
+
 		JLabel lblNewLabel = new JLabel("Supply Management");
 		lblNewLabel.setForeground(new Color(95, 158, 160));
+
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNewLabel.setBounds(147, 653, 154, 29);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lbl_image5 = new JLabel("New label");
+		lbl_image5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				//lbl_image5.setBounds(550, 300, 0, 0);
+			    //this.repaint();
+			}
+		});
 		lbl_image5.setBounds(610, 480, 144, 144);
 		contentPane.add(lbl_image5);
 		
@@ -186,7 +218,7 @@ public class Home extends JFrame {
 		contentPane.add(lbl_image5);
 		
 		JLabel lblNewLabel_4 = new JLabel("Delivery Management");
-		lblNewLabel_4.setForeground(new Color(95, 158, 160));
+		lblNewLabel_4.setForeground(new Color(47, 79, 79));
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNewLabel_4.setBounds(598, 657, 178, 20);
 		contentPane.add(lblNewLabel_4);
@@ -207,7 +239,7 @@ public class Home extends JFrame {
 		contentPane.add(lbl_image6);
 		
 		JLabel lblNewLabel_5 = new JLabel("Admin Management");
-		lblNewLabel_5.setForeground(new Color(95, 158, 160));
+		lblNewLabel_5.setForeground(new Color(47, 79, 79));
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNewLabel_5.setBounds(1053, 653, 154, 29);
 		contentPane.add(lblNewLabel_5);

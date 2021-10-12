@@ -60,7 +60,7 @@ public class stock extends JFrame {
 		});
 		connection=MyConnection.dbconn;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 621, 418);
+		setBounds(100, 100, 494, 418);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -68,7 +68,7 @@ public class stock extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 621, 31);
+		panel.setBounds(0, 0, 494, 31);
 		panel.setBackground(new Color(95, 158, 160));
 		panel.setForeground(new Color(255, 255, 255));
 		contentPane.add(panel);
@@ -83,7 +83,7 @@ public class stock extends JFrame {
 				home.setVisible(true);
 			}
 		});
-		lblNewLabel.setBounds(597, 11, 25, 14);
+		lblNewLabel.setBounds(459, 11, 25, 14);
 		panel.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
@@ -95,19 +95,20 @@ public class stock extends JFrame {
 				setState(JFrame.ICONIFIED);
 			}
 		});
-		lblNewLabel_1.setBounds(573, 11, 24, 14);
+		lblNewLabel_1.setBounds(435, 11, 24, 14);
 		panel.add(lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		
-		JLabel lblNewLabel_3 = new JLabel("Our Stock");
-		lblNewLabel_3.setForeground(new Color(95, 158, 160));
-		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 18));
-		lblNewLabel_3.setBounds(263, 43, 126, 14);
+		JLabel lblNewLabel_3 = new JLabel("Our Vaccine Stocks");
+		lblNewLabel_3.setForeground(new Color(0, 128, 128));
+		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblNewLabel_3.setBounds(164, 76, 262, 14);
 		contentPane.add(lblNewLabel_3);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(121, 144, 434, 201);
+		scrollPane.setBackground(new Color(255, 255, 255));
+		scrollPane.setBounds(30, 120, 434, 262);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();

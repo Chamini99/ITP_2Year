@@ -80,7 +80,7 @@ public class AllOrders extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 670, 31);
-		panel.setBackground(new Color(95, 158, 160));
+		panel.setBackground(new Color(0, 128, 128));
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -112,11 +112,11 @@ public class AllOrders extends JFrame {
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		
-		JLabel lblNewLabel_3 = new JLabel("All Orders");
-		lblNewLabel_3.setBounds(291, 43, 107, 25);
+		JLabel lblNewLabel_3 = new JLabel("All Vaccine Orders");
+		lblNewLabel_3.setBounds(276, 52, 190, 25);
 		contentPane.add(lblNewLabel_3);
-		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 19));
-		lblNewLabel_3.setForeground(new Color(95, 158, 160));
+		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblNewLabel_3.setForeground(new Color(47, 79, 79));
 		
 	    
 		
@@ -126,7 +126,8 @@ public class AllOrders extends JFrame {
 		
 	
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(22, 89, 622, 206);
+		scrollPane.setBackground(new Color(255, 255, 255));
+		scrollPane.setBounds(22, 145, 622, 235);
 		contentPane.add(scrollPane);
 		
 		table_1 = new JTable();
@@ -134,14 +135,14 @@ public class AllOrders extends JFrame {
 		table_1.setBackground(new Color(255, 255, 255));
 		scrollPane.setViewportView(table_1);
 		
-		JLabel lblOrderNumber = new JLabel("Order Number");
-		lblOrderNumber.setForeground(new Color(95, 158, 160));
-		lblOrderNumber.setFont(new Font("Segoe UI", Font.BOLD, 20));
-		lblOrderNumber.setBounds(162, 336, 163, 31);
+		JLabel lblOrderNumber = new JLabel("Enter Order Number");
+		lblOrderNumber.setForeground(new Color(255, 0, 0));
+		lblOrderNumber.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblOrderNumber.setBounds(347, 404, 163, 31);
 		contentPane.add(lblOrderNumber);
 		
 		t1 = new JTextField();
-		t1.setBounds(313, 345, 150, 23);
+		t1.setBounds(478, 409, 73, 23);
 		contentPane.add(t1);
 		t1.setColumns(10);
 		
@@ -149,8 +150,8 @@ public class AllOrders extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			 @Override
 	         public void actionPerformed(ActionEvent ae) {
-				 String sql="DELETE FROM tbl_vaccineorder WHERE order_number='"+t1.getText()+"'";
-				 queryUpdate(sql,"delete");
+				 String sql="DELETE FROM tbl_vaccineorder WHERE order_no='"+t1.getText()+"'";
+				 queryUpdate(sql,"Deleted");
 			 }
 
 			private void queryUpdate(String sql, String message) {
@@ -172,13 +173,14 @@ public class AllOrders extends JFrame {
 				
 			
 		});
-		btnNewButton.setBackground(new Color(95, 158, 160));
+		btnNewButton.setBackground(new Color(220, 20, 60));
 		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton.setBounds(487, 345, 106, 25);
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btnNewButton.setBounds(568, 407, 73, 25);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Genarate Report");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				MessageFormat header=new MessageFormat("Suwasetha Vaccine Management Order Details ");
@@ -197,8 +199,8 @@ public class AllOrders extends JFrame {
 			}
 		});
 		btnNewButton_1.setForeground(new Color(255, 255, 255));
-		btnNewButton_1.setBackground(new Color(95, 158, 160));
-		btnNewButton_1.setBounds(313, 392, 150, 23);
+		btnNewButton_1.setBackground(new Color(47, 79, 79));
+		btnNewButton_1.setBounds(472, 115, 172, 23);
 		contentPane.add(btnNewButton_1);
 	
 		
@@ -232,7 +234,7 @@ public class AllOrders extends JFrame {
 			while (rs.next())
 			{
 				model.addRow(new Object[] {
-						rs.getInt("order_number"),
+						rs.getInt("order_no"),
 						rs.getDate("order_date"),
 						rs.getString("vaccine_type"),
 						rs.getString("supply_company"),
